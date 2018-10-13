@@ -22,7 +22,6 @@ class Parser_Salto_Linea:
         """ Procesa el string 'data'.
         Espera los elementos separados por 'salto de linea' y pueden tener un Label antes del valor.
         Retorna una lista con 'An_Format_Known.Pair_Label_EntireP_List' o 'An_Format_Known.Entire_Pos_List' """
-
         data = data.split("\n")
         names, values, tuplas = [], [], []
         for item in data:  # recorrer cada linea
@@ -35,8 +34,6 @@ class Parser_Salto_Linea:
             values.append(value)
             tuplas.append((name, value))
         formatos=[]
-        # formatos.append(formats.Pair_List(tuplas))
         formatos.append(formats.Pair_List(tuplas))
-        # formatos.append(formats.Entire_Pos_List(values))
         return formatos
 

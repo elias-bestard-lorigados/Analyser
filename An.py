@@ -1,10 +1,10 @@
 from matplotlib import pyplot
 import argparse
-import sys
 from api.An_Identify import identify
 from api.An_Graphs import graph
 # from CLI import ini
 # import CLI
+import input
 class Analyzer:
     def __init__(self,data,output):
         ''' Inicializar las propiedades de la clase
@@ -14,7 +14,6 @@ class Analyzer:
         self.__data=data
         self.__output=output
         self.file=None  # aca se guardara el file donde se escribira el resultado si la salida no es por la consola
-
     def analyze(self):
         ''' Trata de analizar self.__data con todos los parsers para generar todos los graficos posibles '''
         formats= self.to_identify()
@@ -23,7 +22,7 @@ class Analyzer:
             code = self.to_graphic(item)
             for text in code:
                 results += text
-        if self.__output != sys.stdout: #si los resultados no se esperan por la salida estandar
+        if self.__output != "<stdout>": #si los resultados no se esperan por la salida estandar
             self.__ini_HTML()   #creo el archivo html
             self.file.write(results)  # escribo el resultado en el
             self.__end_HTML()   #concluo el html y cierro el archivo
@@ -54,11 +53,17 @@ class Analyzer:
         self.file.write("</body>")
         self.file.close()
 
+data,args=input.parse()
+an = Analyzer(data, args.output.name)
+an.analyze()
 
 # CLI.ini()
 #llamada al cli!!!!
 # data,output=CLI.ini()
-data,output='''lisandra 12 13 14
-elias 13 14 51''',sys.stdout
-an = Analyzer(data,"output.html")
-an.analyze()
+# data,output='''12
+# 13
+# 1
+# 14''',"stdout"
+# # an = Analyzer(data, "stdout")
+# an = Analyzer(data, "output.html")
+# an.analyze()

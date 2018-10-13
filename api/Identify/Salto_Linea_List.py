@@ -31,14 +31,15 @@ class Parser_Salto_Linea:
             temp = item.split()
             name=""
             value=[]
-            for values in temp:
-                if alph.match(values).end()!=0:
-                    name+=item+" "
+            for i in temp:
+                if alph.match(i).end()!=0:
+                    name+=i+" "
                 else:
-                    value.append(values) 
+                    value.append(int(i)) 
             names.append(name)
             values.append(value)
             tuplas.append((name, value))
         formatos=[]
-        formatos.append(formats.Entire_ListOfListPair(tuplas))
+        formatos.append(formats.List_Tuple(tuplas))
         formatos.append(formats.Entire_ListOfList(values))
+        return formatos

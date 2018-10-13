@@ -5,8 +5,8 @@ from .Identify.Salto_Linea_List import Parser_Salto_Linea as per_line_list
 
 
 # parsers = [per_line()]
-parsers = [per_line(), per_line_list()]
 # parsers = [ per_line_list()]
+parsers = [per_line(), per_line_list()]
 
 
 def identify(data):
@@ -16,6 +16,5 @@ def identify(data):
     for item in parsers:
         format_ = item.parsea(data)
         if format_ != None:  # si se pudo parsear
-            # list_formats.append(format_)
             list_formats.extend(format_)
     return list_formats
