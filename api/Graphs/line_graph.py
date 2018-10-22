@@ -29,14 +29,17 @@ class Line_Graph:
 
     def graphic(self, output):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
-        if output == "<stdout>":
+        if output == "stdout":
             return self.__make_graph()
         return self.__make_JS_code()
 
     def __make_graph(self):
         ''' hace el grafico en pyplot '''
-        pyplot.plot(self.__values)
-        pyplot.show()
+        try:
+            pyplot.plot(self.__values)
+            pyplot.show()
+        except:
+            return
 
     def __make_JS_code(self):
         ''' Genera el codigo de JS para highcharts y lo retorna '''

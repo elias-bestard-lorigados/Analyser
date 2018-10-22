@@ -1,8 +1,14 @@
 import argparse
-import sys
 parser = argparse.ArgumentParser(prog="Analizer")
-parser.add_argument("-f", "--file",help="The path of the file to analize")
-parser.add_argument("-o", "--output", default=sys.stdout,help="Where we puts the results",type=argparse.FileType('w'))
+parser.add_argument("-f", "--file", help="The path of the file to analize")
+parser.add_argument("-o", "--output", default= "stdout",
+                    help="Where we puts the results")
+parser.add_argument("-g", "--graph", default="all",
+                    help="which one of the graphs do you want graphic the data, ex: 'per_line'",type=str
+                    )
+parser.add_argument("-p", "--parser", default="all",
+                    help="which one of the parsers do you want parse the data, ex: 'pie,line' ", type=str
+                    )
 def parse():
     args = parser.parse_args()
     #adquiriendo los valores a procesar en data=STRING

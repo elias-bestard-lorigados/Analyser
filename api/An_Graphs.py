@@ -6,18 +6,22 @@ from highcharts import Highchart
 import random
 
 #diccionario donde mantiene cada de cada grafico el formato que entiende
-graphs={formats.Pair_List:[pie,line],
-        formats.Entire_Pos_List: [pie, line],
-        formats.List_Tuple: [line],
-        formats.Entire_ListOfList: [line]}
-def graph(format_known, output):
-    """ Dado un formato conocido 'format_' busca que tipos de graficos lo pueden plotear """
+graphs_per_formats={formats.Pair_List:["pie","line"],
+        formats.Entire_Pos_List: ["pie", "line"],
+        formats.List_Tuple: ["line"],
+        formats.Entire_ListOfList: ["line"]}
+graphs={"pie":pie,
+        "line":line}
+def graph(format_known, output,graphs_list):
+    """ Dado un formato conocido 'format_' busca que tipos de graficos lo pueden plotear de los graficos dados
+    graphs: graficos que se quieren utilizar"""
     result_code=[]
-    for item in graphs[type(format_known)]:
-        item=item(format_known)
-        content = item.graphic(output)
-        if content!=None:
-            result_code.append(content)
+    for item in graphs_per_formats[type(format_known)]:
+        if graphs_list.__contains__(item) or graphs_list.__contains__("all"):
+            graph=graphs[item](format_known)
+            content = graph.graphic(output)
+            if content!=None:
+                result_code.append(content)
     return result_code
 
 

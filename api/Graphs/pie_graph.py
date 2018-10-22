@@ -25,7 +25,7 @@ class Pie_Graph:
 
     def graphic(self, output):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
-        if output == "<stdout>":
+        if output == "stdout":
             return self.__make_graph()
         return self.__make_JS_code()
 
