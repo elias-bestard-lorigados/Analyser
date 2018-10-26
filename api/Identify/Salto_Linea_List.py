@@ -35,7 +35,7 @@ class Parser_Salto_Linea:
                 if alph.match(i).end()!=0:
                     name+=i+" "
                 else:
-                    value.append(int(i)) 
+                    value.append(int(i))
             names.append(name)
             values.append(value)
             tuplas.append((name, value))

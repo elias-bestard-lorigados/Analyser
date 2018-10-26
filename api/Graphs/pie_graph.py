@@ -18,13 +18,10 @@ def IsListOfTuple_StrInt(list):
 
 class Pie_Graph:
     """ Crear un grafico de Pie """
-    def __init__(self, format_known):
-        self.__My_Formats=[]
-        self.__elements = format_known.elements
-        # print(self.__elements)
 
-    def graphic(self, output):
+    def graphic(self, output, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
+        self.__elements = format_known.elements
         if output == "stdout":
             return self.__make_graph()
         return self.__make_JS_code()
@@ -59,47 +56,3 @@ class Pie_Graph:
         chart.add_data_set(self.__elements, 'pie')
         chart.buildhtml()
         return chart.content
-
-
-
-# file = open("./probando.html", "w")
-# file.write("<head>")
-# file.write("<script src=\"./highcharts.js\"></script>")
-# file.write("<script src=\"./jquery.js\"></script>")
-# file.write("</head>")
-# file.write("<body>")
-
-# chart = Highchart(renderTo="pie_container_" +
-#                   str(random.uniform(0, 999999)))
-# chart.set_options('chart', {})
-# options = {
-#     'title': {
-#         'text': 'A Pie Chart'
-#     },
-#     'tooltip': {
-#         'pointFormat': '{series.name}: <b>{point.percentage:.1f}%</b>'
-#     },
-#     'plotOptions': {
-#         'pie': {
-#             'allowPointSelect': True,
-#             'format': '<b>{point.name}</b>: {point.value} ',
-#         }
-#     }
-# }
-
-# data = [('Chrome ', 12, 12, 13), ('Zafari ', 10, 13, 1)]
-# chart.set_dict_options(options)
-# chart.add_data_set(data,series_type="line")
-# chart.buildhtml()
-# file.write(chart.content)
-
-
-# file.write("</body>")
-# file.close()
-
-
-
-# # [('lisandra 12 13 ', 14), ('elias 13 14 ', 51)] #pincha
-# # [('lisandra ', [12, 13, 14]), ('elias ', [13, 14, 51])]
-# # [[12, 13, 14], [13, 14, 51]] #se queda con el primero
-# # [('Chrome ', [12, 12, 13]), ('Zafari ', [10, 13, 1])]

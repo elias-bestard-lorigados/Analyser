@@ -2,7 +2,6 @@ from matplotlib import pyplot
 from highcharts import Highchart
 import random
 
-
 def IsListOfTuple_StrInt(list):
     """ Chequea que 'list' sea una lista de tuplas[(str,int)].
     Retorna dos listas, ([str],[int]) """
@@ -21,14 +20,11 @@ def IsListOfTuple_StrInt(list):
 class Line_Graph:
     """ Crear un grafico de linea """
 
-    def __init__(self, format_known):
-        self.__My_Formats = []
+    def graphic(self, output,format_known):
+        """ Graficar los elementos con sus labels si tienen y sale por el output """
         self.__elements = format_known.elements
         self.__labels, self.__values = IsListOfTuple_StrInt(self.__elements)
         print(self.__elements)
-
-    def graphic(self, output):
-        """ Graficar los elementos con sus labels si tienen y sale por el output """
         if output == "stdout":
             return self.__make_graph()
         return self.__make_JS_code()

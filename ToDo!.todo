@@ -1,10 +1,19 @@
-x Revisar fire y click para hacer cli en python(ayuda de las cosas)
-x Poner directorios como Namespaces
-x Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente
-x Annadir opcion de argumento de que tipo de parser quiere utiliar
-- Annadirle mas graficos
-- annadirle mas formatos conocidos
+TODO:
+    ☐ @today(18-10-26) Hacer jerarquia de los parsers que tengo en Salto linea
+        ☐ Padre: Salto_linea
+        ☐ parsee value
+        ☐ parsee labels value
+        ☐ parsee [value] ...
+        ☐ parsee label [value]
+        ☐ adaptar AN_Identify
+    ☐ Annadirle mas graficos
+    ☐ annadirle mas formatos conocidos
+    ☐ annadirle mas PARSERS
+    ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
 
-
-
--Proponer soluciones si no encuentra un formato que parsee la entrada!!
+Archive:
+  ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @done(18-10-25 16:36) @project(TODO)
+  ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(TODO)
+  ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(TODO)
+  ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(TODO)
+  ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(TODO)
