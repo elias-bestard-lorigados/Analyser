@@ -1,18 +1,32 @@
-TODO:
-    ☐ @today(18-10-26) Hacer jerarquia de los parsers que tengo en Salto linea
-        ☐ Padre: Salto_linea
-        ☐ parsee value
-        ☐ parsee labels value
-        ☐ parsee [value] ...
-        ☐ parsee label [value]
-        ☐ adaptar AN_Identify
-    ☐ Annadirle mas graficos
-    ☐ annadirle mas formatos conocidos
-    ☐ annadirle mas PARSERS
+Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
 
+    Identify:
+        ☐ annadirle mas PARSERS
+        ☐ Crear mas FK por cada parser
+        ☐ cuando sean listas de elementos pares que analizarlos como pares de puntos
+
+    Format_Known:
+        ☐ annadirle mas formatos conocidos
+
+    Graph:
+        ☐ Annadirle mas graficos
+
 Archive:
-  ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @done(18-10-25 16:36) @project(TODO)
+  ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.Format_Known)
+    ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.Format_Known)
+    ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.Format_Known)
+    ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.Format_Known)
+    ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.Format_Known)
+  
+    ✔ @today(18-10-26) Simplificar mas los parsers  salto de linea "PJL": @done(18-10-29 20:09) @project(Analyser.Identify)
+    ✔ parsee value PJL_value @done(18-10-29 14:59) @project(Analyser.Identify)
+    ✔ parsee labels value PJL_label_value @done(18-10-29 15:59) @project(Analyser.Identify)
+    ✔ parsee [value] ... PJL_values_list @done(18-10-29 16:35) @project(Analyser.Identify)
+    ✔ parsee label [value] @done(18-10-29 19:37) @project(Analyser.Identify)
+    ✔ adaptar AN_Identify @done(18-10-29 20:09) @project(Analyser.Identify)
+
+  ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @done(18-10-25 16:36) @project(Graph)
   ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(TODO)
   ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(TODO)
   ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(TODO)

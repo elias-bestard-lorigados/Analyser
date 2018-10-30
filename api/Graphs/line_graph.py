@@ -22,22 +22,25 @@ class Line_Graph:
 
     def graphic(self, output,format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
-        self.__elements = format_known.elements
-        self.__labels, self.__values = IsListOfTuple_StrInt(self.__elements)
-        print(self.__elements)
+        # self.__elements = format_known.elements
+        # self.__labels, self.__values = IsListOfTuple_StrInt(self.__elements)
+        # print(self.__elements)
         if output == "stdout":
-            return self.__make_graph()
-        return self.__make_JS_code()
+            return self.__make_graph(format_known)
+        return self.__make_JS_code(format_known)
 
-    def __make_graph(self):
+    def __make_graph(self, format_known):
         ''' hace el grafico en pyplot '''
         try:
-            pyplot.plot(self.__values)
-            pyplot.show()
+            if not format_known.labels:
+                pyplot.plot(format_known.elements)
+                pyplot.show()
+            else:
+                pyplot.plot(format_known.values)
         except:
             return
 
-    def __make_JS_code(self):
+    def __make_JS_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
         chart = Highchart(renderTo="line_container_" +
                           str(random.uniform(0, 999999)))
@@ -57,13 +60,12 @@ class Line_Graph:
             }
         }
         chart.set_dict_options(options)
-        if len(self.__labels) == 0:
-            chart.add_data_set(self.__elements, "line")
+        if format_known.series:
+            for item in range(len(format_known.values)):
+                data = format_known.values[item]
+                label = format_known.labels[item]
+                chart.add_data_set(data=data, name=label, series_type="line")
         else:
-            for item in range(len(self.__labels)):
-                data = self.__values[item]
-                label = self.__labels[item]
-                chart.add_data_set(data=[data],name=label, series_type="line")
-
+            chart.add_data_set(format_known.elements, "line")
         chart.buildhtml()
         return chart.content

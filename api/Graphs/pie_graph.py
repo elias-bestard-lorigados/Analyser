@@ -21,19 +21,18 @@ class Pie_Graph:
 
     def graphic(self, output, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
-        self.__elements = format_known.elements
+        # self.__elements = format_known.elements
         if output == "stdout":
-            return self.__make_graph()
-        return self.__make_JS_code()
+            return self.__make_graph(format_known)
+        return self.__make_JS_code(format_known)
 
-
-    def __make_graph(self):
+    def __make_graph(self, format_known):
         ''' hace el grafico en pyplot '''
-        labels, values = IsListOfTuple_StrInt(self.__elements)
+        labels, values = IsListOfTuple_StrInt(format_known.elements)
         pyplot.pie(values, autopct='%1.1f%%', labels=labels)
         pyplot.show()
 
-    def __make_JS_code(self):
+    def __make_JS_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
         chart = Highchart(renderTo="pie_container_" +
                           str(random.uniform(0, 999999)))
@@ -53,6 +52,6 @@ class Pie_Graph:
             }
         }
         chart.set_dict_options(options)
-        chart.add_data_set(self.__elements, 'pie')
+        chart.add_data_set(format_known.elements, 'pie')
         chart.buildhtml()
         return chart.content
