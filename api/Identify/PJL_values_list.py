@@ -28,6 +28,6 @@ class JL_values_list:
         elements=[]
         for item in data:
             elements.append([int(x) for x in re.findall("[0-9]+", item)])
-        formatos.append(formats.Entire_ListOfList(elements, series=True))
+        formatos.append(formats.Entire_ListOfList(elements))
         #annadir la lista de pares si tiene cantidad par los datos
         return formatos

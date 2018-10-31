@@ -33,7 +33,7 @@ class JL_labels_val_list:
             for x in re.findall("[A-z]+", item):
                 label += x+" "
             labels.append(label)
-        formatos.append(formats.List_Tuple(values, labels, series=True))
+        formatos.append(formats.List_Tuple(values, labels))
         #annadir la lista de pares si tiene cantidad par los datos
         return formatos
 

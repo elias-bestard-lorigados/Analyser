@@ -42,16 +42,20 @@ class Pie_Graph:
                 'text': 'A Pie Chart'
             },
             'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.percentage:.1f}%</b>'
+                'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'
             },
             'plotOptions': {
                 'pie': {
                     'allowPointSelect': True,
                     'format': '<b>{point.name}</b>: {point.value} ',
+                    'dataLabels': {
+                        'enabled': True
+                    }
                 }
             }
         }
         chart.set_dict_options(options)
-        chart.add_data_set(format_known.elements, 'pie')
+        for item in format_known.elements:
+            chart.add_data_set(format_known.elements[item], 'pie')
         chart.buildhtml()
         return chart.content

@@ -58,4 +58,5 @@ class Analyser:
 
 data,args=input.parse()
 an = Analyser(data, args.output)
+an = Analyser(data, "output.html")
 an.analyse(args.parser.split(','),args.graph.split(','))

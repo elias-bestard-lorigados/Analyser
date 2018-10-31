@@ -27,7 +27,14 @@ class JL_value:
         data = re.sub("[\n]", ' ', data)
         data = [int(item) for item in data.split()]
         formatos.append(formats.Entire_Pos_List(data))
-        #annadir la lista de pares si tiene cantidad par los datos
+        if len(data)%2==0:
+            pares=[(data[x],data[x+1]) for x in range(0,len(data),2)]
+            pares_list=[[(data[x],data[x+1])] for x in range(0,len(data),2)]
+            labels = [data[x] for x in range(0, len(data), 2)]
+            values = [data[x+1] for x in range(0, len(data), 2)]
+            formatos.append(formats.Pair_List(labels, values))
+            formatos.append(formats.Entire_ListOfList(pares))
+            formatos.append(formats.Entire_ListOfList(pares_list))
         return formatos
 
 

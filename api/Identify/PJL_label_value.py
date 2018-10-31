@@ -32,4 +32,8 @@ class JL_label_value:
                 label+=x+' '
             labels.append(label)
         formatos.append(formats.Pair_List(labels, values))
+        elements = [[labels[i], values[i]] for i in range(len(values))]
+        elements1 = [[[labels[i], values[i]]] for i in range(len(values))]
+        formatos.append(formats.Entire_ListOfList(elements))
+        formatos.append(formats.Entire_ListOfList(elements1))
         return formatos

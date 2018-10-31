@@ -22,5 +22,6 @@ def identify(data,parsers):
         format_ = all_parsers[item].parsea(data)
         if format_ != None:  # si se pudo parsear
             list_formats.extend(format_)
-    print(list_formats)
+    for item in list_formats:
+        print(item.elements)
     return list_formats

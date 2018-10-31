@@ -50,22 +50,22 @@ class Line_Graph:
                 'text': 'A Line Chart'
             },
             'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.percentage:.1f}%</b>'
+                'pointFormat': '{series.name}: <b>point.y</b>'
             },
             'plotOptions': {
-                'pie': {
+                'line': {
                     'allowPointSelect': True,
-                    'format': '<b>{point.name}</b>: {point.value} ',
-                }
-            }
-        }
+                    'dataLabels': {
+                        'enabled': True
+                    }}
+        }}
         chart.set_dict_options(options)
-        if format_known.series:
-            for item in range(len(format_known.values)):
-                data = format_known.values[item]
-                label = format_known.labels[item]
-                chart.add_data_set(data=data, name=label, series_type="line")
-        else:
-            chart.add_data_set(format_known.elements, "line")
+        for item in format_known.elements:
+            if isinstance(item, int):
+                chart.add_data_set(
+                    format_known.elements[item], series_type="line")
+            else:
+                chart.add_data_set(
+                    format_known.elements[item], series_type="line", name=item)
         chart.buildhtml()
         return chart.content
