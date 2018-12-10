@@ -26,15 +26,23 @@ class JL_labels_val_list:
         formatos = []
         labels = []
         values = []
+        values_pares=[]
         data = data.split("\n")
         for item in data:
-            values.append([int(y) for y in re.findall("[0-9]+", item)])
+            items = [int(y) for y in re.findall("[0-9]+", item)]
+            values.append(items)
+            if len(items)%2==1:
+                items.append(items[-1])
+            temp=[]
+            for i in range(0,len(items),2):
+                temp.append([items[i], items[i+1]])
+            values_pares.append(temp)
             label = ""
             for x in re.findall("[A-z]+", item):
                 label += x+" "
             labels.append(label)
         formatos.append(formats.List_Tuple(values, labels))
-        #annadir la lista de pares si tiene cantidad par los datos
+        formatos.append(formats.List_Tuple(values_pares, labels))
         return formatos
 
 

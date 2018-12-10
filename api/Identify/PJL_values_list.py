@@ -25,9 +25,17 @@ class JL_values_list:
         Retorna una lista con FK"""
         formatos = []
         data=data.split('\n')
-        elements=[]
+        elements = []   #los elemetos tal como estan
+        elements_pares = [] #elementos en pares si son cantidad de numeros pares
         for item in data:
-            elements.append([int(x) for x in re.findall("[0-9]+", item)])
+            items = [int(x) for x in re.findall("[0-9]+", item)]
+            elements.append(items)
+            if len(items) % 2 == 1: #si la cantidad de elementos no es par le agrego el ultimo elemento denuevo para poder tener los puntos en pares
+                items.append(items[-1])
+            temp=[] #para ir almacenando las diferentes series de puntos si son numeros pares
+            for i in range(0,len(items),2):
+                temp.append([items[i], items[i+1]])
+            elements_pares.append(temp)
         formatos.append(formats.Entire_ListOfList(elements))
-        #annadir la lista de pares si tiene cantidad par los datos
+        formatos.append(formats.Entire_ListOfList(elements_pares))
         return formatos

@@ -1,4 +1,4 @@
-<head><script src="./highcharts.js"></script><script src="./jquery.js"></script></head><body>        <div id="line_container_352410.52218336146" style="">Loading....</div>
+<head><script src="./highcharts.js"></script><script src="./jquery.js"></script></head><body>        <div id="line_container_496347.397397418" style="">Loading....</div>
 
 
     <script>
@@ -9,14 +9,14 @@
 
 
             Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_352410.52218336146"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"pie": {"allowPointSelect": true}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.percentage:.1f}%</b>"}, "xAxis": {}, "yAxis": {}};
+            var option = {"chart": {"renderTo": "line_container_496347.397397418"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
 
 
  
 
             var chart = new Highcharts.Chart(option);
 
-            var data = [{"data": [16, 41, 12], "type": "line", "name": "0"}, {"data": [12, 21, 12], "type": "line", "name": "1"}, {"data": [13, 41, 13], "type": "line", "name": "2"}];
+            var data = [{"data": [["primero", 3], ["segundo", 4], ["tercero", 4], ["cuarto", 5], ["quinto", 8]], "type": "line", "name": "Series 1"}, {"data": [[1, 1], [2, 2], [3, 3], [4, 4]], "type": "line", "name": "Series 2"}, {"data": [2, 3, 4, 5, 6, 21, 12], "type": "line", "name": "Series 3"}];
             var dataLen = data.length;
             for (var ix = 0; ix < dataLen; ix++) {
                 chart.addSeries(data[ix]);
@@ -32,7 +32,7 @@
         
     });
         </script>
-        <div id="line_container_584981.0274147339" style="">Loading....</div>
+        <div id="column_container_435605.13534998504" style="">Loading....</div>
 
 
     <script>
@@ -43,14 +43,14 @@
 
 
             Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_584981.0274147339"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"pie": {"allowPointSelect": true}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.percentage:.1f}%</b>"}, "xAxis": {}, "yAxis": {}};
+            var option = {"chart": {"renderTo": "column_container_435605.13534998504"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
 
 
  
 
             var chart = new Highcharts.Chart(option);
 
-            var data = [{"data": [[16, 41, 12], [12, 21, 12], [13, 41, 13]], "type": "line", "name": "Series 1"}];
+            var data = [{"data": [["primero", 3], ["segundo", 4], ["tercero", 4], ["cuarto", 5], ["quinto", 8]], "type": "column", "name": "Series 1"}, {"data": [[1, 1], [2, 2], [3, 3], [4, 4]], "type": "column", "name": "Series 2"}, {"data": [2, 3, 4, 5, 6, 21, 12], "type": "column", "name": "Series 3"}];
             var dataLen = data.length;
             for (var ix = 0; ix < dataLen; ix++) {
                 chart.addSeries(data[ix]);

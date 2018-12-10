@@ -1,16 +1,20 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
-
-    Identify:
+    ☐ Cambiar algunos nombres que no estan bien claros
+    Identify:        
+        ☐ Crear gramaticas para parsear
+        ✔  Gramatica tipo exacto que recibemn los graficos @done(18-12-07 16:20)
         ☐ annadirle mas PARSERS
         ☐ Crear mas FK por cada parser
-        ☐ cuando sean listas de elementos pares que analizarlos como pares de puntos
+        ✔ cuando sean listas de elementos pares que analizarlos como pares de puntos @done(18-11-04 20:48)
 
     Format_Known:
+        ☐ Cambiarle los nombres a los formatos!!!
         ☐ annadirle mas formatos conocidos
+        ☐ annadirles las opciones de Xaxis y Yaxis...
 
     Graph:
-        ☐ Arreglar cuando la salida estandar es la consola
+        ☐ @next Arreglar cuando la salida estandar es la consola
         ☐ Annadirle mas graficos
 
 Archive:

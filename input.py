@@ -4,10 +4,10 @@ parser.add_argument("-f", "--file", help="The path of the file to analize")
 parser.add_argument("-o", "--output", default= "stdout",
                     help="Where we puts the results")
 parser.add_argument("-g", "--graph", default="all",
-                    help="which one of the graphs do you want graphic the data, ex: 'pie, line'",type=str
+                    help="which one of the graphs do you want graphic the data, ex: 'pie, line, column'",type=str
                     )
 parser.add_argument("-p", "--parser", default="all",
-                    help="which one of the parsers do you want parse the data, ex: 'value_end, label_value_end, labels_values, values_list' ", type=str
+                    help="which one of the parsers do you want parse the data, ex: 'value_end, label_value_end, labels_values, values_list, series_list' ", type=str
                     )
 def parse():
     args = parser.parse_args()

@@ -1,4 +1,4 @@
-from matplotlib import pyplot
+from matplotlib import pyplot as plt
 from highcharts import Highchart
 import random
 
@@ -12,7 +12,7 @@ def IsListOfTuple_StrInt(list):
             labels.append(item[0])
             values.append(item[1])
         else:
-            # labels.append("")
+            labels.append("")
             values.append(item)
     return labels, values
 
@@ -31,14 +31,10 @@ class Line_Graph:
 
     def __make_graph(self, format_known):
         ''' hace el grafico en pyplot '''
-        try:
-            if not format_known.labels:
-                pyplot.plot(format_known.elements)
-                pyplot.show()
-            else:
-                pyplot.plot(format_known.values)
-        except:
-            return
+        for item in format_known.elements:
+            labels, values = IsListOfTuple_StrInt(format_known.elements[item])
+            plt.plot(values)
+        plt.show()
 
     def __make_JS_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
@@ -50,7 +46,7 @@ class Line_Graph:
                 'text': 'A Line Chart'
             },
             'tooltip': {
-                'pointFormat': '{series.name}: <b>point.y</b>'
+                'pointFormat': '{series.name}: <b>{point.y}</b>'
             },
             'plotOptions': {
                 'line': {

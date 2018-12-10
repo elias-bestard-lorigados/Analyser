@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 from highcharts import Highchart
 import random
 
+
 def IsListOfTuple_StrInt(list):
     """ Chequea que 'list' sea una lista de tuplas[(str,int)].
     Retorna dos listas, ([str],[int]) """
@@ -16,12 +17,12 @@ def IsListOfTuple_StrInt(list):
             values.append(item)
     return labels, values
 
-class Pie_Graph:
-    """ Crear un grafico de Pie """
+
+class Column_Graph:
+    """ Crear un grafico de columnas """
 
     def graphic(self, output, format_known):
-        """ Graficar los elementos con sus labels si tienen y sale por el output """
-        # self.__elements = format_known.elements
+        """ Graficar los elementos """
         if output == "stdout":
             return self.__make_graph(format_known)
         return self.__make_JS_code(format_known)
@@ -30,37 +31,35 @@ class Pie_Graph:
         ''' hace el grafico en pyplot '''
         for item in format_known.elements:
             labels, values = IsListOfTuple_StrInt(format_known.elements[item])
-            plt.pie(values,
-                    autopct='%1.1f%%', labels=labels)
+            plt.plot(values)
         plt.show()
-        # pyplot.pie(values, autopct='%1.1f%%', labels=labels)
-        # pyplot.show()
 
     def __make_JS_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
-        chart = Highchart(renderTo="pie_container_" +
+        chart = Highchart(renderTo="column_container_" +
                           str(random.uniform(0, 999999)))
         chart.set_options('chart', {})
         options = {
             'title': {
-                'text': 'A Pie Chart'
+                'text': 'A Column Chart'
             },
             'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'
+                'pointFormat': '{series.name}: <b>{point.y}</b>'
             },
             'plotOptions': {
-                'pie': {
+                'column': {
                     'allowPointSelect': True,
-                    'format': '<b>{point.name}</b>: {point.value} ',
                     'dataLabels': {
                         'enabled': True
-                    },
-                    'showInLegend': True
-                }
-            }
-        }
+                    }}
+            }}
         chart.set_dict_options(options)
         for item in format_known.elements:
-            chart.add_data_set(format_known.elements[item], 'pie')
+            if isinstance(item, int):
+                chart.add_data_set(
+                    format_known.elements[item], series_type="column")
+            else:
+                chart.add_data_set(
+                    format_known.elements[item], series_type="column", name=item)
         chart.buildhtml()
         return chart.content
