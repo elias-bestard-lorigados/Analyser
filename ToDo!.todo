@@ -1,7 +1,8 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
     @Identify:        
-        ☐ generador de juegos de datos( default params) desde la ayuda ->genera txt con un nombre especifico que tiene datos para analizar
+        ☐ Arreglar los labels de los parsers
+        ✔ generador de juegos de datos( default params) desde la ayuda ->genera txt con un nombre especifico que tiene datos para analizar @done(18-12-28 01:59)
         ✔ parsers en dir llamado parsers @done(18-12-27 22:07)
         ✔ @important poder eliminar agregar parsers (los  files) y seguir pinchando @done(18-12-27 22:23)
         ✔ Gramatica tipo exacto que recibemn los graficos @done(18-12-07 16:20)

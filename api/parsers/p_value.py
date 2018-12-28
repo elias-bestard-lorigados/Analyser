@@ -1,6 +1,7 @@
 from .. import an_known_format as formats
 import re
-
+import os
+from random import uniform
 class Value:
     """Intenta parsear una cadena en saltos de linea  donde
         cada linea= value '\\n'+...
@@ -44,3 +45,17 @@ class Value:
                 32
                 23 '''
 
+
+    def data_generator(self, amount=50, on_top=50, below=100):
+        ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
+        amount= 50 cantidad de lineas, lineas =label + value +'\\n'
+        on_top=50  below=100 numeros x on_top<=x<=below
+        '''
+        data_files = [item
+                      for item in os.listdir("./data") if item.__contains__("d_value_")]
+        file = open("./data/d_value_" +
+                    str(len(data_files)+1)+".txt", "w")
+        for item in range(0, amount):
+            data = str(int(uniform(on_top, below)))+" "
+            file.write(data+"\n")
+        file.close()

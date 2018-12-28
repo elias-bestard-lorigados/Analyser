@@ -1,5 +1,7 @@
 from .. import an_known_format as formats
 import re
+from random import uniform
+import os
 
 class LabelValue:
     """Intenta parsear una cadena en saltos de linea  donde
@@ -9,6 +11,7 @@ class LabelValue:
     def __init__(self):
         ''' RE ->label value 'salto' '''
         self._re = re.compile('([ A-z ]+ [0-9]+[ \n]*)*')
+        # self._re = re.compile('([ A-z ]+ [0-9]+(\.[0-9]+)?[ \n]*)*')
 
     def parse(self, data):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
@@ -43,3 +46,18 @@ class LabelValue:
                 Madrid 34
                 Barcelona 32
                 Atletico 23 '''
+
+    def data_generator(self,amount=50, on_top=50, below=100):
+        ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
+        amount= 50 cantidad de lineas, lineas =label + value +'\\n'
+        on_top=50  below=100 numeros x on_top<=x<=below
+        '''
+        data_files = [item
+                      for item in os.listdir("./data") if item.__contains__("d_label_valule_")]
+        file = open("./data/d_label_value_"+str(len(data_files)+1)+".txt", "w")
+        for item in range(0, amount):
+            data = ''
+            data += "l"*item+" "
+            data += str(int(uniform(on_top, below)))
+            file.write(data+"\n")
+        file.close()

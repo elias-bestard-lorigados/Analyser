@@ -1,5 +1,7 @@
 from .. import an_known_format as formats
 import re
+import os
+from random import uniform
 
 
 class ValuesList:
@@ -47,3 +49,20 @@ class ValuesList:
                 34 12 123 32
                 32 13 45 
                 23  12'''
+
+
+    def data_generator(self, amount=50, on_top=50, below=100):
+        ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
+        amount= 50 cantidad de lineas, lineas =label + value +'\\n'
+        on_top=50  below=100 numeros x on_top<=x<=below
+        '''
+        data_files = [item
+                      for item in os.listdir("./data") if item.__contains__("d_values_list_")]
+        file = open("./data/d_values_list_" +
+                    str(len(data_files)+1)+".txt", "w")
+        for item in range(0, amount):
+            data = ''
+            for x in range(0, int(uniform(1, amount))):
+                data += str(int(uniform(on_top, below)))+" "
+            file.write(data+"\n")
+        file.close()

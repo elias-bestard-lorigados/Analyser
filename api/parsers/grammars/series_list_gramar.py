@@ -53,6 +53,7 @@ lexer = lex.lex()
 def p_start(t):
     ''' start :  expression NEWLINE start 
     | expression'''
+    '        | empty'
     if len(t) == 2:
         t[0] = [t[1]]
     else:

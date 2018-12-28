@@ -1,4 +1,4 @@
-<head><script src="./highcharts.js"></script><script src="./jquery.js"></script></head><body>        <div id="pie_container_857208.6442318407" style="">Loading....</div>
+<head><script src="./highcharts.js"></script><script src="./jquery.js"></script></head><body>        <div id="line_container_504492.5012014755" style="">Loading....</div>
 
 
     <script>
@@ -9,14 +9,14 @@
 
 
             Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "pie_container_857208.6442318407"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"pie": {"allowPointSelect": true, "dataLabels": {"enabled": true}, "showInLegend": true}}, "series": {}, "subtitle": {}, "title": {"text": "A Pie Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y:.1f}</b>"}, "xAxis": {}, "yAxis": {}};
+            var option = {"chart": {"renderTo": "line_container_504492.5012014755"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
 
 
  
 
             var chart = new Highcharts.Chart(option);
 
-            var data = [{"data": [["elias ", 12], ["lisandra ", 15]], "type": "pie", "name": "Series 1"}];
+            var data = [{"data": [66, 93, 97, 57], "type": "line", "name": "Series 1"}, {"data": [95, 84, 92, 92], "type": "line", "name": "Series 2"}, {"data": [87, 61, 72, 72], "type": "line", "name": "Series 3"}, {"data": [71, 77], "type": "line", "name": "Series 4"}, {"data": [54, 54], "type": "line", "name": "Series 5"}, {"data": [], "type": "line", "name": "Series 6"}];
             var dataLen = data.length;
             for (var ix = 0; ix < dataLen; ix++) {
                 chart.addSeries(data[ix]);
@@ -32,7 +32,7 @@
         
     });
         </script>
-        <div id="line_container_864914.2545634272" style="">Loading....</div>
+        <div id="column_container_875904.6105299218" style="">Loading....</div>
 
 
     <script>
@@ -43,14 +43,14 @@
 
 
             Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_864914.2545634272"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
+            var option = {"chart": {"renderTo": "column_container_875904.6105299218"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
 
 
  
 
             var chart = new Highcharts.Chart(option);
 
-            var data = [{"data": [["elias ", 12], ["lisandra ", 15]], "type": "line", "name": "Series 1"}];
+            var data = [{"data": [66, 93, 97, 57], "type": "column", "name": "Series 1"}, {"data": [95, 84, 92, 92], "type": "column", "name": "Series 2"}, {"data": [87, 61, 72, 72], "type": "column", "name": "Series 3"}, {"data": [71, 77], "type": "column", "name": "Series 4"}, {"data": [54, 54], "type": "column", "name": "Series 5"}, {"data": [], "type": "column", "name": "Series 6"}];
             var dataLen = data.length;
             for (var ix = 0; ix < dataLen; ix++) {
                 chart.addSeries(data[ix]);
@@ -66,7 +66,7 @@
         
     });
         </script>
-        <div id="column_container_692523.9798525058" style="">Loading....</div>
+        <div id="line_container_794014.0615951112" style="">Loading....</div>
 
 
     <script>
@@ -77,14 +77,14 @@
 
 
             Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "column_container_692523.9798525058"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
+            var option = {"chart": {"renderTo": "line_container_794014.0615951112"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
 
 
  
 
             var chart = new Highcharts.Chart(option);
 
-            var data = [{"data": [["elias ", 12], ["lisandra ", 15]], "type": "column", "name": "Series 1"}];
+            var data = [{"data": [[66, 93], [97, 57]], "type": "line", "name": "Series 1"}, {"data": [[95, 84], [92, 92]], "type": "line", "name": "Series 2"}, {"data": [[87, 61], [72, 72]], "type": "line", "name": "Series 3"}, {"data": [[71, 77]], "type": "line", "name": "Series 4"}, {"data": [[54, 54]], "type": "line", "name": "Series 5"}, {"data": [], "type": "line", "name": "Series 6"}];
             var dataLen = data.length;
             for (var ix = 0; ix < dataLen; ix++) {
                 chart.addSeries(data[ix]);
@@ -100,7 +100,7 @@
         
     });
         </script>
-        <div id="line_container_682239.9236757152" style="">Loading....</div>
+        <div id="column_container_231790.68713309357" style="">Loading....</div>
 
 
     <script>
@@ -111,252 +111,14 @@
 
 
             Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_682239.9236757152"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
+            var option = {"chart": {"renderTo": "column_container_231790.68713309357"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
 
 
  
 
             var chart = new Highcharts.Chart(option);
 
-            var data = [{"data": ["elias ", 12], "type": "line", "name": "Series 1"}, {"data": ["lisandra ", 15], "type": "line", "name": "Series 2"}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="column_container_620360.7324326837" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "column_container_620360.7324326837"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": ["elias ", 12], "type": "column", "name": "Series 1"}, {"data": ["lisandra ", 15], "type": "column", "name": "Series 2"}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="line_container_662713.7169257646" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_662713.7169257646"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": [["elias ", 12]], "type": "line", "name": "Series 1"}, {"data": [["lisandra ", 15]], "type": "line", "name": "Series 2"}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="column_container_958606.6641998051" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "column_container_958606.6641998051"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": [["elias ", 12]], "type": "column", "name": "Series 1"}, {"data": [["lisandra ", 15]], "type": "column", "name": "Series 2"}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="line_container_430261.89428636164" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_430261.89428636164"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": [12, 12], "type": "line", "name": "elias "}, {"data": [15, 15], "type": "line", "name": "lisandra "}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="column_container_114159.26777768183" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "column_container_114159.26777768183"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": [12, 12], "type": "column", "name": "elias "}, {"data": [15, 15], "type": "column", "name": "lisandra "}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="line_container_903306.4157545938" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "line_container_903306.4157545938"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"line": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Line Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": [[12, 12]], "type": "line", "name": "elias "}, {"data": [[15, 15]], "type": "line", "name": "lisandra "}];
-            var dataLen = data.length;
-            for (var ix = 0; ix < dataLen; ix++) {
-                chart.addSeries(data[ix]);
-            }
- 
-
-
-
-
-
-
-
-        
-    });
-        </script>
-        <div id="column_container_847727.5542161822" style="">Loading....</div>
-
-
-    <script>
-        $(function(){
-
-
-
-
-
-            Highcharts.setOptions({"global": {}, "lang": {}});
-            var option = {"chart": {"renderTo": "column_container_847727.5542161822"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}}, "series": {}, "subtitle": {}, "title": {"text": "A Column Chart"}, "tooltip": {"pointFormat": "{series.name}: <b>{point.y}</b>"}, "xAxis": {}, "yAxis": {}};
-
-
- 
-
-            var chart = new Highcharts.Chart(option);
-
-            var data = [{"data": [[12, 12]], "type": "column", "name": "elias "}, {"data": [[15, 15]], "type": "column", "name": "lisandra "}];
+            var data = [{"data": [[66, 93], [97, 57]], "type": "column", "name": "Series 1"}, {"data": [[95, 84], [92, 92]], "type": "column", "name": "Series 2"}, {"data": [[87, 61], [72, 72]], "type": "column", "name": "Series 3"}, {"data": [[71, 77]], "type": "column", "name": "Series 4"}, {"data": [[54, 54]], "type": "column", "name": "Series 5"}, {"data": [], "type": "column", "name": "Series 6"}];
             var dataLen = data.length;
             for (var ix = 0; ix < dataLen; ix++) {
                 chart.addSeries(data[ix]);

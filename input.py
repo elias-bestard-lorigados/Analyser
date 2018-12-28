@@ -18,6 +18,8 @@ parser.add_argument("-pl", "--parsers_list",help='''List all the parsers definde
                     action='store_true')
 parser.add_argument("-gl", "--graphs_list", help='''List all the graphs definded ''',
                     action='store_true')
+parser.add_argument("-dg", "--data_generator", help='''To Generate many files of data to analize, depends of the parse of your choice ex:'p_label_value,p_series_list' ''',
+                    type=str)
 
 def parse():
     args = parser.parse_args()
@@ -32,6 +34,9 @@ def parse():
         return '',None
     elif args.graphs_list:
         parsers_or_graphs_list("graphs")
+    elif args.data_generator:
+        data_generator(args.data_generator)
+        return "",None
     
     #adquiriendo los valores a procesar en data=STRING
     data=""
@@ -46,6 +51,7 @@ def parse():
             temp=input()
             data+="\n" if not temp=="" else ""
     #ya con data lleno
+    print(data)
     return data, args
     # return '', None
 
@@ -72,4 +78,23 @@ def parsers_help(parsers_list='all'):
                 "from api.parsers."+item[:-3]+" import "+name, 'e', mode='exec')
             exec(import_module)
             print(eval(str(name+"().help()")))
+            print("="*20)
+
+
+def data_generator(parsers_list='all', amount=5, on_top=50, below=100):
+    ''' Lista todos los parsers definidos y un ejemplo de los mismos '''
+    dirs = os.listdir("./api/parsers")
+    print("="*20)
+    for item in dirs:
+        p = "./api/parsers/"+item
+        a = [x.capitalize() for x in item[:-3].split("_")]
+        name = ""
+        for item2 in a[1:]:
+            name += item2
+        if (not os.path.isdir(p)) and (parsers_list.__contains__('all') or parsers_list.__contains__(item[:-3])):
+            print(item[:-3])
+            import_module = compile(
+                "from api.parsers."+item[:-3]+" import "+name, 'e', mode='exec')
+            exec(import_module)
+            eval(str(name+"().data_generator(amount, on_top,below)"))
             print("="*20)
