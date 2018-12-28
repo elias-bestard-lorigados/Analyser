@@ -1,16 +1,16 @@
-from . import An_Format_Known as formats
-from .Graphs.line_graph import Line_Graph as line
-from .Graphs.pie_graph import Pie_Graph as pie
-from .Graphs.column_graph import Column_Graph as column
+from . import an_known_format as formats
+from .graphs.g_line_graph import LineGraph as line
+from .graphs.g_pie_graph import PieGraph as pie
+from .graphs.g_column_graph import ColumnGraph as column
 from matplotlib import pyplot
 from highcharts import Highchart
 import random
 
 #diccionario donde mantiene cada de cada grafico el formato que entiende
-graphs_per_formats={formats.Pair_List:["pie","line","column"],
-                    formats.Entire_Pos_List: ["pie", "line", "column"],
-                    formats.List_Tuple: ["line", "column"],
-                    formats.Entire_ListOfList: ["line", "column"]}
+graphs_per_formats = {formats.PairsList: ["pie", "line", "column"],
+                    formats.NumbersList: ["pie", "line", "column"],
+                    formats.ListOfSeriesnameAndValues: ["line", "column"],
+                    formats.NumbersListOfList: ["line", "column"]}
 
 graphs={"pie":pie(),
         "line":line(),

@@ -1,5 +1,6 @@
-class List_Tuple:
-    """ Almacena una lista de (String,[Enteros]) """
+class ListOfSeriesnameAndValues:
+    """ Almacena una lista de tuplas (String,[Enteros])
+    una lista de tuplas Series name , [values]  """
 
     def __init__(self, values=[], labels=[] ):
         ''' espera una lista de valores y una lista de labels, donde cada labels es el nombre de la serie de su valor correspondiente

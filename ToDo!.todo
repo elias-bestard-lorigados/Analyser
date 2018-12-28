@@ -1,24 +1,32 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
-    ☐ Cambiar algunos nombres que no estan bien claros
-    Identify:        
-        ☐ Crear gramaticas para parsear
-        ✔  Gramatica tipo exacto que recibemn los graficos @done(18-12-07 16:20)
-        ☐ annadirle mas PARSERS
-        ☐ Crear mas FK por cada parser
+    @Identify:        
+        ☐ generador de juegos de datos( default params) desde la ayuda ->genera txt con un nombre especifico que tiene datos para analizar
+        ✔ parsers en dir llamado parsers @done(18-12-27 22:07)
+        ✔ @important poder eliminar agregar parsers (los  files) y seguir pinchando @done(18-12-27 22:23)
+        ✔ Gramatica tipo exacto que recibemn los graficos @done(18-12-07 16:20)
         ✔ cuando sean listas de elementos pares que analizarlos como pares de puntos @done(18-11-04 20:48)
-
-    Format_Known:
-        ☐ Cambiarle los nombres a los formatos!!!
-        ☐ annadirle mas formatos conocidos
+        ✔ lisatar parsers disponibles en la ayuda @done(18-12-27 23:18)
+        
+    @Format_Known:
+        ✔ Cambiarle los nombres a los formatos!!! @done(18-12-28 00:09)
         ☐ annadirles las opciones de Xaxis y Yaxis...
-
-    Graph:
-        ☐ @next Arreglar cuando la salida estandar es la consola
-        ☐ Annadirle mas graficos
+        ☐ generar ejemplos de tods los formatos
+        
+    @Graph:
+        ☐ @important poder eliminar agregar graficos (los  files) y seguir pinchando
+        ✔ lisatar graficos disponibles en la ayuda @done(18-12-27 23:45)
+        ☐ @important Arreglar cuando la salida estandar es la consola
+    
+    ✔  Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11)
+    ☐  esclarecer los parametros opcionales
+    ✔  output -> out @done(18-12-28 00:10)
+    ☐  formatos de salida html txt R matplotlist
+    ☐ COmo extraer los label que se le van a poner????
+    ☐ ignorar los comentariosss de los ficheros
 
 Archive:
-  ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.Format_Known)
+    ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.Format_Known)
     ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.Format_Known)
     ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.Format_Known)
     ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.Format_Known)
@@ -31,8 +39,9 @@ Archive:
     ✔ parsee label [value] @done(18-10-29 19:37) @project(Analyser.Identify)
     ✔ adaptar AN_Identify @done(18-10-29 20:09) @project(Analyser.Identify)
 
-  ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @done(18-10-25 16:36) @project(Graph)
-  ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(TODO)
-  ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(TODO)
-  ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(TODO)
-  ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(TODO)
+    ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @project(Graph) @done(18-12-27 23:23)
+  
+    ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(TODO)
+    ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(TODO)
+    ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(TODO)
+    ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(TODO)

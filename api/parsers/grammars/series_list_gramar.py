@@ -25,8 +25,8 @@ def t_LABEL(t):
 
 
 def t_NUM(t):
-    r'[0-9]+'
-    t.value = int(t.value)
+    r'[0-9]+(\.[0-9]+)?'
+    t.value = float(t.value)
     return t
 
 
@@ -102,6 +102,6 @@ def p_error(t):
 
 parser = yacc.yacc()
 
-def Parse(text):
+def parse(text):
     result=parser.parse(text)
     return result

@@ -1,1 +1,1 @@
-python .\An.py -o output.html -f .\text.txt
+python .\an.py -o output.html -f .\text.txt

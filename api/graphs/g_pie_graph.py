@@ -2,21 +2,21 @@ from matplotlib import pyplot as plt
 from highcharts import Highchart
 import random
 
-def IsListOfTuple_StrInt(list):
-    """ Chequea que 'list' sea una lista de tuplas[(str,int)].
-    Retorna dos listas, ([str],[int]) """
-    labels = []
-    values = []
-    for item in list:
-        if type(item) == tuple:
-            labels.append(item[0])
-            values.append(item[1])
-        else:
-            labels.append("")
-            values.append(item)
-    return labels, values
+# def IsListOfTuple_StrInt(list):
+#     """ Chequea que 'list' sea una lista de tuplas[(str,int)].
+#     Retorna dos listas, ([str],[int]) """
+#     labels = []
+#     values = []
+#     for item in list:
+#         if type(item) == tuple:
+#             labels.append(item[0])
+#             values.append(item[1])
+#         else:
+#             labels.append("")
+#             values.append(item)
+#     return labels, values
 
-class Pie_Graph:
+class PieGraph:
     """ Crear un grafico de Pie """
 
     def graphic(self, output, format_known):
@@ -24,19 +24,18 @@ class Pie_Graph:
         # self.__elements = format_known.elements
         if output == "stdout":
             return self.__make_graph(format_known)
-        return self.__make_JS_code(format_known)
+        return self.__make_js_code(format_known)
 
     def __make_graph(self, format_known):
         ''' hace el grafico en pyplot '''
         for item in format_known.elements:
-            labels, values = IsListOfTuple_StrInt(format_known.elements[item])
-            plt.pie(values,
-                    autopct='%1.1f%%', labels=labels)
-        plt.show()
-        # pyplot.pie(values, autopct='%1.1f%%', labels=labels)
-        # pyplot.show()
+            # labels, values = IsListOfTuple_StrInt(format_known.elements[item])
+            # plt.pie(values,
+                    # autopct='%1.1f%%', labels=labels)
+            pass
+        # plt.show()
 
-    def __make_JS_code(self, format_known):
+    def __make_js_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
         chart = Highchart(renderTo="pie_container_" +
                           str(random.uniform(0, 999999)))

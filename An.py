@@ -1,7 +1,7 @@
 from matplotlib import pyplot
 import argparse
-from api.An_Identify import identify
-from api.An_Graphs import graph
+from api.an_identify import identify
+from api.an_graphs import graph
 import input
 class Analyser:
     def __init__(self,data,output):
@@ -57,6 +57,7 @@ class Analyser:
         self.file.close()
 
 data,args=input.parse()
-# an = Analyser(data, args.output)
-an = Analyser(data, "output.html")
-an.analyse(args.parser.split(','),args.graph.split(','))
+if not data=='':
+    # an = Analyser(data, args.output)
+    an = Analyser(data, "output.html")
+    an.analyse(args.parser.split(','),args.graph.split(','))

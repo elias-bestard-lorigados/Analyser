@@ -1,16 +1,16 @@
-from .. import An_Format_Known as formats
+from .. import an_known_format as formats
 import re
 
-class JL_label_value:
-    """ Parser que trata de ver si un texto esta separado en saltos de linea
-    conteniendo e cada linea un "label"(string) seguido de un solo valor numerico: label + value +'\\n'+...
-    Jump_line_label_value """
+class LabelValue:
+    """Intenta parsear una cadena en saltos de linea  donde
+        cada linea= label + value +'\\n'+...
+        """
 
     def __init__(self):
         ''' RE ->label value 'salto' '''
         self._re = re.compile('([ A-z ]+ [0-9]+[ \n]*)*')
 
-    def parsea(self, data):
+    def parse(self, data):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
         retorna un FK si matchea con un label + num separados por saltos de linea
         label val"salto"... """
@@ -22,7 +22,7 @@ class JL_label_value:
         """ Procesa el string 'data'.
         Espera labels+numeros, separados por 'salto de linea'.
         Retorna una lista de FK """
-        formatos=[]
+        formats_list=[]
         labels = []
         values = [int(item) for item in re.findall("[0-9]+", data)]
         data=data.split("\n")
@@ -31,9 +31,15 @@ class JL_label_value:
             for x in re.findall("[A-z]+", item):
                 label+=x+' '
             labels.append(label)
-        formatos.append(formats.Pair_List(labels, values))
+        formats_list.append(formats.PairsList(labels, values))
         elements = [[labels[i], values[i]] for i in range(len(values))]
-        elements1 = [[[labels[i], values[i]]] for i in range(len(values))]
-        formatos.append(formats.Entire_ListOfList(elements))
-        formatos.append(formats.Entire_ListOfList(elements1))
-        return formatos
+        elements_pairs = [[[labels[i], values[i]]] for i in range(len(values))]
+        formats_list.append(formats.NumbersListOfList(elements))
+        formats_list.append(formats.NumbersListOfList(elements_pairs))
+        return formats_list
+    def help(self):
+        return ''' parsea una cadena con cada linea= label + value +'\\n'+...
+                EJ: 
+                Madrid 34
+                Barcelona 32
+                Atletico 23 '''
