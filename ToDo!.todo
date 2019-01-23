@@ -1,48 +1,65 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
-    @Identify:        
+    @Parsers:
         ☐ Arreglar los labels de los parsers
-        ✔ generador de juegos de datos( default params) desde la ayuda ->genera txt con un nombre especifico que tiene datos para analizar @done(18-12-28 01:59)
-        ✔ parsers en dir llamado parsers @done(18-12-27 22:07)
-        ✔ @important poder eliminar agregar parsers (los  files) y seguir pinchando @done(18-12-27 22:23)
-        ✔ Gramatica tipo exacto que recibemn los graficos @done(18-12-07 16:20)
-        ✔ cuando sean listas de elementos pares que analizarlos como pares de puntos @done(18-11-04 20:48)
-        ✔ lisatar parsers disponibles en la ayuda @done(18-12-27 23:18)
-        
-    @Format_Known:
-        ✔ Cambiarle los nombres a los formatos!!! @done(18-12-28 00:09)
+        ☐ @important Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple)
+        ☐ @important En la interfaz de los parsers no es necesario que este el metodo generador
+        ☐ @important Que los parsers retornen una lista de tuplas [(KF,value)..] value = parecido de la info con la estructura
+ 
+        ☐ Json Parser
+        ☐ CSV parser
+        ☐ XML parser
+        ☐ eliminar comentarios despues de definir comentarios
+        ☐ Hacer algo de Preprocesar definiendo niveles de parseo
+        ☐ seria bueno tener un metodo que dado un separador sea capaz de reconocer una estructura de numeros
+
+    @Known_Formats:
         ☐ annadirles las opciones de Xaxis y Yaxis...
-        ☐ generar ejemplos de tods los formatos
-        
-    @Graph:
+
+    @Graphics:
         ☐ @important poder eliminar agregar graficos (los  files) y seguir pinchando
-        ✔ lisatar graficos disponibles en la ayuda @done(18-12-27 23:45)
         ☐ @important Arreglar cuando la salida estandar es la consola
+        ☐ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple)
+
     
-    ✔  Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11)
-    ☐  esclarecer los parametros opcionales
-    ✔  output -> out @done(18-12-28 00:10)
-    ☐  formatos de salida html txt R matplotlist
+    ☐ Hacer script que ejecute el programa ??????
+    ☐ Cambiar Graph por Graphics
+    ✔ @important Archivo Config @done(19-01-22 17:11)
+    ☐ esclarecer los parametros opcionales
+    ☐ formatos de salida html txt R matplotlist
     ☐ COmo extraer los label que se le van a poner????
-    ☐ ignorar los comentariosss de los ficheros
 
 Archive:
-    ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.Format_Known)
-    ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.Format_Known)
-    ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.Format_Known)
-    ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.Format_Known)
-    ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.Format_Known)
-  
-    ✔ @today(18-10-26) Simplificar mas los parsers  salto de linea "PJL": @done(18-10-29 20:09) @project(Analyser.Identify)
-    ✔ parsee value PJL_value @done(18-10-29 14:59) @project(Analyser.Identify)
-    ✔ parsee labels value PJL_label_value @done(18-10-29 15:59) @project(Analyser.Identify)
-    ✔ parsee [value] ... PJL_values_list @done(18-10-29 16:35) @project(Analyser.Identify)
-    ✔ parsee label [value] @done(18-10-29 19:37) @project(Analyser.Identify)
-    ✔ adaptar AN_Identify @done(18-10-29 20:09) @project(Analyser.Identify)
+    ✔ @Known_Formats
+        ✔ generar ejemplos de tods los formatos @done(19-01-21 10:49) @project(Analyser.@Known_Formats)
+        ✔ Cambiarle los nombres a los formatos!!! @done(19-01-21 10:47) @project(Analyser.@Known_Formats)
+        ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
 
-    ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @project(Graph) @done(18-12-27 23:23)
-  
-    ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(TODO)
-    ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(TODO)
-    ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(TODO)
-    ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(TODO)
+    ✔ @Parsers
+        ✔ generador de juegos de datos( default params) desde la ayuda ->genera txt con un nombre especifico que tiene datos para analizar @done(18-12-28 01:59) @project(Analyser.@Parsers)
+        ✔ parsers en dir llamado parsers @done(18-12-27 22:07) @project(Analyser.@Parsers)
+        ✔ @important poder eliminar agregar parsers (los  files) y seguir pinchando @done(18-12-27 22:23) @project(Analyser.@Parsers)
+        ✔ Gramatica tipo exacto que recibemn los graficos @done(18-12-07 16:20) @project(Analyser.@Parsers)
+        ✔ cuando sean listas de elementos pares que analizarlos como pares de puntos @done(18-11-04 20:48) @project(Analyser.@Parsers)
+        ✔ lisatar parsers disponibles en la ayuda @done(18-12-27 23:18) @project(Analyser.@Parsers)
+        ✔ @today(18-10-26) Simplificar mas los parsers  salto de linea "PJL": @done(18-10-29 20:09) @project(Analyser.@Parsers)
+        ✔ parsee value PJL_value @done(18-10-29 14:59) @project(Analyser.@Parsers)
+        ✔ parsee labels value PJL_label_value @done(18-10-29 15:59) @project(Analyser.@Parsers)
+        ✔ parsee [value] ... PJL_values_list @done(18-10-29 16:35) @project(Analyser.@Parsers)
+        ✔ parsee label [value] @done(18-10-29 19:37) @project(Analyser.@Parsers)
+        ✔ adaptar AN_Parsers @done(18-10-29 20:09) @project(Analyser.@Parsers)
+
+    ✔ @Graphicsics
+        ✔ lisatar graficos disponibles en la ayuda @done(18-12-27 23:45) @project(Analyser.@Graphics)
+        ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @project(Analyser.@Graphics) @done(18-12-27 23:23)
+
+    ✔  Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11) @project(Analyser)
+    ✔  output -> out @done(18-12-28 00:10) @project(Analyser)
+    ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(Analyser)
+    ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(Analyser)
+    ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(Analyser)
+    ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(Analyser)

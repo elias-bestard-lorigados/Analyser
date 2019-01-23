@@ -7,14 +7,14 @@ from highcharts import Highchart
 import random
 
 #diccionario donde mantiene cada de cada grafico el formato que entiende
-graphs_per_formats = {formats.PairsList: ["pie", "line", "column"],
-                    formats.NumbersList: ["pie", "line", "column"],
-                    formats.ListOfSeriesnameAndValues: ["line", "column"],
-                    formats.NumbersListOfList: ["line", "column"]}
+graphs_per_formats = {formats.PairsList: ["g_pie_graph", "g_line_graph", "g_column_graph"],
+                    formats.NumbersList: ["g_pie_graph", "g_line_graph", "g_column_graph"],
+                    formats.ListOfSeriesnameAndValues: ["g_line_graph", "g_column_graph"],
+                    formats.NumbersListOfList: ["g_line_graph", "g_column_graph"]}
 
-graphs={"pie":pie(),
-        "line":line(),
-        "column":column()
+graphs={"g_pie_graph":pie(),
+        "g_line_graph":line(),
+        "g_column_graph":column()
         }
 def graph(format_known, output,graphs_list):
     """ Dado un formato conocido 'format_' busca que tipos de graficos lo pueden plotear de los graficos dados
