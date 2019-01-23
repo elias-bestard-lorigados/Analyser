@@ -16,7 +16,7 @@ class SeriesList:
         if info:
             formts=[]
             # formts.append(info)
-            formts.append(formats.NumbersListOfList(info))
+            formts.append((formats.NumbersListOfList(info),1))
             return formts
         return None
 

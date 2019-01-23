@@ -34,11 +34,11 @@ class LabelValue:
             for x in re.findall("[A-z]+", item):
                 label+=x+' '
             labels.append(label)
-        formats_list.append(formats.PairsList(labels, values))
+        formats_list.append((formats.PairsList(labels, values),1))
         elements = [[labels[i], values[i]] for i in range(len(values))]
         elements_pairs = [[[labels[i], values[i]]] for i in range(len(values))]
-        formats_list.append(formats.NumbersListOfList(elements))
-        formats_list.append(formats.NumbersListOfList(elements_pairs))
+        formats_list.append((formats.NumbersListOfList(elements),1))
+        formats_list.append((formats.NumbersListOfList(elements_pairs),1))
         return formats_list
     def help(self):
         return ''' parsea una cadena con cada linea= label + value +'\\n'+...

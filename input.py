@@ -64,7 +64,6 @@ def parse():
             data=[data]
     #ya con data lleno
     
-    # print(data)
     return data
 
 def parsers_help():
@@ -90,5 +89,8 @@ def data_generator(amount=5, on_top=50, below=100):
         import_module = compile(
             "from api.parsers."+item+" import "+class_name, 'e', mode='exec')
         exec(import_module)
-        eval(str(class_name+"().data_generator(amount, on_top,below)"))
+        try:
+            eval(str(class_name+"().data_generator(amount, on_top,below)"))
+        except:
+            print("WARNING-- THE PARSER "+item+" DOES NOT HAVE THE METHOD data_generator")
         print("="*20)

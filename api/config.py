@@ -1,5 +1,5 @@
 import os
-
+from . import parsers
 def singleton(cls):
     instance = None
     def getinstance(*args, **kwargs):
@@ -42,12 +42,21 @@ class Config:
         self.data_generated = []
 
     def __set_parsers(self):
-        ''' Update self.parsers to a list with all parsers who are implemented '''
+        ''' Update self.parsers to a list with all parsers who are implemented and implement the interface of parsers
+        will print a warning if not '''
         self.parsers=[]
         for item in os.listdir(self.parsers_url):
             p = self.parsers_url+"/"+item
             if (not os.path.isdir(p)):
-                self.parsers.append(item[:-3])
+                class_name = self.get_parser_class_name(item[:-3])
+                import_module = compile("from .parsers."+item[:-3] +
+                                        " import "+class_name, 'e', mode='exec')
+                exec(import_module)
+                temp = eval(str(class_name+"()"))
+                if dir(temp).__contains__("parse") and dir(temp).__contains__("help"):
+                    self.parsers.append(item[:-3])
+                else:
+                    print("WARNING-- THE FILE "+item+" DOES NOT IMPLEMENT THE INTERFACE")
 
     def __set_graphs(self):
         ''' Update self.graphs to a list with all graphs who are implemented '''
@@ -83,7 +92,7 @@ class Config:
                     print("WARNING-- THE GRAPH "+graph + " IS NOT DEFIND")
         else:
             self.available_graphs = self.graphs
-    
+
     def set_parsers_help(self,in_parsers_help):
         """ Update self.prarsers_help to a list of parsers who's help are going to be show"""
         if in_parsers_help != None and in_parsers_help != "all":
@@ -118,4 +127,5 @@ class Config:
         for item in temp[1:]:
             class_name += item
         return class_name
+
 

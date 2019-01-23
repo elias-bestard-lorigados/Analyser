@@ -42,8 +42,8 @@ class LabelValuesList:
             for x in re.findall("[A-z]+", item):
                 label += x+" "
             labels.append(label)
-        formats_list.append(formats.ListOfSeriesnameAndValues(values, labels))
-        formats_list.append(formats.ListOfSeriesnameAndValues(values_pairs, labels))
+        formats_list.append((formats.ListOfSeriesnameAndValues(values, labels),1))
+        formats_list.append((formats.ListOfSeriesnameAndValues(values_pairs, labels),1))
         return formats_list
 
     def help(self):

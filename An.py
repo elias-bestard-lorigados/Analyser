@@ -14,13 +14,13 @@ class Analyser:
         self.file=None  # aca se guardara el file donde se escribira el resultado si la salida no es por la consola
 
     def analyse(self):
-        ''' Trata de analizar self.__data con todos los parsers para generar todos los graficos posibles por defecto
-        parsers: los parsers que quiere utilizar solamente
-        graphs: los graficos que quiere ver solamente  '''
+        ''' Trata de analizar self.__data con todos los parsers para generar todos los graficos posibles por defecto'''
+        #list of tuple [(KF,#)] # represent how similar is it to a KF
         formats = self.to_identify()
         results=""
-        for item in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
-            code = self.to_graphic(item, Config().graphs)
+
+        for form,sim in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
+            code = self.to_graphic(form)
             for text in code:
                 results += text
         if self.__output != "stdout": #si los resultados no se esperan por la salida estandar
@@ -35,11 +35,10 @@ class Analyser:
         formats_knowns = identify(self.__data,Config().available_parsers)
         return formats_knowns
 
-    def to_graphic(self,format_known,graphs_list=['all']):
+    def to_graphic(self,format_known):
         ''' graficar los formatos "format_known" de la entrada
-        graphs_list: con qu egraficos quiere que grafique
         return LIST[STRING] (codigo js de los graficos)'''
-        graphs = graph(format_known, self.__output, graphs_list)
+        graphs = graph(format_known, self.__output, Config().graphs)
         return graphs
 
     def __ini_HTML(self):

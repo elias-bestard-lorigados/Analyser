@@ -2,9 +2,10 @@ Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
     @Parsers:
         ☐ Arreglar los labels de los parsers
-        ☐ @important Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple)
-        ☐ @important En la interfaz de los parsers no es necesario que este el metodo generador
-        ☐ @important Que los parsers retornen una lista de tuplas [(KF,value)..] value = parecido de la info con la estructura
+        ☐ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py
+        ✔ @important Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple) @done(19-01-23 00:17)
+        ✔ @important En la interfaz de los parsers no es necesario que este el metodo generador @done(19-01-23 00:21)
+        ✔ @important Que los parsers retornen una lista de tuplas [(KF,value)..] value = parecido de la info con la estructura @done(19-01-23 00:47)
  
         ☐ Json Parser
         ☐ CSV parser

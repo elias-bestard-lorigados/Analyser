@@ -38,10 +38,9 @@ class ValuesList:
             for i in range(0,len(items),2):
                 temp.append([items[i], items[i+1]])
             elements_pairs.append(temp)
-        formats_list.append(formats.NumbersListOfList(elements))
-        formats_list.append(formats.NumbersListOfList(elements_pairs))
+        formats_list.append((formats.NumbersListOfList(elements),1))
+        formats_list.append((formats.NumbersListOfList(elements_pairs),1))
         return formats_list
-
 
     def help(self):
         return ''' parsea una cadena con cada linea= value '\\n'+...
@@ -49,7 +48,6 @@ class ValuesList:
                 34 12 123 32
                 32 13 45 
                 23  12'''
-
 
     def data_generator(self, amount=50, on_top=50, below=100):
         ''' Genera juego de datos con el formato que reconoce el parser para analizarlo

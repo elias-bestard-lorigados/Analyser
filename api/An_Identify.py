@@ -19,8 +19,7 @@ def identify(data,parsers:list):
         format_ = __all_parsers[item].parse(data)
         if format_ != None:  # si se pudo parsear
             list_formats.extend(format_)
-    for item in list_formats:
-        print(item.elements)
+    for kf,simi in list_formats:
+        print(kf.elements)
     return list_formats
-
 

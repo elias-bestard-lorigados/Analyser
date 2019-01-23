@@ -33,9 +33,9 @@ class Value:
             pairs_list=[[(data[x],data[x+1])] for x in range(0,len(data),2)]
             labels = [data[x] for x in range(0, len(data), 2)]
             values = [data[x+1] for x in range(0, len(data), 2)]
-            formats_list.append(formats.PairsList(labels, values))
-            formats_list.append(formats.NumbersListOfList(pairs))
-            formats_list.append(formats.NumbersListOfList(pairs_list))
+            formats_list.append((formats.PairsList(labels, values),1))
+            formats_list.append((formats.NumbersListOfList(pairs),1))
+            formats_list.append((formats.NumbersListOfList(pairs_list),1))
         return formats_list
 
     def help(self):
