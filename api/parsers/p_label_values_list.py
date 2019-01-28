@@ -10,7 +10,8 @@ class LabelValuesList:
 
     def __init__(self):
         ''' RE -> value1 value2... '''
-        self._re = re.compile('([ A-z ]+[ 0-9]+[\n]*)*')
+        self._re = re.compile('(([ A-Za-z ]+(_[0-9]+)*)+ [ 0-9]+[\n]*)*')
+        # self._re = re.compile('([ A-z ]+[ 0-9]+[\n]*)*')
 
     def parse(self, data):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
@@ -28,24 +29,30 @@ class LabelValuesList:
         labels = []
         values = []
         values_pairs=[]
-        data = data.split("\n")
-        for item in data:
-            items = [int(y) for y in re.findall("[0-9]+", item)]
-            values.append(items)
-            if len(items)%2==1:
-                items.append(items[-1])
-            temp=[]
-            for i in range(0,len(items),2):
-                temp.append([items[i], items[i+1]])
-            values_pairs.append(temp)
-            label = ""
-            for x in re.findall("[A-z]+", item):
-                label += x+" "
+        for line in data.split('\n'):
+            label = ''
+            value = ''
+            for item in line.split():
+                if(not item.isnumeric()):
+                    label +=item+" "
+                else:
+                    value += item+" "
             labels.append(label)
+            value = [int(x) for x in value.split()]
+            values.append(value)
+            if len(value) % 2 == 1:
+                value.append(value[-1])
+            temp=[]
+            for i in range(0, len(value), 2):
+                temp.append([value[i], value[i+1]])
+            values_pairs.append(temp)
+        # print(values_pairs)
+        # print(values)
+        # print(labels)
         formats_list.append((formats.ListOfSeriesnameAndValues(values, labels),1))
         formats_list.append((formats.ListOfSeriesnameAndValues(values_pairs, labels),1))
         return formats_list
-
+        # return None
     def help(self):
         return ''' parsea una cadena donde cada linea= label + value1 value2 value3... val_i +'\\n'+...
                 EJ: 
@@ -64,8 +71,9 @@ class LabelValuesList:
                     str(len(data_files)+1)+".txt", "w")
         for item in range(0, amount):
             data = ''
-            data += "lbl"*item+" "
+            data += "lbl_"+str(item)+" "
             for x in range(0, int(uniform(1, amount))):
                 data += str(int(uniform(on_top, below)))+" "
             file.write(data+"\n")
         file.close()
+

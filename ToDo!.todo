@@ -1,12 +1,8 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
     @Parsers:
-        ☐ Arreglar los labels de los parsers
         ☐ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py
-        ✔ @important Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple) @done(19-01-23 00:17)
-        ✔ @important En la interfaz de los parsers no es necesario que este el metodo generador @done(19-01-23 00:21)
-        ✔ @important Que los parsers retornen una lista de tuplas [(KF,value)..] value = parecido de la info con la estructura @done(19-01-23 00:47)
- 
+
         ☐ Json Parser
         ☐ CSV parser
         ☐ XML parser
@@ -18,29 +14,40 @@ Analyser:
         ☐ annadirles las opciones de Xaxis y Yaxis...
 
     @Graphics:
+        ☐ Meter Graficos 
         ☐ @important poder eliminar agregar graficos (los  files) y seguir pinchando
         ☐ @important Arreglar cuando la salida estandar es la consola
         ☐ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple)
 
+    ☐ Meter config en utils
+    ☐ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default
+    ☐ annadirle checkbox en grafico para guardar cuando u grafico sea util
+    ☐ Annadirle propiedades a los formato conocido para guardar datos sobre la info
+    ☐ Crear una "BD" donde guardar info de los grafico y se sirvio o no 
     
-    ☐ Hacer script que ejecute el programa ??????
     ☐ Cambiar Graph por Graphics
-    ✔ @important Archivo Config @done(19-01-22 17:11)
     ☐ esclarecer los parametros opcionales
     ☐ formatos de salida html txt R matplotlist
     ☐ COmo extraer los label que se le van a poner????
+ postdata.club
 
-Archive:
+ Archive:
+    ✔ Hacer script que ejecute el programa ?????? @done(19-01-28 16:16) @project(Analyser)
+    ✔ @important Archivo Config @done(19-01-22 17:11) @project(Analyser)
     ✔ @Known_Formats
-        ✔ generar ejemplos de tods los formatos @done(19-01-21 10:49) @project(Analyser.@Known_Formats)
-        ✔ Cambiarle los nombres a los formatos!!! @done(19-01-21 10:47) @project(Analyser.@Known_Formats)
-        ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-        ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-        ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-        ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-        ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-
+    ✔ generar ejemplos de tods los formatos @done(19-01-21 10:49) @project(Analyser.@Known_Formats)
+    ✔ Cambiarle los nombres a los formatos!!! @done(19-01-21 10:47) @project(Analyser.@Known_Formats)
+    ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+    ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+    ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+    ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+    ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+    
     ✔ @Parsers
+        ✔ @important Que los parsers retornen una lista de tuplas [(KF,value)..] value = parecido de la info con la estructura @done(19-01-23 00:47) @project(Analyser.@Parsers)
+        ✔ @important En la interfaz de los parsers no es necesario que este el metodo generador @done(19-01-23 00:21) @project(Analyser.@Parsers)
+        ✔ @important Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple) @done(19-01-23 00:17) @project(Analyser.@Parsers)
+        ✔ Arreglar los labels de los parsers @done(19-01-23 03:25) @project(Analyser.@Parsers)
         ✔ generador de juegos de datos( default params) desde la ayuda ->genera txt con un nombre especifico que tiene datos para analizar @done(18-12-28 01:59) @project(Analyser.@Parsers)
         ✔ parsers en dir llamado parsers @done(18-12-27 22:07) @project(Analyser.@Parsers)
         ✔ @important poder eliminar agregar parsers (los  files) y seguir pinchando @done(18-12-27 22:23) @project(Analyser.@Parsers)
