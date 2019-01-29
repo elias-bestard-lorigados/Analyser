@@ -1,1 +1,0 @@
-python .\an.py -o output.html -f .\text.txt

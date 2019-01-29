@@ -1,5 +1,6 @@
 import os
-from . import parsers
+import sys
+# from .. import parsers
 def singleton(cls):
     instance = None
     def getinstance(*args, **kwargs):
@@ -11,15 +12,18 @@ def singleton(cls):
 
 @singleton
 class Config:
-    def __init__(self):
+    def __init__(self, input_url='./data_generator'):
         """ Fija la configuracion de los parametros por default """
+        # URl where is located the info to procces
+        self.input_url = os.path.abspath(input_url)
+
         #Url where the out file will be put
-        self.output_url = "./out/"
+        self.output_url = os.path.abspath("./out/")
         #Name of the resulting file
         self.output_name = "out_file_"
 
         #URl where the parsers are located
-        self.parsers_url = "./api/parsers"
+        self.parsers_url = os.path.abspath("./api/parsers")
         #List of all implemented parsers
         self.parsers = "all"
         self.__set_parsers()
@@ -29,34 +33,44 @@ class Config:
         self.prarsers_help=[]
 
         #URl where the graphs are located
-        self.graphs_url = "./api/graphs"
+        self.graphs_url = os.path.abspath("./api/graphs")
         #List of all implemented graphs
         self.graphs = "all"
         self.__set_graphs()
         #List of all availables graphs url
         self.available_graphs = self.graphs
 
-        #URl where the graphs are located
-        self.data_generated_url = "./data"
+        #URl where the data_generated is located
+        self.data_generated_url = "./data_generator"
+        # self.data_generated_url = os.path.abspath("./data_generator")
         #List of Parsers wich will be use to generate datasets
         self.data_generated = []
+
+    def set_parsers_url(self,p_url):
+        self.parsers_url=p_url
+        self.__set_parsers()
 
     def __set_parsers(self):
         ''' Update self.parsers to a list with all parsers who are implemented and implement the interface of parsers
         will print a warning if not '''
-        self.parsers=[]
+        sys.path.append(self.parsers_url)
+        self.parsers = []
         for item in os.listdir(self.parsers_url):
             p = self.parsers_url+"/"+item
             if (not os.path.isdir(p)):
                 class_name = self.get_parser_class_name(item[:-3])
-                import_module = compile("from .parsers."+item[:-3] +
-                                        " import "+class_name, 'e', mode='exec')
+                # import_module = compile("from ..parsers."+item[:-3] +
+                                        # " import "+class_name, 'e', mode='exec')
+                import_module = compile("import "+item[:-3], 'e', mode='exec')
                 exec(import_module)
-                temp = eval(str(class_name+"()"))
+                # temp = eval(str(class_name+"()"))
+                temp = eval(str(item[:-3]+"."+class_name+"()"))
                 if dir(temp).__contains__("parse") and dir(temp).__contains__("help"):
                     self.parsers.append(item[:-3])
                 else:
-                    print("WARNING-- THE FILE "+item+" DOES NOT IMPLEMENT THE INTERFACE")
+                    print("WARNING-- THE FILE "+item +
+                          " DOES NOT IMPLEMENT THE INTERFACE")
+
 
     def __set_graphs(self):
         ''' Update self.graphs to a list with all graphs who are implemented '''
@@ -66,7 +80,7 @@ class Config:
             if (not os.path.isdir(p)):
                 self.graphs.append(item[:-3])
 
-    def set_available_parsers_graphs(self,in_parsers,in_graphs):
+    def set_available_parsers_graphs(self,in_parsers='all',in_graphs='all'):
         """ Update self.available_graphs and self.available_parsers to a list of 
         graphs and parsers who are going to be plot in depends of the arguments of the input"""
         available_parsers = in_parsers.split(',')
@@ -106,7 +120,7 @@ class Config:
 
     def set_output_file(self, output_name):
         """ update self.output_name to the params from the input  """
-        self.output_name = output_name if output_name != None else "out_file_"+str(len(os.listdir(self.output_url)))+".html"
+        self.output_name = output_name+".html" if output_name != None else "out_file_"+str(len(os.listdir(self.output_url)))+".html"
 
     def set_data_generated_list(self,in_dg):
         """ update the self.data_generated to a list of all parser who will be use to generate datasets """

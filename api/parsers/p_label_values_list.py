@@ -1,4 +1,4 @@
-from .. import an_known_format as formats
+from api import an_known_format as formats
 import re
 import os
 from random import uniform
@@ -60,14 +60,14 @@ class LabelValuesList:
                 Barcelona 32 41 12 2 
                 Atletico 23 32'''
 
-    def data_generator(self, amount=50, on_top=50, below=100):
+    def data_generator(self,path, amount=50, on_top=50, below=100):
         ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
         amount= 50 cantidad de lineas, lineas =label + value +'\\n'
         on_top=50  below=100 numeros x on_top<=x<=below
         '''
         data_files = [item
-                      for item in os.listdir("./data") if item.__contains__("d_label_values_list_")]
-        file = open("./data/d_label_values_list_" +
+                      for item in os.listdir(path) if item.__contains__("d_label_values_list_")]
+        file = open(path+"/d_label_values_list_" +
                     str(len(data_files)+1)+".txt", "w")
         for item in range(0, amount):
             data = ''

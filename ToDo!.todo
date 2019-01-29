@@ -1,7 +1,7 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
     @Parsers:
-        ☐ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py
+        ✔ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py @done(19-01-29 15:27)
 
         ☐ Json Parser
         ☐ CSV parser
@@ -16,10 +16,10 @@ Analyser:
     @Graphics:
         ☐ Meter Graficos 
         ☐ @important poder eliminar agregar graficos (los  files) y seguir pinchando
-        ☐ @important Arreglar cuando la salida estandar es la consola
+        ☐ @important Arreglar cuando la salida estandar es lEa consola
         ☐ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple)
 
-    ☐ Meter config en utils
+    ✔ Meter config en utils @done(19-01-28 16:02)
     ☐ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default
     ☐ annadirle checkbox en grafico para guardar cuando u grafico sea util
     ☐ Annadirle propiedades a los formato conocido para guardar datos sobre la info

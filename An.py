@@ -1,4 +1,4 @@
-from api.config import Config
+from api.utils.config import Config
 from api.an_identify import identify
 from api.an_graphs import graph
 import input
@@ -18,7 +18,7 @@ class Analyser:
         #list of tuple [(KF,#)] # represent how similar is it to a KF
         formats = self.to_identify()
         results=""
-
+        #form ->KF ,sim->similarity
         for form,sim in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
             code = self.to_graphic(form)
             for text in code:
@@ -43,7 +43,7 @@ class Analyser:
 
     def __ini_HTML(self):
         """ Inicializar un HTML enl a carpeta ./out/....html donde se escribira el resultado de analizar los datos """
-        self.file = open(Config().output_url+self.__output, "w")
+        self.file = open(Config().output_url+"/"+self.__output, "w")
         self.file.write("<head>")
         self.file.write("<script src=\"./highcharts.js\"></script>")
         self.file.write("<script src=\"./jquery.js\"></script>")

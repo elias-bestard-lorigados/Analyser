@@ -1,5 +1,5 @@
-from .grammars.series_list_gramar import parse
-from .. import an_known_format as formats
+from api.parsers.grammars.series_list_gramar import parse
+from api import an_known_format as formats
 import os
 from random import uniform
 # import grammars
@@ -29,14 +29,15 @@ class SeriesList:
                 [[1,1],[2,2],[3,3],[4,4]]'''
 
 
-    def data_generator(self, amount=50, on_top=50, below=100):
+    def data_generator(self,path ,amount=50, on_top=50, below=100):
         ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
         amount= 50 cantidad de lineas, lineas =label + value +'\\n'
         on_top=50  below=100 numeros x on_top<=x<=below
         '''
+        
         data_files = [item
-                      for item in os.listdir("./data") if item.__contains__("d_series_list_")]
-        file = open("./data/d_series_list_" +
+                      for item in os.listdir(path) if item.__contains__("d_series_list_")]
+        file = open(path+"/d_series_list_" +
                     str(len(data_files)+1)+".txt", "w")
         for item in range(0, amount):
             data = ''
@@ -57,6 +58,5 @@ class SeriesList:
                     middle_data += "[label"+str(x+item)+","+str(uniform(on_top, below))+"],"
                 middle_data = middle_data[:-1]
                 data="["+middle_data+"]"
-            print(data)
             file.write(data+"\n")
         file.close()

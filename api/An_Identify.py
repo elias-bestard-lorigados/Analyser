@@ -1,15 +1,18 @@
 import os
-from .config import Config
-from . import an_known_format as formats
-from . import parsers
+import sys
+from api.utils.config import Config
 
+#importando los parsers dinamicamente
+sys.path.append(Config().parsers_url)
 __all_parsers={}
 for item in Config().parsers:
     class_name = Config().get_parser_class_name(item)
-    import_module = compile(
-                "from .parsers."+item+" import "+class_name, 'e', mode='exec')
+    # import_module = compile(
+                # "from .parsers."+item+" import "+class_name, 'e', mode='exec')
+    import_module = compile("import "+item, 'e', mode='exec')
     exec(import_module)
-    __all_parsers[class_name] = eval(str(class_name+"()"))
+    __all_parsers[class_name] = eval(str(item+"."+class_name+"()"))
+    # __all_parsers[class_name] = eval(str(class_name+"()"))
 
 def identify(data,parsers:list):
     """ Trata de ir parseando la cadena 'data' por los parsers que pasan como parametro
