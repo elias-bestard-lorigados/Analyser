@@ -3,7 +3,7 @@ import sys
 from api.utils.config import Config
 
 #importando los parsers dinamicamente
-sys.path.append(Config().parsers_url)
+sys.path.append(Config().parsers_path)
 __all_parsers={}
 for item in Config().parsers:
     class_name = Config().get_parser_class_name(item)

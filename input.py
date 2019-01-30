@@ -6,10 +6,10 @@ import sys
 parser = argparse.ArgumentParser(prog="Analizer")
 parser.add_argument("-f", "--file", help="The path of the file to analize")
 parser.add_argument("-o", "--out", help="Name of the result of the procces")
-parser.add_argument("-g", "--graph", default = 'all',
+parser.add_argument("-g", "--graph",
                     help="which one of the graphs do you want graphic the data, ex: 'pie, line, column'",
                     type=str)
-parser.add_argument("-p", "--parser", default = 'all',
+parser.add_argument("-p", "--parser",
                     help="To select which one of the parsers do you want parse the info, ex: 'p_label_value, p_series_list' ",
                     type=str)
 parser.add_argument("-ph", "--parsers_help",
@@ -25,54 +25,44 @@ parser.add_argument("-dg", "--data_generator", help='''To Generate many files of
 def parse():
     args = parser.parse_args()
     config = Config()
-    # if os.path.exists('config.ini'):
-    #     __read_conf()
-    config.set_available_parsers_graphs(args.parser,args.graph)
-    config.set_data_generated_list(args.data_generator)
-    config.set_output_file(args.out)
-    config.set_parsers_help(args.parsers_help)
+    if os.path.exists('./config.ini'):
+        __read_conf()
+    __set_config_by_args(args)
     
-    
-    if args.parsers_help or args.parsers_list or args.graphs_list or args.data_generator:
-        if args.parsers_help:
+    if config.parser_list == 1 or config.prarsers_help != [] or config.data_generated!=[] or config.graphs_list==1:
+        # if args.parsers_help or args.parsers_list or args.graphs_list or args.data_generator:
+        if config.prarsers_help != []:
+        # if args.parsers_help:
             print("PARSERS HELP")
             parsers_help()
-        if args.parsers_list:
+        if config.parser_list == 1:
+        # if args.parsers_help:
             print("PARSERS")
             print("="*20)
             [print(item) for item in config.parsers]
             print("="*20)
-        if args.graphs_list:
+        if config.graphs_list == 1:
+        # if args.graphs_list:
             print("GRAPHS")
             print("="*20)
             [print(item) for item in config.graphs]
             print("="*20)
-        if args.data_generator:
+        if config.data_generated != []:
+        # if args.data_generator:
             print("GENERATING DATA")
             data_generator()
         return []
-    
     # data=STRING a procesar
     data = ""
-    if args.file:   #Si recibo los datos de un FILE
-        data=[]
-        if os.path.isdir(args.file):
-            for item in os.listdir(args.file):
-                temp = open(args.file+item, "r")
-                data.append(temp.read())
-                temp.close()
-        else:
-            data = [open(args.file, "r").read()]
-    else:   #Si recibo los datos por la consola hasta que no escriba una linea en blanco
-        print("write the data. To finish it write a blank line")
-        temp = input()
-        while not temp=="":
-            data+=temp
-            temp=input()
-            data+="\n" if not temp=="" else ""
-            data=[data]
-    #ya con data lleno
-    
+    path_to_proccess=config.input_path
+    data=[]
+    if os.path.isdir(path_to_proccess):# si e sun directorio
+        for item in os.listdir(path_to_proccess):
+            temp = open(path_to_proccess+item, "r")
+            data.append(temp.read())
+            temp.close()
+    else: #si es un file
+        data = [open(path_to_proccess, "r").read()]
     return data
 
 def parsers_help():
@@ -89,9 +79,8 @@ def parsers_help():
 
 def data_generator(amount=5, on_top=50, below=100):
     ''' Generate a mount of files with examples of info who can be parse by the parsers definded '''
-    path = Config().data_generated_url
-    sys.path.append(Config().parsers_url)
-
+    path = Config().data_generated_path
+    sys.path.append(Config().parsers_path)
     print("="*20)
     #Recorrer todos los parsers que quiere ser procesados
     for item in Config().data_generated:
@@ -107,20 +96,55 @@ def data_generator(amount=5, on_top=50, below=100):
         print("="*20)
 
 def __read_conf():
-    pass
+    ''' Read 'config.ini' and set his atributes to the Config() class '''
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    # file = open('config.ini',"w")
+    # config.set('Def', 'GRAPHICS', 'calor')
+    # config.write(file)
 
-# config = configparser.ConfigParser()
-# config.read('config.ini')
-# # file = open('config.ini',"w")
+    input_path = config['INPUT']['path']
+    output_path = config['OUTPUT']['path']
+    output_name = config['OUTPUT']['name']
+    parsers_path = config['PARSERS']['path']
+    parsers_availables = config['PARSERS']['available']
+    parser_help = config['PARSERS']['help'] if not config['PARSERS']['help']=="" else None
+    parser_list = config['PARSERS']['list']
+    graphs_path = config['GRAPHS']['path']
+    graphs_availables = config['GRAPHS']['available']
+    graphs_list = config['GRAPHS']['list']
+    datag_path = config['DATA_G']['path']
+    datag_parsers = config['DATA_G']['parsers'] if not config['DATA_G']['parsers'] == "" else None
 
-# name = config['Def']['OUT']  # 'secret-key-of-myapp'
+    Config().set_in_path(input_path)
+    Config().set_out_path(output_path)
+    Config().set_output_name(output_name)
+    Config().set_parsers_path(parsers_path)
+    Config().set_graphs_path(graphs_path)
+    Config().set_available_parsers(parsers_availables)
+    Config().set_available_graphs( graphs_availables)
+    Config().set_parsers_help(parser_help)
+    Config().set_graphs_list(graphs_list)
+    Config().set_parsers_list(parser_list)
+    Config().set_data_g_path(datag_path)
+    Config().set_data_generated_list(datag_parsers)
 
-# config.set('Def', 'GRAPHICS', 'calor')
-# # config.write(file)
 
-# tiempo = config['Def']['GRAPHICS']  # 'web-hooking-url-from-ci-service'
+def __set_config_by_args(args):
+    if args.file:
+        Config().set_in_path(args.file)
+    if args.out:
+        Config().set_output_name(args.out)
+    if args.parser:
+        Config().set_available_parsers(args.parser)
+    if args.graph:
+        Config().set_available_graphs(args.graph)
+    if args.parsers_help:
+        Config().set_parsers_help(args.parsers_help)
+    if args.parsers_list:
+        Config().set_parsers_list(1)
+    if args.graphs_list:
+        Config().set_graphs_list(1)
+    if args.data_generator:
+        Config().set_data_generated_list(args.data_generator)
 
-
-# print((name))
-# print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-# print(tiempo)

@@ -1,3 +1,5 @@
+#! /home/elias/anaconda3/bin/python
+input()
 from api.utils.config import Config
 from api.an_identify import identify
 from api.an_graphs import graph
@@ -43,7 +45,7 @@ class Analyser:
 
     def __ini_HTML(self):
         """ Inicializar un HTML enl a carpeta ./out/....html donde se escribira el resultado de analizar los datos """
-        self.file = open(Config().output_url+"/"+self.__output, "w")
+        self.file = open(Config().output_path+"/"+self.__output, "w")
         self.file.write("<head>")
         self.file.write("<script src=\"./highcharts.js\"></script>")
         self.file.write("<script src=\"./jquery.js\"></script>")
@@ -61,4 +63,4 @@ for info in data:
     print(info)
     an = Analyser(info)
     an.analyse()
-    Config().output_name = "out_file_"+str(len(os.listdir(Config().output_url)))+".html"
+    Config().output_name = "out_file_"+str(len(os.listdir(Config().output_path)))+".html"
