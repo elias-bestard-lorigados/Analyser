@@ -16,15 +16,16 @@ graphs={"g_pie_graph":pie(),
         "g_line_graph":line(),
         "g_column_graph":column()
         }
-def graph(format_known, output,graphs_list):
+def graph(format_known,graphs_list,id):
     """ Dado un formato conocido 'format_' busca que tipos de graficos lo pueden plotear de los graficos dados
     graphs: graficos que se quieren utilizar"""
     result_code=[]
     for item in graphs_per_formats[type(format_known)]:
         if graphs_list.__contains__(item) or graphs_list.__contains__("all"):
-            content = graphs[item].graphic(output,format_known)
+            content = graphs[item].graphic(id,format_known)
             if content!=None:
                 result_code.append(content)
+        id+=1
     return result_code
 
 

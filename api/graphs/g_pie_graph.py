@@ -1,6 +1,5 @@
 from matplotlib import pyplot as plt
 from highcharts import Highchart
-import random
 
 # def IsListOfTuple_StrInt(list):
 #     """ Chequea que 'list' sea una lista de tuplas[(str,int)].
@@ -19,11 +18,12 @@ import random
 class PieGraph:
     """ Crear un grafico de Pie """
 
-    def graphic(self, output, format_known):
+    def graphic(self, g_id, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
         # self.__elements = format_known.elements
-        if output == "stdout":
-            return self.__make_graph(format_known)
+        self.g_id=g_id
+        # if output == "stdout":
+            # return self.__make_graph(format_known)
         return self.__make_js_code(format_known)
 
     def __make_graph(self, format_known):
@@ -38,7 +38,7 @@ class PieGraph:
     def __make_js_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
         chart = Highchart(renderTo="pie_container_" +
-                          str(random.uniform(0, 999999)))
+                          str(self.g_id))
         chart.set_options('chart', {})
         options = {
             'title': {

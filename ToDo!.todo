@@ -14,7 +14,7 @@ Analyser:
         ☐ annadirles las opciones de Xaxis y Yaxis...
 
     @Graphics:
-        ☐ @important crear los graficos con un id
+        ✔ @important crear los graficos con un id @done(19-01-31 00:11)
         ☐ Meter Graficos 
         ☐ @important poder eliminar agregar graficos (los  files) y seguir pinchando
         ☐ @important Arreglar cuando la salida estandar es lEa consola
@@ -27,9 +27,7 @@ Analyser:
     ☐ Crear una "BD" donde guardar info de los grafico y se sirvio o no 
     
     ☐ Cambiar Graph por Graphics
-    ☐ esclarecer los parametros opcionales
     ☐ formatos de salida html txt R matplotlist
-    ☐ COmo extraer los label que se le van a poner????
  postdata.club
 
  Archive:
