@@ -62,4 +62,6 @@ class LineGraph:
                 chart.add_data_set(
                     format_known.elements[item], series_type="line", name=item)
         chart.buildhtml()
-        return chart.content
+        text_to_return = "<input type='checkbox' id="+str(self.g_id)+"> Is the following graph useful? </input>"
+        text_to_return +=chart.content
+        return text_to_return

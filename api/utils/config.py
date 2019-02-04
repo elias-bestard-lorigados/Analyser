@@ -54,7 +54,7 @@ class Config:
 
     def set_output_name(self, output_name):
         """ update self.output_name to the params from the input  """
-        self.output_name = output_name+".html" if output_name != None else "out_file_" + \
+        self.output_name = output_name+"_"+str(len(os.listdir(self.output_path)))+".html" if output_name != None else "out_file_" + \
             str(len(os.listdir(self.output_path)))+".html"
 
     def set_parsers_path(self,p_path):

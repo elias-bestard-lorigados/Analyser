@@ -1,9 +1,8 @@
 #! /home/elias/anaconda3/bin/python
-input()
 from api.utils.config import Config
 from api.an_identify import identify
 from api.an_graphs import graph
-import input
+import input_parser
 import os
 class Analyser:
     def __init__(self,data):
@@ -57,13 +56,26 @@ class Analyser:
 
     def __end_HTML(self):
         ''' Cerrara el "body" del HTML final '''
+        checkboxes_function = """<div><button type="button" onclick="Check_Marks()">GO!</button></div>
+        <script>
+            function Check_Marks() {
+                var c =  Array.from(document.getElementsByTagName('INPUT')).filter(cur => cur.type == 'checkbox' && cur.checked);
+                if (c.length==0) { // Si NO hay ningun checkbox chequeado.
+                    console.log("Ningún chequeado..");
+                } else {
+                    console.log(c.map(i => i.id));
+                }
+            }
+            </script> """
+        self.file.write(checkboxes_function)
         self.file.write("</body>")
         self.file.close()
 
-data=input.parse()
+
+data = input_parser.parse()
 for info in data:
     print("="*20)
     print(info)
     an = Analyser(info)
     an.analyse()
-    Config().output_name = "out_file_"+str(len(os.listdir(Config().output_path)))+".html"
+    Config().output_name = Config().output_name+"_"+str(len(os.listdir(Config().output_path)))+".html"

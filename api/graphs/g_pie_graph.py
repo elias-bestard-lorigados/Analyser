@@ -62,4 +62,7 @@ class PieGraph:
         for item in format_known.elements:
             chart.add_data_set(format_known.elements[item], 'pie')
         chart.buildhtml()
-        return chart.content
+        text_to_return = "<input type='checkbox' id=" + \
+            str(self.g_id)+"> Is the following graph useful? </input>"
+        text_to_return += chart.content
+        return text_to_return

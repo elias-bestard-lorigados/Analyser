@@ -11,6 +11,7 @@ Analyser:
         ☐ seria bueno tener un metodo que dado un separador sea capaz de reconocer una estructura de numeros
 
     @Known_Formats:
+        ☐ Añadirle propiedades para guardar la info necesaria para la retroalimentacion
         ☐ annadirles las opciones de Xaxis y Yaxis...
 
     @Graphics:
@@ -22,11 +23,11 @@ Analyser:
 
     ✔ Meter config en utils @done(19-01-28 16:02)
     ✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19)
-    ☐ annadirle checkbox en grafico para guardar cuando u grafico sea util
-    ☐ Annadirle propiedades a los formato conocido para guardar datos sobre la info
+    ✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16)
+    ☐ Ver como quedarme con los graficos marcados como utiles!!! y su info!!!
     ☐ Crear una "BD" donde guardar info de los grafico y se sirvio o no 
-    
-    ☐ Cambiar Graph por Graphics
+    ☐ Update la base de datos desde el file generado
+
     ☐ formatos de salida html txt R matplotlist
  postdata.club
 
