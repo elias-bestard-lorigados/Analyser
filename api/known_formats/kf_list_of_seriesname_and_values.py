@@ -10,3 +10,8 @@ class ListOfSeriesnameAndValues:
             self.elements[labels[i]] = values[i]
         self.values = values
         self.labels = labels
+        self.min_value=min(values)
+        self.max_value = max(values)
+        self.count = len(values)
+
+print(min([[2,1],[1,2]]))

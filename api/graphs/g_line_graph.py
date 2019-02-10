@@ -18,7 +18,9 @@ from highcharts import Highchart
 
 class LineGraph:
     """ Crear un grafico de linea """
-
+    def __init__(self):
+        self.type="line"
+    
     def graphic(self, g_id, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
         self.g_id = g_id
@@ -36,7 +38,7 @@ class LineGraph:
 
     def __make_js_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
-        chart = Highchart(renderTo="line_container_" +
+        chart = Highchart(renderTo="chart_container_" +
                           str(self.g_id))
         chart.set_options('chart', {})
         options = {

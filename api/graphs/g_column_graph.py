@@ -17,10 +17,12 @@ from highcharts import Highchart
 
 class ColumnGraph:
     """ Crear un grafico de columnas """
+    def __init__(self):
+        self.type="column"
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos """
-        self.g_id=g_id
+        self.g_id = g_id
         # if output == "stdout":
         #     return self.__make_graph(format_known)
         return self.__make_js_code(format_known)
@@ -35,7 +37,7 @@ class ColumnGraph:
 
     def __make_js_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''
-        chart = Highchart(renderTo="column_container_" +
+        chart = Highchart(renderTo="chart_container_" +
                           str(self.g_id))
         chart.set_options('chart', {})
         options = {

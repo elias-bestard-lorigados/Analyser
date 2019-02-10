@@ -1,0 +1,22 @@
+[
+	{
+		"id": 0,
+		"properties": {
+			"count": 6,
+			"max_value": 53,
+			"min_value": 4
+		},
+		"type": "line",
+		"useful": true
+	},
+	{
+		"id": 1,
+		"properties": {
+			"count": 6,
+			"max_value": 41,
+			"min_value": 23
+		},
+		"type": "column",
+		"useful": true
+	}
+]

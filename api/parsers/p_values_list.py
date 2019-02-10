@@ -32,14 +32,13 @@ class ValuesList:
         for item in data:
             items = [int(x) for x in re.findall("[0-9]+", item)]
             elements.append(items)
-            if len(items) % 2 == 1: #si la cantidad de elementos no es par le agrego el ultimo elemento denuevo para poder tener los puntos en pairs
-                items.append(items[-1])
-            temp=[] #para ir almacenando las diferentes series de puntos si son numeros pairs
-            for i in range(0,len(items),2):
-                temp.append([items[i], items[i+1]])
-            elements_pairs.append(temp)
-        formats_list.append((formats.NumbersListOfList(elements),1))
-        formats_list.append((formats.NumbersListOfList(elements_pairs),1))
+            if len(items) % 2 == 0: #si la cantidad de elementos es par hago una lista con los pares consecutivos
+                for i in range(0,len(items),2):
+                    elements_pairs.append([items[i], items[i+1]])
+        if elements!=[]:
+            formats_list.append((formats.NumbersListOfList(elements),1))
+        if elements_pairs!=[]:
+            formats_list.append((formats.NumbersListOfList(elements_pairs),1))
         return formats_list
 
     def help(self):

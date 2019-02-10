@@ -9,7 +9,7 @@ class Value:
 
     def __init__(self):
         ''' RE -> value '''
-        self._re = re.compile('([0-9\n]+)*')
+        self._re = re.compile('([0-9]+[ \n ]*)*')
 
     def parse(self, data):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
@@ -27,7 +27,7 @@ class Value:
         data = re.sub("( )*", '', data)
         data = re.sub("[\n]", ' ', data)
         data = [int(item) for item in data.split()]
-        formats_list.append(formats.NumbersList(data))
+        formats_list.append((formats.NumbersList(data),1))
         if len(data)%2==0:
             pairs=[(data[x],data[x+1]) for x in range(0,len(data),2)]
             pairs_list=[[(data[x],data[x+1])] for x in range(0,len(data),2)]
@@ -44,7 +44,6 @@ class Value:
                 34
                 32
                 23 '''
-
 
     def data_generator(self,path, amount=50, on_top=50, below=100):
         ''' Genera juego de datos con el formato que reconoce el parser para analizarlo

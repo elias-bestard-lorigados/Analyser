@@ -46,9 +46,6 @@ class LabelValuesList:
             for i in range(0, len(value), 2):
                 temp.append([value[i], value[i+1]])
             values_pairs.append(temp)
-        # print(values_pairs)
-        # print(values)
-        # print(labels)
         formats_list.append((formats.ListOfSeriesnameAndValues(values, labels),1))
         formats_list.append((formats.ListOfSeriesnameAndValues(values_pairs, labels),1))
         return formats_list

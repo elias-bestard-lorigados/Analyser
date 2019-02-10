@@ -15,7 +15,6 @@ class SeriesList:
         info = parse(data)
         if info:
             formts=[]
-            # formts.append(info)
             formts.append((formats.NumbersListOfList(info),1))
             return formts
         return None

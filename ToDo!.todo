@@ -8,11 +8,10 @@ Analyser:
         ☐ XML parser
         ☐ eliminar comentarios despues de definir comentarios
         ☐ Hacer algo de Preprocesar definiendo niveles de parseo
-        ☐ seria bueno tener un metodo que dado un separador sea capaz de reconocer una estructura de numeros
+        ☐ seria bueno tener un metodo que dado un separador sea capaz de reconocer una secuencia de numeros
 
     @Known_Formats:
-        ☐ Añadirle propiedades para guardar la info necesaria para la retroalimentacion
-        ☐ annadirles las opciones de Xaxis y Yaxis...
+        ☐ @important Añadirle propiedades para guardar la info necesaria para la retroalimentacion
 
     @Graphics:
         ✔ @important crear los graficos con un id @done(19-01-31 00:11)
@@ -24,9 +23,8 @@ Analyser:
     ✔ Meter config en utils @done(19-01-28 16:02)
     ✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19)
     ✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16)
-    ☐ Ver como quedarme con los graficos marcados como utiles!!! y su info!!!
-    ☐ Crear una "BD" donde guardar info de los grafico y se sirvio o no 
-    ☐ Update la base de datos desde el file generado
+    ✔ Crear una "BD" donde guardar info de los grafico y se sirvio o no @done(19-02-04 19:35)
+    ✔ Update la base de datos @done(19-02-10 15:49)
 
     ☐ formatos de salida html txt R matplotlist
  postdata.club

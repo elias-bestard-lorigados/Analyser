@@ -40,8 +40,8 @@ class LabelValue:
         print(values)
         print(labels)
         formats_list.append((formats.PairsList(labels, values),1))
-        elements = [[labels[i], values[i]] for i in range(len(values))]
-        elements_pairs = [[[labels[i], values[i]]] for i in range(len(values))]
+        elements = [[labels[i], values[i]] for i in range(len(values))]#todo los pares de numeros es una serie
+        elements_pairs = [[[labels[i], values[i]]] for i in range(len(values))]#cadapar de numeros es una serie
         formats_list.append((formats.NumbersListOfList(elements),1))
         formats_list.append((formats.NumbersListOfList(elements_pairs),1))
         return formats_list
@@ -69,14 +69,3 @@ class LabelValue:
             data += str(int(uniform(on_top, below)))
             file.write(data+"\n")
         file.close()
-
-
-# data = """label_0 69
-# label_1 96
-# label_2 78
-# label_3 84
-# label_4 78
-# """
-# print(data.split("\n"))
-# a=LabelValue()
-# a.parse(data)

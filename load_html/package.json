@@ -1,0 +1,20 @@
+{
+  "name": "load_html",
+  "version": "1.0.0",
+  "description": "Cargar un html y mostrar su contenido, y poder modificar la BD",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "Elias Bestard Lorigados",
+  "license": "ISC",
+  "dependencies": {
+    "highcharts": "^7.0.3",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "dialog": "^0.3.1",
+    "load-json-file": "^5.1.0",
+    "write-json-file": "^3.0.2"
+  }
+}

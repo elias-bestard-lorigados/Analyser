@@ -46,7 +46,15 @@ class Config:
         #List of Parsers777 wich will be use to generate datasets
         self.data_generated = []
 
-    def set_in_path(self, in_path='./data_generator'):
+        self.db_path = 'api/utils/data_base.json'
+
+    def set_db_path(self,path):
+        file = open(path, "w")
+        file.write("[]")
+        file.close()
+        self.db_path = path
+
+    def set_in_path(self, in_path='./data_generator/'):
         self.input_path = os.path.abspath(in_path)
 
     def set_out_path(self, out_path='./out'):

@@ -58,7 +58,7 @@ def parse():
     data=[]
     if os.path.isdir(path_to_proccess):# si e sun directorio
         for item in os.listdir(path_to_proccess):
-            temp = open(path_to_proccess+item, "r")
+            temp = open(path_to_proccess+'/'+item, "r")
             data.append(temp.read())
             temp.close()
     else: #si es un file
@@ -115,7 +115,9 @@ def __read_conf():
     graphs_list = config['GRAPHS']['list']
     datag_path = config['DATA_G']['path']
     datag_parsers = config['DATA_G']['parsers'] if not config['DATA_G']['parsers'] == "" else None
-
+    db_path=config['DB']['path']
+    # Config().db_path=db_path
+    Config().set_db_path(db_path)
     Config().set_in_path(input_path)
     Config().set_out_path(output_path)
     Config().set_output_name(output_name)

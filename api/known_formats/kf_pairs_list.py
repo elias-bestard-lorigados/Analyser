@@ -9,5 +9,14 @@ class PairsList:
         self.elements = {0:[]}
         self.values = y
         self.labels = x
+        self.min_value = (9999999999, 9999999999)
+        self.max_value = (-9999999999, -9999999999)
+        self.count = len(y)
         for i in range(0, len(y)):
-            self.elements[0].append((x[i], y[i]))
+            pair = (x[i], y[i])
+            if type(x[i])!=str:
+                if self.min_value>pair:
+                    self.min_value=pair
+                if self.max_value < pair:
+                    self.max_value = pair
+            self.elements[0].append(pair)
