@@ -2,21 +2,21 @@
 	{
 		"id": 0,
 		"properties": {
-			"count": 6,
-			"max_value": 53,
-			"min_value": 4
+			"count": 5,
+			"max_value": -100000000000000000000,
+			"min_value": 100000000000000000000
 		},
 		"type": "line",
-		"useful": true
+		"useful": false
 	},
 	{
 		"id": 1,
 		"properties": {
-			"count": 6,
-			"max_value": 41,
-			"min_value": 23
+			"count": 5,
+			"max_value": -100000000000000000000,
+			"min_value": 100000000000000000000
 		},
 		"type": "column",
-		"useful": true
+		"useful": false
 	}
 ]

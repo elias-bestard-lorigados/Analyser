@@ -30,6 +30,8 @@ class LabelValuesList:
         values = []
         values_pairs=[]
         for line in data.split('\n'):
+            if  line=='':
+                continue
             label = ''
             value = ''
             for item in line.split():
@@ -40,14 +42,16 @@ class LabelValuesList:
             labels.append(label)
             value = [int(x) for x in value.split()]
             values.append(value)
-            if len(value) % 2 == 1:
-                value.append(value[-1])
-            temp=[]
-            for i in range(0, len(value), 2):
-                temp.append([value[i], value[i+1]])
-            values_pairs.append(temp)
+            #Si tiene cantidad par de numeros los agrupo en pares y agrego una nueva serie!!!!
+            if len(value) % 2 == 0:
+                temp=[]
+                for i in range(0, len(value), 2):
+                    temp.append([value[i], value[i+1]])
+                values_pairs.append(temp)
+
         formats_list.append((formats.ListOfSeriesnameAndValues(values, labels),1))
-        formats_list.append((formats.ListOfSeriesnameAndValues(values_pairs, labels),1))
+        if not len(values_pairs)==0:# si se annadieron pares de elementos
+            formats_list.append((formats.ListOfSeriesnameAndValues(values_pairs, labels),1))
         return formats_list
         # return None
     def help(self):

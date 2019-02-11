@@ -9,7 +9,7 @@ class Value:
 
     def __init__(self):
         ''' RE -> value '''
-        self._re = re.compile('([0-9]+[ \n ]*)*')
+        self._re = re.compile('([0-9]+[\n]*)*')
 
     def parse(self, data):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
@@ -24,7 +24,7 @@ class Value:
         Espera numeros separados por 'salto de linea'.
         Retorna una lista con 'An_Format_Known.Pair_Label_EntireP_List' o 'An_Format_Known.NumbersList' """
         formats_list=[]
-        data = re.sub("( )*", '', data)
+        # data = re.sub("( )*", '', data)
         data = re.sub("[\n]", ' ', data)
         data = [int(item) for item in data.split()]
         formats_list.append((formats.NumbersList(data),1))
@@ -55,6 +55,6 @@ class Value:
         file = open(path+"/d_value_" +
                     str(len(data_files)+1)+".txt", "w")
         for item in range(0, amount):
-            data = str(int(uniform(on_top, below)))+" "
+            data = str(int(uniform(on_top, below)))
             file.write(data+"\n")
         file.close()

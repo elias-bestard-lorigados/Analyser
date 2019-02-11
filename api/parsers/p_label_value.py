@@ -41,9 +41,8 @@ class LabelValue:
         print(labels)
         formats_list.append((formats.PairsList(labels, values),1))
         elements = [[labels[i], values[i]] for i in range(len(values))]#todo los pares de numeros es una serie
-        elements_pairs = [[[labels[i], values[i]]] for i in range(len(values))]#cadapar de numeros es una serie
+        # elements = [[[labels[i], values[i]]] for i in range(len(values))]#todo los pares de numeros es una serie
         formats_list.append((formats.NumbersListOfList(elements),1))
-        formats_list.append((formats.NumbersListOfList(elements_pairs),1))
         return formats_list
         # return None
     

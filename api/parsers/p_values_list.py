@@ -26,15 +26,19 @@ class ValuesList:
         Espera varios numeros separados por 'salto de linea'.
         Retorna una lista con FK"""
         formats_list = []
-        data=data.split('\n')
         elements = []   #los elemetos tal como estan
         elements_pairs = [] #elementos en pairs si son cantidad de numeros pairs
+        data=data.split('\n')
         for item in data:
+            if  item=='':
+                continue
             items = [int(x) for x in re.findall("[0-9]+", item)]
             elements.append(items)
             if len(items) % 2 == 0: #si la cantidad de elementos es par hago una lista con los pares consecutivos
+                temp=[]
                 for i in range(0,len(items),2):
-                    elements_pairs.append([items[i], items[i+1]])
+                    temp.append([items[i], items[i+1]])
+                elements_pairs.append(temp)
         if elements!=[]:
             formats_list.append((formats.NumbersListOfList(elements),1))
         if elements_pairs!=[]:

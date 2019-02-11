@@ -20,8 +20,8 @@ class Config:
         #path where the out file will be put
         self.output_path = os.path.abspath("./out/")
         #Name of the resulting file
-        self.output_name = "out_file_"
-
+        self.output_name = "out_file"
+        self.output_count=0
         #path where the parsers are located
         self.parsers_path = os.path.abspath("./api/parsers")
         #List of all implemented parsers
@@ -62,8 +62,8 @@ class Config:
 
     def set_output_name(self, output_name):
         """ update self.output_name to the params from the input  """
-        self.output_name = output_name+"_"+str(len(os.listdir(self.output_path)))+".html" if output_name != None else "out_file_" + \
-            str(len(os.listdir(self.output_path)))+".html"
+        self.output_name = output_name if output_name != None else "out_file"
+        self.output_count=len(os.listdir(Config().output_path))
 
     def set_parsers_path(self,p_path):
         self.parsers_path = os.path.abspath(p_path)
@@ -176,5 +176,4 @@ class Config:
         for item in temp[1:]:
             class_name += item
         return class_name
-
 
