@@ -1,22 +1,378 @@
 [
-	{
-		"id": 0,
-		"properties": {
-			"count": 5,
-			"max_value": -100000000000000000000,
-			"min_value": 100000000000000000000
-		},
-		"type": "line",
-		"useful": false
-	},
-	{
-		"id": 1,
-		"properties": {
-			"count": 5,
-			"max_value": -100000000000000000000,
-			"min_value": 100000000000000000000
-		},
-		"type": "column",
-		"useful": false
-	}
+   {
+      "id": 0,
+      "properties": {
+         "count": 6,
+         "max_value": 92,
+         "min_value": 68
+      },
+      "type": "pie",
+      "useful": true
+   },
+   {
+      "id": 1,
+      "properties": {
+         "count": 6,
+         "max_value": 92,
+         "min_value": 68
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 2,
+      "properties": {
+         "count": 6,
+         "max_value": 92,
+         "min_value": 68
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 3,
+      "properties": {
+         "count": 3,
+         "max_value": [
+            85,
+            86
+         ],
+         "min_value": [
+            80,
+            92
+         ]
+      },
+      "type": "pie",
+      "useful": true
+   },
+   {
+      "id": 4,
+      "properties": {
+         "count": 3,
+         "max_value": [
+            85,
+            86
+         ],
+         "min_value": [
+            80,
+            92
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 5,
+      "properties": {
+         "count": 3,
+         "max_value": [
+            85,
+            86
+         ],
+         "min_value": [
+            80,
+            92
+         ]
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 6,
+      "properties": {
+         "count": 3,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 7,
+      "properties": {
+         "count": 3,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 9,
+      "properties": {
+         "count": 3,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 10,
+      "properties": {
+         "count": 3,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 12,
+      "properties": {
+         "count": 6,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 13,
+      "properties": {
+         "count": 6,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 15,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            98
+         ],
+         "min_value": [
+            68,
+            59,
+            55,
+            72
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 16,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            98
+         ],
+         "min_value": [
+            68,
+            59,
+            55,
+            72
+         ]
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 18,
+      "properties": {
+         "count": 2,
+         "max_value": [
+            [
+               74,
+               89
+            ]
+         ],
+         "min_value": [
+            [
+               68,
+               59
+            ],
+            [
+               55,
+               72
+            ]
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 19,
+      "properties": {
+         "count": 2,
+         "max_value": [
+            [
+               74,
+               89
+            ]
+         ],
+         "min_value": [
+            [
+               68,
+               59
+            ],
+            [
+               55,
+               72
+            ]
+         ]
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 21,
+      "properties": {
+         "count": 5,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 22,
+      "properties": {
+         "count": 5,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 24,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            93
+         ],
+         "min_value": [
+            57
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 25,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            93
+         ],
+         "min_value": [
+            57
+         ]
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 27,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            4,
+            93
+         ],
+         "min_value": [
+            0,
+            57
+         ]
+      },
+      "type": "pie",
+      "useful": true
+   },
+   {
+      "id": 28,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            4,
+            93
+         ],
+         "min_value": [
+            0,
+            57
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 29,
+      "properties": {
+         "count": 5,
+         "max_value": [
+            4,
+            93
+         ],
+         "min_value": [
+            0,
+            57
+         ]
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 30,
+      "properties": {
+         "count": 5,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 31,
+      "properties": {
+         "count": 5,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 33,
+      "properties": {
+         "count": 5,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 34,
+      "properties": {
+         "count": 5,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 36,
+      "properties": {
+         "count": 4,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 37,
+      "properties": {
+         "count": 4,
+         "max_value": "UKNOW",
+         "min_value": "UKNOW"
+      },
+      "type": "column",
+      "useful": true
+   }
 ]

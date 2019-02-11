@@ -37,15 +37,13 @@ class LabelValue:
             value = int(temp[-1])
             labels.append(label)
             values.append(value)
-        print(values)
-        print(labels)
         formats_list.append((formats.PairsList(labels, values),1))
         elements = [[labels[i], values[i]] for i in range(len(values))]#todo los pares de numeros es una serie
         # elements = [[[labels[i], values[i]]] for i in range(len(values))]#todo los pares de numeros es una serie
         formats_list.append((formats.NumbersListOfList(elements),1))
         return formats_list
         # return None
-    
+
     def help(self):
         return ''' parsea una cadena con cada linea= label + value +'\\n'+...
                 EJ: 

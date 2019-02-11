@@ -6,4 +6,3 @@ class NumbersList:
         self.min_value = min(elements)
         self.max_value = max(elements)
         self.count = len(elements)
-        print(elements)

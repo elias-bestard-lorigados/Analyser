@@ -13,5 +13,3 @@ class ListOfSeriesnameAndValues:
         self.min_value=min(values)
         self.max_value = max(values)
         self.count = len(values)
-
-print(min([[2,1],[1,2]]))

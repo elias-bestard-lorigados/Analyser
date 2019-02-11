@@ -47,12 +47,14 @@ class Config:
         self.data_generated = []
 
         self.db_path = 'api/utils/data_base.json'
+        self.db_count_id=0 #para saber por que id voy generando los graficos
 
     def set_db_path(self,path):
         file = open(path, "w")
         file.write("[]")
         file.close()
         self.db_path = path
+        self.db_count_id=0
 
     def set_in_path(self, in_path='./data_generator/'):
         self.input_path = os.path.abspath(in_path)

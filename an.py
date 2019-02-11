@@ -19,13 +19,15 @@ class Analyser:
         formats = self.to_identify()
         results=""
         count=len(Config().available_graphs)
-        id=0
+        id=Config().db_count_id
         #form ->KF ,sim->similarity
         for form,sim in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
             code = self.to_graphic(form,id)
             for text in code:
                 results += text
             id+=count
+        
+        Config().db_count_id=id
         self.__ini_HTML()   #creo el archivo html
         self.file.write(results)  # escribo el resultado en el
         self.__end_HTML()   #concluo el html y cierro el archivo
@@ -60,9 +62,9 @@ class Analyser:
 
 
 data = input_parser.parse()
+print("="*20)
 for info in data:
-    print("="*20)
-    print(info)
     an = Analyser(info)
+    print(info)
     an.analyse()
     Config().output_count+=1
