@@ -26,8 +26,9 @@ class Analyser:
             for text in code:
                 results += text
             id+=count
-        
         Config().db_count_id=id
+        if results=='':
+            results=''' <h1>Sorry, no Chart could be generated</h1> '''
         self.__ini_HTML()   #creo el archivo html
         self.file.write(results)  # escribo el resultado en el
         self.__end_HTML()   #concluo el html y cierro el archivo
@@ -36,13 +37,13 @@ class Analyser:
         ''' Identificar todos los posibles tipos de Format_Known se extraen de "self.__data"
         parsers: los parsers que quiere utilizar solamente parsers="" 
         return LIST[FORMAT_KNOWN]  '''
-        formats_knowns = identify(self.__data,Config().available_parsers)
+        formats_knowns = identify(self.__data)
         return formats_knowns
 
     def to_graphic(self,format_known,id):
         ''' graficar los formatos "format_known" de la entrada
         return LIST[STRING] (codigo js de los graficos)'''
-        graphs = graph(format_known, Config().graphs, id)
+        graphs = graph(format_known, id)
         return graphs
 
     def __ini_HTML(self):
@@ -59,7 +60,6 @@ class Analyser:
         ''' Cerrara el "body" del HTML final '''
         self.file.write("</body>")
         self.file.close()
-
 
 data = input_parser.parse()
 print("="*20)

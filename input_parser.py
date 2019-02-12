@@ -28,7 +28,6 @@ def parse():
     if os.path.exists('./config.ini'):
         __read_conf()
     __set_config_by_args(args)
-    
     if config.parser_list == 1 or config.prarsers_help != [] or config.data_generated!=[] or config.graphs_list==1:
         # if args.parsers_help or args.parsers_list or args.graphs_list or args.data_generator:
         if config.prarsers_help != []:

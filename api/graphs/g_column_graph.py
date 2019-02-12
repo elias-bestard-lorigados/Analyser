@@ -1,39 +1,19 @@
-from matplotlib import pyplot as plt
 from highcharts import Highchart
-# def IsListOfTuple_StrInt(list):
-#     """ Chequea que 'list' sea una lista de tuplas[(str,int)].
-#     Retorna dos listas, ([str],[int]) """
-#     labels = []
-#     values = []
-#     for item in list:
-#         if type(item) == tuple:
-#             labels.append(item[0])
-#             values.append(item[1])
-#         else:
-#             labels.append("")
-#             values.append(item)
-#     return labels, values
-
+from api import an_known_format as formats
 
 class ColumnGraph:
     """ Crear un grafico de columnas """
     def __init__(self):
         self.type="column"
+        self.kf_permited=[formats.PairsList,formats.NumbersList,
+                formats.ListOfSeriesnameAndValues,formats.NumbersListOfList]
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos """
+        if not self.kf_permited.__contains__(type(format_known)):
+            return None
         self.g_id = g_id
-        # if output == "stdout":
-        #     return self.__make_graph(format_known)
         return self.__make_js_code(format_known)
-
-    def __make_graph(self, format_known):
-        ''' hace el grafico en pyplot '''
-        for item in format_known.elements:
-            # labels, values = IsListOfTuple_StrInt(format_known.elements[item])
-            # plt.plot(values)
-            pass
-        # plt.show()
 
     def __make_js_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''

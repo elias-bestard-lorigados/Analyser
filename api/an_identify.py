@@ -14,11 +14,11 @@ for item in Config().parsers:
     __all_parsers[class_name] = eval(str(item+"."+class_name+"()"))
     # __all_parsers[class_name] = eval(str(class_name+"()"))
 
-def identify(data,parsers:list):
+def identify(data):
     """ Trata de ir parseando la cadena 'data' por los parsers que pasan como parametro
         y retorna una lista de todos los formatos conocidos posibles"""
     list_formats = []
-    for item in parsers:
+    for item in Config().available_parsers:
         format_ = __all_parsers[item].parse(data)
         if format_ != None:  # si se pudo parsear
             list_formats.extend(format_)

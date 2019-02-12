@@ -6,28 +6,26 @@ Analyser:
         ☐ Json Parser
         ☐ CSV parser
         ☐ XML parser
-        ☐ eliminar comentarios despues de definir comentarios
         ☐ Hacer algo de Preprocesar definiendo niveles de parseo
+        ☐ eliminar comentarios despues de definir comentarios
         ☐ seria bueno tener un metodo que dado un separador sea capaz de reconocer una secuencia de numeros
 
     @Known_Formats:
-        ☐ @important Añadirle propiedades para guardar la info necesaria para la retroalimentacion
-
+        ✔ @important Añadirle propiedades para guardar la info necesaria para la retroalimentacion @done(19-02-11 16:19)
+        ☐ Revisar las propiedades de los KF
+        
     @Graphics:
         ✔ @important crear los graficos con un id @done(19-01-31 00:11)
-        ☐ Meter Graficos 
-        ☐ @important poder eliminar agregar graficos (los  files) y seguir pinchando
-        ☐ @important Arreglar cuando la salida estandar es lEa consola
-        ☐ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple)
+        ☐ Meter Graficos
+        ✔ @important poder eliminar agregar graficos (los  files) y seguir pinchando @done(19-02-12 14:39)
+        ✔ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son graficos( Lanzar warning si no la cumple) @done(19-02-12 14:39)
+        ☐ Arreglar otro tipo de salidas que no sean html ej:txt R matplotlist
 
     ✔ Meter config en utils @done(19-01-28 16:02)
     ✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19)
     ✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16)
     ✔ Crear una "BD" donde guardar info de los grafico y se sirvio o no @done(19-02-04 19:35)
     ✔ Update la base de datos @done(19-02-10 15:49)
-
-    ☐ formatos de salida html txt R matplotlist
- postdata.club
 
  Archive:
     ✔ Hacer script que ejecute el programa ?????? @done(19-01-28 16:16) @project(Analyser)
