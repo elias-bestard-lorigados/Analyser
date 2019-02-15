@@ -5,8 +5,8 @@ class ColumnGraph:
     """ Crear un grafico de columnas """
     def __init__(self):
         self.type="column"
-        self.kf_permited=[formats.PairsList,formats.NumbersList,
-                formats.ListOfSeriesnameAndValues,formats.NumbersListOfList]
+        self.kf_permited=[formats.NumbersListOfList,
+                formats.NumSeries,formats.PairsSeries,formats.LabeledPairSeries]
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos """

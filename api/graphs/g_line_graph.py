@@ -5,8 +5,8 @@ class LineGraph:
     """ Crear un grafico de linea """
     def __init__(self):
         self.type="line"
-        self.kf_permited=[formats.PairsList,formats.NumbersList,
-                formats.ListOfSeriesnameAndValues,formats.NumbersListOfList]
+        self.kf_permited=[formats.NumbersListOfList,
+                formats.NumSeries,formats.PairsSeries,formats.LabeledPairSeries]
     
     def graphic(self, g_id, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """

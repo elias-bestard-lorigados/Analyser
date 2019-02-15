@@ -27,22 +27,21 @@ class ValuesList:
         Retorna una lista con FK"""
         formats_list = []
         elements = []   #los elemetos tal como estan
-        elements_pairs = [] #elementos en pairs si son cantidad de numeros pairs
+        x_values = [] #elementos en pairs si son cantidad de numeros pairs
+        y_values = [] #elementos en pairs si son cantidad de numeros pairs
         data=data.split('\n')
         for item in data:
             if  item=='':
                 continue
-            items = [int(x) for x in re.findall("[0-9]+", item)]
-            elements.append(items)
-            if len(items) % 2 == 0: #si la cantidad de elementos es par hago una lista con los pares consecutivos
-                temp=[]
-                for i in range(0,len(items),2):
-                    temp.append([items[i], items[i+1]])
-                elements_pairs.append(temp)
+            values = [int(x) for x in re.findall("[0-9]+", item)]
+            elements.append(values)
+            if len(values) % 2 == 0: #si la cantidad de elementos es par hago una lista con los pares consecutivos
+                x_values.append([values[i] for i in range(0,len(values),2)])
+                y_values.append([values[i] for i in range(1,len(values),2)])
         if elements!=[]:
-            formats_list.append((formats.NumbersListOfList(elements),1))
-        if elements_pairs!=[]:
-            formats_list.append((formats.NumbersListOfList(elements_pairs),1))
+            formats_list.append((formats.NumSeries(elements),1))
+        if x_values!=[]:
+            formats_list.append((formats.PairsSeries(x_values,y_values),1))
         return formats_list
 
     def help(self):

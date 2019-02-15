@@ -33,7 +33,6 @@ class SeriesList:
         amount= 50 cantidad de lineas, lineas =label + value +'\\n'
         on_top=50  below=100 numeros x on_top<=x<=below
         '''
-        
         data_files = [item
                       for item in os.listdir(path) if item.__contains__("d_series_list_")]
         file = open(path+"/d_series_list_" +

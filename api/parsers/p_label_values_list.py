@@ -28,7 +28,9 @@ class LabelValuesList:
         formats_list = []
         labels = []
         values = []
-        values_pairs=[]
+        x_values=[]
+        y_values=[]
+        labels_pairs=[]
         for line in data.split('\n'):
             if  line=='':
                 continue
@@ -44,16 +46,13 @@ class LabelValuesList:
             values.append(value)
             #Si tiene cantidad par de numeros los agrupo en pares y agrego una nueva serie!!!!
             if len(value) % 2 == 0:
-                temp=[]
-                for i in range(0, len(value), 2):
-                    temp.append([value[i], value[i+1]])
-                values_pairs.append(temp)
-
-        formats_list.append((formats.ListOfSeriesnameAndValues(values, labels),1))
-        if not len(values_pairs)==0:# si se annadieron pares de elementos
-            formats_list.append((formats.ListOfSeriesnameAndValues(values_pairs, labels),1))
+                x_values.append([value[i] for i in range(0,len(value),2)])
+                y_values.append([value[i] for i in range(1,len(value),2)])
+        formats_list.append((formats.NumSeries(values, labels),1))
+        if not len(y_values)==0:# si se annadieron pares de elementos
+            formats_list.append((formats.LabeledPairSeries(x_values,y_values, labels_pairs),1))
         return formats_list
-        # return None
+
     def help(self):
         return ''' parsea una cadena donde cada linea= label + value1 value2 value3... val_i +'\\n'+...
                 EJ: 

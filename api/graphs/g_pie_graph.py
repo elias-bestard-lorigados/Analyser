@@ -5,15 +5,18 @@ class PieGraph:
     """ Crear un grafico de Pie """
     def __init__(self):
         self.type = "pie"
-        self.kf_permited=[formats.PairsList,formats.NumbersList]
+        self.kf_permited=[formats.NumSeries,
+                        formats.PairsSeries,
+                        formats.LabeledPairSeries]
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
         if not self.kf_permited.__contains__(type(format_known)):
             return None
+        if  format_known.count>1:
+            return None
         self.g_id = g_id
         return self.__make_js_code(format_known)
-
 
     def __make_js_code(self, format_known):
         ''' Genera el codigo de JS para highcharts y lo retorna '''

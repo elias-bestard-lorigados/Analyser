@@ -24,18 +24,17 @@ class Value:
         Espera numeros separados por 'salto de linea'.
         Retorna una lista con 'An_Format_Known.Pair_Label_EntireP_List' o 'An_Format_Known.NumbersList' """
         formats_list=[]
-        # data = re.sub("( )*", '', data)
         data = re.sub("[\n]", ' ', data)
         data = [int(item) for item in data.split()]
-        formats_list.append((formats.NumbersList(data),1))
+        data2 = [[item] for item in data]
+        formats_list.append((formats.NumSeries([data]),1))#add the serie "data"
+        formats_list.append((formats.NumSeries(data2),1))#add  a serie for each number in data
         if len(data)%2==0:
-            pairs=[(data[x],data[x+1]) for x in range(0,len(data),2)]
-            pairs_list=[[(data[x],data[x+1])] for x in range(0,len(data),2)]
-            labels = [data[x] for x in range(0, len(data), 2)]
-            values = [data[x+1] for x in range(0, len(data), 2)]
-            formats_list.append((formats.PairsList(labels, values),1))
-            formats_list.append((formats.NumbersListOfList(pairs),1))
-            formats_list.append((formats.NumbersListOfList(pairs_list),1))
+            formats_list.append((formats.PairsSeries([[data[x] for x in range(0, len(data), 2)]],
+                                [[data[x] for x in range(1, len(data), 2)]]),1))
+            formats_list.append((formats.NumSeries([(data[x],data[x+1]) for x in range(0,len(data),2)]),1))
+            formats_list.append((formats.PairsSeries([[data[x]] for x in range(0,len(data),2)],
+                                [[data[x]] for x in range(1,len(data),2)]),1))
         return formats_list
 
     def help(self):
