@@ -1,4 +1,3 @@
-from api.known_formats.kf_numbers_list_of_list import NumbersListOfList
 from api.known_formats.kf_num_series import NumSeries
 from api.known_formats.kf_pairs_series import PairsSeries
 from api.known_formats.kf_labeled_pair_series import LabeledPairSeries
