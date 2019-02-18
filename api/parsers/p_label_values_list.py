@@ -48,7 +48,7 @@ class LabelValuesList:
             if len(value) % 2 == 0:
                 x_values.append([value[i] for i in range(0,len(value),2)])
                 y_values.append([value[i] for i in range(1,len(value),2)])
-        formats_list.append((formats.NumSeries(values, labels),1))
+        # formats_list.append((formats.NumSeries(values, labels),1))
         if not len(y_values)==0:# si se annadieron pares de elementos
             formats_list.append((formats.LabeledPairSeries(x_values,y_values, labels_pairs),1))
         return formats_list

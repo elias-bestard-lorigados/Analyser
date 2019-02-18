@@ -76,7 +76,7 @@ def parsers_help():
         print(eval(str(class_name+"().help()")))
         print("="*20)
 
-def data_generator(amount=5, on_top=50, below=100):
+def data_generator(amount=10, on_top=50, below=100):
     ''' Generate a mount of files with examples of info who can be parse by the parsers definded '''
     path = Config().data_generated_path
     sys.path.append(Config().parsers_path)
@@ -88,10 +88,10 @@ def data_generator(amount=5, on_top=50, below=100):
         class_name = Config().get_parser_class_name(item)
         import_module = compile("import "+item, 'e', mode='exec')
         exec(import_module)
-        # try:
-        eval(item+"."+class_name + "().data_generator('{0}',{1},{2},{3})".format(path,amount,on_top,below))
-        # except:
-            # print("WARNING-- THE PARSER "+item+" DOES NOT HAVE THE METHOD data_generator")
+        try:
+            eval(item+"."+class_name + "().data_generator('{0}',{1},{2},{3})".format(path,amount,on_top,below))
+        except:
+            print("WARNING-- THE PARSER "+item+" DOES NOT HAVE THE METHOD data_generator")
         print("="*20)
 
 def __read_conf():
@@ -129,7 +129,6 @@ def __read_conf():
     Config().set_parsers_list(parser_list)
     Config().set_data_g_path(datag_path)
     Config().set_data_generated_list(datag_parsers)
-
 
 def __set_config_by_args(args):
     if args.file:

@@ -21,13 +21,12 @@ class PairsSeries:
     
     def reset_with_series(self,series,series_names=[]):
         self.elements = {}
-        self.min_value = 99999999
-        self.max_value = -9999999
+        self.min_value = [9999999999, 9999999999]
+        self.max_value = [-9999999999, -9999999999]
         self.count = len(series)
         if series_names==[]:
             series_names=["serie_"+str(i) for i in range(len(series))]
         for i in range(len(series)):
-            current_serie=(series[i][0],series[i][1])
-            self.min_value=min(current_serie) if min(current_serie)<self.min_value else self.min_value
-            self.max_value=max(current_serie) if max(current_serie)>self.max_value else self.max_value
+            self.min_value=min(series[i]) if min(series[i])<self.min_value else self.min_value
+            self.max_value=max(series[i]) if max(series[i])>self.max_value else self.max_value
             self.elements[series_names[i]]=series[i]

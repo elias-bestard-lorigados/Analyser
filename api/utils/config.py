@@ -139,7 +139,6 @@ class Config:
                     print("WARNING-- THE FILE "+item +
                           " DOES NOT IMPLEMENT THE INTERFACE")
 
-
     def set_available_parsers(self,in_parsers='all'):
         """ Update self.available_parsers to a list of parsers
             who are going to be plot in depends of the arguments of the input"""

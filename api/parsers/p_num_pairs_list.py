@@ -1,4 +1,4 @@
-from api.parsers.grammars.g_num_pairs_list import parse
+from api.parsers.grammars.g_num_pairs_list import g_num_pairs_list
 from api import an_known_format as formats
 import os
 from random import uniform
@@ -12,7 +12,7 @@ class NumPairsList:
         """ Ver si matchea el texto "data" completo con la gramatica definida! 
         retorna un FK si matchea con num separados por saltos de linea
         val"salto"... """
-        info = parse(data)
+        info = g_num_pairs_list.parse(data)
         if info:
             formts=[]
             new_format=formats.PairsSeries()
@@ -45,7 +45,7 @@ class NumPairsList:
             num_of_elements=int(uniform(1,amount))
             middle_data = ''
             for x in range(0, num_of_elements):
-                middle_data +=str([uniform(on_top, below)for x in range(0, 2)])+","
+                middle_data +=str([round(uniform(on_top, below),2)for x in range(0, 2)])+","
             middle_data = middle_data[:-1]
             data+="["+middle_data+"]"
             file.write(data+"\n")

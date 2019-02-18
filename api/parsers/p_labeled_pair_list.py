@@ -1,4 +1,4 @@
-from api.parsers.grammars.g_labeled_pair_list import parse
+from api.parsers.grammars.g_labeled_pairs_list import g_labeled_pairs_list
 from api import an_known_format as formats
 import os
 from random import uniform
@@ -11,7 +11,7 @@ class LabeledPairList:
         """ Ver si matchea el texto "data" completo con gramatica
         retorna un FK si matchea con num separados por saltos de linea
         val"salto"... """
-        info = parse(data)
+        info = g_labeled_pairs_list.parse(data)
         if info:
             formts=[]
             new_format=formats.LabeledPairSeries()
@@ -41,7 +41,7 @@ class LabeledPairList:
             num_of_elements=int(uniform(1,amount))
             middle_data = ''
             for x in range(0, num_of_elements):
-                middle_data += "[label"+str(x+item)+","+str(uniform(on_top, below))+"],"
+                middle_data += "[label_"+str(x+item)+","+str(round(uniform(on_top, below),2))+"],"
             middle_data = middle_data[:-1]
             data="["+middle_data+"]"
             file.write(data+"\n")

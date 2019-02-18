@@ -11,9 +11,7 @@ class PieGraph:
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos con sus labels si tienen y sale por el output """
-        if not self.kf_permited.__contains__(type(format_known)):
-            return None
-        if  format_known.count>1:
+        if not self.kf_permited.__contains__(type(format_known)) or format_known.count>1:
             return None
         self.g_id = g_id
         return self.__make_js_code(format_known)

@@ -1,4 +1,4 @@
-from api.parsers.grammars.g_numbers_list import parse
+from api.parsers.grammars.g_numbers_list import g_numbers_list
 from api import an_known_format as formats
 import os
 from random import uniform
@@ -12,7 +12,7 @@ class NumbersList:
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
         retorna un FK si matchea con num separados por saltos de linea
         val"salto"... """
-        info = parse(data)
+        info = g_numbers_list.parse(data)
         if info:
             formts=[]
             formts.append((formats.NumSeries(info),1))
@@ -40,7 +40,7 @@ class NumbersList:
         for item in range(0, amount):
             data = ''
             num_of_elements=int(uniform(1,amount))
-            data += str([uniform(on_top, below)
+            data += str([round(uniform(on_top, below),2)
                          for x in range(0, num_of_elements)])
             file.write(data+"\n")
         file.close()

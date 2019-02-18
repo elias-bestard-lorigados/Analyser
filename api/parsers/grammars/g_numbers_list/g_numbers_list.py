@@ -1,5 +1,6 @@
 import ply.yacc as yacc
 import ply.lex as lex
+class LexerError(Exception): pass
 
 #List of tokes
 tokens = (
@@ -23,11 +24,9 @@ t_ignore = ' \t'
 #error handling rule
 
 def t_error(t):
-    print("Illegal characters '%s'" % t.value[0])
+    # print("Illegal characters '%s'" % t.value[0])
+    raise LexerError("Illegal character '%s'" % t.value)
     t.lexer.skip(1)
-
-#Build the lexer
-lexer = lex.lex()
 
 def p_start(t):
     ''' start :  expression NEWLINE start 
@@ -54,16 +53,25 @@ def p_numbers(t):
         t[0] = t[3]
 
 def p_error(t):
-    print("Syntax error at '%s'" % t.value)
+    raise LexerError("Illegal character '%s'" % t.value)
+    # print("Syntax error at '%s'" % t.value)
 
-
-parser = yacc.yacc()
 
 def parse(text:str):
+    #Build the lexer
+    lexer = lex.lex()
+    parser = yacc.yacc()
     if text[-1]=='\n':
         text=text[:-1]
-    result = parser.parse(text)
+    result=None
+    try:
+        result = parser.parse(text)
+    except:
+        pass
     if result:
         result.reverse()
     return result
-
+# data='''[[label_1, 64.13],[56.36, 97.45],[82.93, 87.65]]
+# [[84.54, 69.05],[80.54, 60.72]]
+# '''
+# print(parse(data))

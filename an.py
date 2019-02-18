@@ -68,3 +68,4 @@ for info in data:
     print(info)
     an.analyse()
     Config().output_count+=1
+    print("="*20)
