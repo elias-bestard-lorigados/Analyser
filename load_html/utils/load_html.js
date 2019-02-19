@@ -1,6 +1,5 @@
 const { dialog } = require('electron').remote
 const Highcharts = require('highcharts');
-
 function load_html() {
     dialog.showOpenDialog((fileNames) => {
         // fileNames is an array that contains all the selected

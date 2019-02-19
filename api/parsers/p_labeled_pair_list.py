@@ -36,12 +36,14 @@ class LabeledPairList:
                       for item in os.listdir(path) if item.__contains__("d_labeled_pair_list_")]
         file = open(path+"/d_labeled_pair_list_" +
                     str(len(data_files)+1)+".txt", "w")
+        labl_count=0
         for item in range(0, amount):
             data = ''
             num_of_elements=int(uniform(1,amount))
             middle_data = ''
             for x in range(0, num_of_elements):
-                middle_data += "[label_"+str(x+item)+","+str(round(uniform(on_top, below),2))+"],"
+                middle_data += "[label_"+str(labl_count)+","+str(round(uniform(on_top, below),2))+"],"
+                labl_count+=1
             middle_data = middle_data[:-1]
             data="["+middle_data+"]"
             file.write(data+"\n")

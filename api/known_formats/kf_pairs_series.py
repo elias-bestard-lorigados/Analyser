@@ -12,7 +12,7 @@ class PairsSeries:
         self.max_value = (-9999999999, -9999999999)
         self.count = len(y)
         if series_names==[]:
-            series_names=[i for i in range(len(y))]
+            series_names=['serie_'+str(i) for i in range(len(y))]
         for i in range(len(y)):
             current_serie= list(zip(x[i],y[i]))
             self.min_value=min(current_serie) if min(current_serie)<self.min_value else self.min_value

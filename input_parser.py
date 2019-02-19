@@ -21,9 +21,13 @@ parser.add_argument("-gl", "--graphs_list", help='''List all the graphs definded
                     action='store_true')
 parser.add_argument("-dg", "--data_generator", help='''To Generate many files of data to analize, depends of the parse of your choice ex:'p_label_value,p_series_list' ''',
                     type=str)
-
+parser.add_argument("-gc", "--generate_config", help='''Generate config.ini ''',
+                    action='store_true')
 def parse():
     args = parser.parse_args()
+    if(args.generate_config):
+        __generate_config()
+        return []
     config = Config()
     if os.path.exists('./config.ini'):
         __read_conf()
@@ -148,3 +152,55 @@ def __set_config_by_args(args):
     if args.data_generator:
         Config().set_data_generated_list(args.data_generator)
 
+def __generate_config():
+    file=open('config.ini','w')
+    file.write('''[INPUT]
+;;  path where is located the info to procces
+path = ./data_generator/
+
+[OUTPUT]
+;; path where the parsers are located
+path = ./out/
+; name of the resulting file
+name = out_file
+
+[PARSERS]
+; path where the parsers are located
+path = ./api/parsers
+
+; List of all parsers that you wnat be availables
+; available = p_labeled_pair_list,p_nums_pair_list,p_numbers_list
+available = all
+
+; List of all parsers will show help
+help =
+; help = p_values_list,p_series_list
+; help = all
+
+;1 if you want see a list with all parsers 0 if not
+list= 0
+; list = 1
+
+[GRAPHS]
+; path where the charts are located
+path = ./api/graphs
+; List of all graphs that you want be availables
+; available = 
+;available = g_pie_graph,g_line_graph,g_column_graph
+available = all
+; available = g_pie_graph
+
+;1 if you want see a list with all graphs 0 if not
+list= 0
+; list= 1
+
+[DATA_G]
+; path where the data_generated is located
+path = ./data_generator
+; List of Parsers wich will be use to generate datasets
+parsers =
+; parsers = p_values_list
+; parsers = all
+
+[DB]
+path=api/utils/data_base.json ''')

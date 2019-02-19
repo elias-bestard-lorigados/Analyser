@@ -1,17 +1,16 @@
 from highcharts import Highchart
 from api import an_known_format as formats
 
-class PieGraph:
-    """ Crear un grafico de Pie """
+class AreaRangeChart:
+    """ Crear un grafico de area por rango """
     def __init__(self):
-        self.type = "pie"
-        self.kf_permited=[formats.NumSeries,
-                        formats.PairsSeries,
-                        formats.LabeledPairSeries]
+        self.type="arearange"
+        self.kf_permited=[formats.NumSeries,formats.PairsSeries,
+                        formats.TriosSeries,formats.LabeledTriosSeries]
 
     def graphic(self, g_id, format_known):
-        """ Graficar los elementos con sus labels si tienen y sale por el output """
-        if not self.kf_permited.__contains__(type(format_known)) or format_known.count>1:
+        """ Graficar los elementos """
+        if not self.kf_permited.__contains__(type(format_known)):
             return None
         self.g_id = g_id
         return self.__make_js_code(format_known)
@@ -26,24 +25,23 @@ class PieGraph:
                 'text': self.type+' chart'
             },
             'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'
+                'pointFormat': '{series.name}: <b>{point.y} </b>',
+                'shared': True,
+                'crosshairs': True,
             },
             'plotOptions': {
-                'pie': {
+                'column': {
                     'allowPointSelect': True,
-                    'format': '<b>{point.name}</b>: {point.value} ',
                     'dataLabels': {
                         'enabled': True
-                    },
-                    'showInLegend': True
-                }
-            }
-        }
+                    }}
+            }}
         chart.set_dict_options(options)
         for item in format_known.elements:
-            chart.add_data_set(format_known.elements[item], 'pie',name=item)
+            chart.add_data_set(
+                format_known.elements[item],series_type=self.type, name=item)
         chart.buildhtml()
         text_to_return = "<input type='checkbox' id=" + \
-            str(self.g_id)+"> Is the following graph useful? </input>"
+            str(self.g_id)+"> Is the following chart useful? </input>"
         text_to_return += chart.content
         return text_to_return

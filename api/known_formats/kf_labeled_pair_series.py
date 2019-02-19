@@ -19,6 +19,8 @@ class LabeledPairSeries:
             self.elements[series_names[i]]=current_serie
     
     def reset_with_series(self,series,series_names=[]):
+        ''' Recive two lists, s_values where wich element is a serie
+        and series_name where wich elements is a serie_name'''
         self.elements = {}
         self.min_value = 99999999
         self.max_value = -9999999

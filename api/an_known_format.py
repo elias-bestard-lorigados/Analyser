@@ -1,3 +1,5 @@
 from api.known_formats.kf_num_series import NumSeries
 from api.known_formats.kf_pairs_series import PairsSeries
 from api.known_formats.kf_labeled_pair_series import LabeledPairSeries
+from api.known_formats.kf_trios_series import TriosSeries
+from api.known_formats.kf_labeled_trios_series import LabeledTriosSeries

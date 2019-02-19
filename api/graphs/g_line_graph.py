@@ -18,10 +18,10 @@ class LineGraph:
         ''' Genera el codigo de JS para highcharts y lo retorna '''
         chart = Highchart(renderTo="chart_container_" +
                           str(self.g_id))
-        chart.set_options('chart', {})
+        chart.set_options('chart', {'zoomType': 'xy'})
         options = {
             'title': {
-                'text': 'A Line Chart'
+                'text': self.type+' chart'
             },
             'tooltip': {
                 'pointFormat': '{series.name}: <b>{point.y}</b>'
@@ -35,12 +35,8 @@ class LineGraph:
         }}
         chart.set_dict_options(options)
         for item in format_known.elements:
-            if isinstance(item, int):
-                chart.add_data_set(
-                    format_known.elements[item], series_type="line")
-            else:
-                chart.add_data_set(
-                    format_known.elements[item], series_type="line", name=item)
+            chart.add_data_set(
+                format_known.elements[item], series_type="line", name=item)
         chart.buildhtml()
         text_to_return = "<input type='checkbox' id="+str(self.g_id)+"> Is the following graph useful? </input>"
         text_to_return +=chart.content

@@ -52,6 +52,7 @@ class Analyser:
         , "w")
         self.file.write("<head>")
         self.file.write("<script src=\"./highcharts.js\"></script>")
+        self.file.write("<script src=\"./highcharts-more.js\"></script>")
         self.file.write("<script src=\"./jquery.js\"></script>")
         self.file.write("</head>")
         self.file.write("<body>")
