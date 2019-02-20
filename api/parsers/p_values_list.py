@@ -27,6 +27,7 @@ class ValuesList:
         Retorna una lista con FK"""
         formats_list = []
         elements = []   #los elemetos tal como estan
+        #for pairs
         x_values = [] #elementos en pairs si son cantidad de numeros pairs
         y_values = [] #elementos en pairs si son cantidad de numeros pairs
         data=data.split('\n')
@@ -40,6 +41,10 @@ class ValuesList:
                 y_values.append([values[i] for i in range(1,len(values),2)])
         if elements!=[]:
             formats_list.append((formats.NumSeries(elements),1))
+            chart_boxplot=formats.BoxplotSeries()
+            chart_boxplot.calculate_boxplot_from_list(elements)
+            if len(chart_boxplot.elements)!=0:
+                formats_list.append((chart_boxplot,1))
         if x_values!=[]:
             formats_list.append((formats.PairsSeries(x_values,y_values),1))
         return formats_list

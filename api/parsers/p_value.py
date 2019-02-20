@@ -29,6 +29,10 @@ class Value:
         data2 = [[item] for item in data]
         formats_list.append((formats.NumSeries([data]),1))#add the serie "data"
         formats_list.append((formats.NumSeries(data2),1))#add  a serie for each number in data
+        chart_boxplot=formats.BoxplotSeries()
+        chart_boxplot.calculate_boxplot_from_list([data])
+        if len(chart_boxplot.elements)!=0:
+                formats_list.append((chart_boxplot,1))
         if len(data)%2==0:
             formats_list.append((formats.PairsSeries([[data[x] for x in range(0, len(data), 2)]],
                                 [[data[x] for x in range(1, len(data), 2)]]),1))

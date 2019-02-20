@@ -26,8 +26,9 @@ class LabelValuesList:
         Espera varios numeros separados por 'salto de linea'.
         Retorna una lista con FK"""
         formats_list = []
-        labels = []
-        values = []
+        labels = []#stores the names of each series
+        values = []#store all the series (list of lists of numbers)
+        #for pairs
         x_values=[]
         y_values=[]
         labels_pairs=[]
@@ -48,9 +49,13 @@ class LabelValuesList:
             if len(value) % 2 == 0:
                 x_values.append([value[i] for i in range(0,len(value),2)])
                 y_values.append([value[i] for i in range(1,len(value),2)])
-        # formats_list.append((formats.NumSeries(values, labels),1))
+        formats_list.append((formats.NumSeries(values, labels),1))
         if not len(y_values)==0:# si se annadieron pares de elementos
             formats_list.append((formats.LabeledPairSeries(x_values,y_values, labels_pairs),1))
+        chart_boxplot=formats.BoxplotSeries()
+        chart_boxplot.calculate_boxplot_from_list(values,labels)
+        if len(chart_boxplot.elements)!=0:
+            formats_list.append((chart_boxplot,1))
         return formats_list
 
     def help(self):

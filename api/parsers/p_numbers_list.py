@@ -16,16 +16,20 @@ class NumbersList:
         if info:
             formts=[]
             formts.append((formats.NumSeries(info),1))
+            chart_boxplot=formats.BoxplotSeries()
+            chart_boxplot.calculate_boxplot_from_list(info)
+            if len(chart_boxplot.elements)!=0:
+                formts.append((chart_boxplot,1))
             return formts
         return None
 
     def help(self):
-        return ''' parsea como las lineas como una serie, de listas de pares x,y donde x puede
-        ser un numero o un label y si x no aparece en el par se toma 1 2 3 4 ... por defc
-                EJ: 
-                [[primero,3.85],[segundo,4.28],[tercero,4],[cuarto,4.57],[quinto,4.25]]
-                [2,3,4,5,6,21,12]
-                [[1,1],[2,2],[3,3],[4,4]]'''
+        return ''' parsea como las lineas como una serie, de listas de numeros
+        EJ: 
+        [64.15, 52.4, 76.39]
+        [51.04, 76.8, 52.14, 81.78, 77.95, 51.14, 94.35]
+        [91.7, 83.9, 97.57, 56.65, 77.73, 63.27]
+        [94.54, 86.2, 52.69, 96.05, 61.44, 84.79, 63.77, 52.62]'''
 
 
     def data_generator(self,path ,amount=50, on_top=50, below=100):

@@ -1,14 +1,11 @@
 from highcharts import Highchart
 from api import an_known_format as formats
 
-class AreaRangeChart:
-    """ Crear un grafico de area por rango """
+class BoxplotChart:
+    """ Make a boxplot chart """
     def __init__(self):
-        self.type="arearange"
-        # self.kf_permited=[formats.NumSeries,formats.PairsSeries,
-                        # formats.TriosSeries,formats.LabeledTriosSeries]
-        self.kf_permited=[formats.PairsSeries,
-                        formats.TriosSeries,formats.LabeledTriosSeries]
+        self.type="boxplot"
+        self.kf_permited=[formats.BoxplotSeries]
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos """
@@ -18,7 +15,7 @@ class AreaRangeChart:
         return self.__make_js_code(format_known)
 
     def __make_js_code(self, format_known):
-        ''' Genera el codigo de JS para highcharts y lo retorna '''
+        ''' Generate the JS code of the chart and return it '''
         chart = Highchart(renderTo="chart_container_" +
                           str(self.g_id))
         chart.set_options('chart', {'zoomType': 'xy'})
@@ -27,9 +24,11 @@ class AreaRangeChart:
                 'text': self.type+' chart'
             },
             'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.y} </b>',
-                'shared': True,
-                'crosshairs': True,
+                'pointFormat': '''{series.name}: 
+                <b>
+                    X: {point.x}, Y: {point.y}, Low: {point.low}, Q1: {point.q1}, Median: {point.median},
+                    Q3: {point.q3}, High: {point.high} 
+                </b>'''
             },
             'plotOptions': {
                 'column': {

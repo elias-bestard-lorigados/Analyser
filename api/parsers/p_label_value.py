@@ -37,8 +37,8 @@ class LabelValue:
             value = int(temp[-1])
             labels.append(label)
             values.append(value)
-        formats_list.append((formats.NumSeries([[item] for item in values],
-                                                [item for item in labels]),1))
+        # formats_list.append((formats.NumSeries([[item] for item in values],
+        #                                         [item for item in labels]),1))
         formats_list.append((formats.LabeledPairSeries([labels], [values]),1))
         formats_list.append((formats.LabeledPairSeries([[item]for item in labels],[[item]for item in values]),1))
         return formats_list
