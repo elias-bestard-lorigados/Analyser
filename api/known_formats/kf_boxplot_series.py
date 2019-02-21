@@ -6,8 +6,8 @@ class BoxplotSeries:
 
 
     def __init__(self, s_values=[],series_names=[]):
-        ''' Recive two lists, s_values where wich element is a serie
-        and series_name where wich elements is a serie_name
+        ''' Recive two lists, s_values where each element is a serie
+        and series_name where each elements is a serie_name
         ASUMING ALL THE VALUES  (low, q1, median, q3 and high) ARE CALCULATED'''
         self.elements = {}
         self.min_value = 9999999999 #minimun bettwen the lows values
@@ -23,8 +23,8 @@ class BoxplotSeries:
             self.max_value=current_max if current_max>self.max_value else self.max_value
 
     def calculate_boxplot_from_list(self,series_list=[], series_names=[]):
-        ''' Recive two lists, s_values where wich element is a serie
-        and series_name where wich elements is a serie_name
+        ''' Recive two lists, s_values where each element is a serie
+        and series_name where each elements is a serie_name
         ASUMING ALL THE VALUES  (low, q1, median, q3 and high) ARE NOT CALCULATED'''
         self.elements = {}
         self.min_value = 9999999999 #minimun bettwen the lows values

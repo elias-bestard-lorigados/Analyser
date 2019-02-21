@@ -2,6 +2,7 @@ Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
     @Parsers:
         ✔ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py @done(19-01-29 15:27)
+        ☐ @Now Annadir loa parsers de cada grafico donde reciben en formato json!!!!
 
         ☐ Json Parser
         ☐ CSV parser
@@ -15,8 +16,10 @@ Analyser:
         ✔ Revisar las propiedades de los KF @done(19-02-18 14:22)
         ☐ ver como calcurar bien los count= cantidad de puntos o de series de un kf
     @Graphics:
+        ✔ @Now Annadir funcion que genere JS para annadir graficos de highchars que no estan en pyhton-highcharts @done(19-02-21 15:24)
+        ☐ @Now Annadir Graficos con entradas diferentes
+
         ✔ @important crear los graficos con un id @done(19-01-31 00:11)
-        ☐ Meter Graficos
         ✔ @important poder eliminar agregar graficos (los  files) y seguir pinchando @done(19-02-12 14:39)
         ✔ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son graficos( Lanzar warning si no la cumple) @done(19-02-12 14:39)
         ☐ Arreglar otro tipo de salidas que no sean html ej:txt R matplotlist

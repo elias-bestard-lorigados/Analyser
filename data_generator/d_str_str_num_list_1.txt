@@ -1,0 +1,4 @@
+[[label_24,label_25,70.68],[label_26,label_27,75.86],[label_28,label_29,60.67]]
+[[label_30,label_31,99.35],[label_32,label_33,52.22],[label_34,label_35,57.29],[label_36,label_37,52.05],[label_38,label_39,66.95],[label_40,label_41,92.53],[label_42,label_43,78.02],[label_44,label_45,84.24],[label_46,label_47,77.51]]
+[[label_48,label_49,90.33],[label_50,label_51,86.72],[label_52,label_53,50.54],[label_54,label_55,51.69],[label_56,label_57,76.37],[label_58,label_59,85.22],[label_60,label_61,75.56]]
+[[label_64,label_65,90.71],[label_66,label_67,75.59],[label_68,label_69,86.46]]
