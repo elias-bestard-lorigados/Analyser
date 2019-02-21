@@ -51,10 +51,11 @@ class Analyser:
         self.file = open(Config().output_path+"/"+Config().output_name+"_"+str(Config().output_count)+".html"
         , "w")
         self.file.write("<head>")
-        self.file.write("<script src=\"./highcharts.js\"></script>")
-        self.file.write("<script src=\"./highcharts-more.js\"></script>")
-        self.file.write("<script src=\"./sankey.js\"></script>")
-        self.file.write("<script src=\"./jquery.js\"></script>")
+        self.file.write("<script src=\"./js_libraries/highcharts.js\"></script>")
+        self.file.write("<script src=\"./js_libraries/highcharts-more.js\"></script>")
+        self.file.write("<script src=\"./js_libraries/sankey.js\"></script>")
+        self.file.write("<script src=\"./js_libraries/vector.js\"></script>")
+        self.file.write("<script src=\"./js_libraries/jquery.js\"></script>")
         self.file.write("</head>")
         self.file.write("<body>")
 
