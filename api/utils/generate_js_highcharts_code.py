@@ -22,7 +22,21 @@ def add_js_code(data,chart_name="Chart",type='line',chart_id=1,keys=[]):
                 "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {},
                 "labels": {}, "legend": {}, "loading": {}, "navigation": {}, "pane": {},
                 "plotOptions": {
-                    "column": {"allowPointSelect": true, "dataLabels": {"enabled": true}}
+                    "column": {"allowPointSelect": true, "dataLabels": {"enabled": true}},
+                    "packedbubble": {
+                        'dataLabels': {
+                        'enabled': true,
+                        'format': '{point.name}',
+                        'style': {
+                          'color': 'black',
+                          'textOutline': 'none',
+                          'fontWeight': 'normal'}},
+                        'minPointSize': 5
+                        },
+                    "tilemap":{
+                        dataLabels: {
+                        enabled: true,
+                        format: '{point.name}',
                     },
                 "series": {}, "subtitle": {},
                 "title": {"text": '"""+str(chart_name)+"""'},
