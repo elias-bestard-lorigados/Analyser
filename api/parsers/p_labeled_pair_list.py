@@ -14,8 +14,7 @@ class LabeledPairList:
         info = g_labeled_pairs_list.parse(data)
         if info:
             formts=[]
-            new_format=formats.LabeledPairSeries()
-            new_format.reset_with_series(info)
+            new_format=formats.LabeledPairSeries(info)
             formts.append((new_format,1))
             return formts
         return None

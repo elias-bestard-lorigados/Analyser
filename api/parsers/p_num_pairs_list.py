@@ -15,8 +15,7 @@ class NumPairsList:
         info = g_num_pairs_list.parse(data)
         if info:
             formts=[]
-            new_format=formats.PairsSeries()
-            new_format.reset_with_series(info)
+            new_format=formats.PairsSeries(info)
             formts.append((new_format,1))
             return formts
         return None

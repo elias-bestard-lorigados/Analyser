@@ -1,49 +1,44 @@
 Analyser:
     ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
+    ☐ Cambiar visual para que se vean por tabs los graficos
+
     @Parsers:
-        ✔ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py @done(19-01-29 15:27)
         ☐ @Now Annadir loa parsers de cada grafico donde reciben en formato json!!!!
+        ☐ generar juegos de datos a corde a cada grfico
 
         ☐ Json Parser
-        ☐ CSV parser
         ☐ XML parser
         ☐ Hacer algo de Preprocesar definiendo niveles de parseo
         ☐ eliminar comentarios despues de definir comentarios
-        ☐ seria bueno tener un metodo que dado un separador sea capaz de reconocer una secuencia de numeros
 
     @Known_Formats:
-        ✔ @important Añadirle propiedades para guardar la info necesaria para la retroalimentacion @done(19-02-11 16:19)
-        ✔ Revisar las propiedades de los KF @done(19-02-18 14:22)
         ☐ ver como calcurar bien los count= cantidad de puntos o de series de un kf
+        ☐ Annadir comportamiento fuzzi a los KF
+        ☐ Annadir propiedades estadisticas!!!
+        ☐ Tests que dadas las propiedades de los datos digan cuales son los mejores graficos para ello
+
     @Graphics:
-        ✔ @Now Annadir funcion que genere JS para annadir graficos de highchars que no estan en pyhton-highcharts @done(19-02-21 15:24)
-        ☐ @Now Annadir Graficos con entradas diferentes
 
-        ✔ @important crear los graficos con un id @done(19-01-31 00:11)
-        ✔ @important poder eliminar agregar graficos (los  files) y seguir pinchando @done(19-02-12 14:39)
-        ✔ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son graficos( Lanzar warning si no la cumple) @done(19-02-12 14:39)
         ☐ Arreglar otro tipo de salidas que no sean html ej:txt R matplotlist
-
-    ✔ Generar config.ini automatico @done(19-02-19 17:30)
-    ✔ Meter config en utils @done(19-01-28 16:02)
-    ✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19)
-    ✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16)
-    ✔ Crear una "BD" donde guardar info de los grafico y se sirvio o no @done(19-02-04 19:35)
-    ✔ Update la base de datos @done(19-02-10 15:49)
-
+    
  Archive:
-    ✔ Hacer script que ejecute el programa ?????? @done(19-01-28 16:16) @project(Analyser)
-    ✔ @important Archivo Config @done(19-01-22 17:11) @project(Analyser)
+
+  
     ✔ @Known_Formats
-    ✔ generar ejemplos de tods los formatos @done(19-01-21 10:49) @project(Analyser.@Known_Formats)
-    ✔ Cambiarle los nombres a los formatos!!! @done(19-01-21 10:47) @project(Analyser.@Known_Formats)
-    ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-    ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-    ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-    ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
-    ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ @important Añadirle propiedades para guardar la info necesaria para la retroalimentacion @done(19-02-11 16:19) @project(Analyser.@Known_Formats)
+        ✔ Revisar las propiedades de los KF @done(19-02-18 14:22) @project(Analyser.@Known_Formats)
+        ✔ generar ejemplos de tods los formatos @done(19-01-21 10:49) @project(Analyser.@Known_Formats)
+        ✔ Cambiarle los nombres a los formatos!!! @done(19-01-21 10:47) @project(Analyser.@Known_Formats)
+        ✔ @hight Hacerle la "interfaz a formatos conocidos"(propuesta de interfaz): @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad elementos [(X,Y)] o [] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad x o label [X] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad y [Y] @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
+        ✔ propiedad series para saber si son varias series o solo una @done(18-10-29 21:10) @project(Analyser.@Known_Formats)
     
     ✔ @Parsers
+        ✔ seria bueno tener un metodo que dado un separador sea capaz de reconocer una secuencia de numeros @done(19-03-08 17:23) @project(Analyser.@Parsers)
+        ✔ CSV parser @done(19-03-08 17:23) @project(Analyser.@Parsers)
+        ✔ Ver como generalizar la forma en la que importo dinamicamente los parsers en an_identify y input.py @done(19-01-29 15:27) @project(Analyser.@Parsers)
         ✔ @important Que los parsers retornen una lista de tuplas [(KF,value)..] value = parecido de la info con la estructura @done(19-01-23 00:47) @project(Analyser.@Parsers)
         ✔ @important En la interfaz de los parsers no es necesario que este el metodo generador @done(19-01-23 00:21) @project(Analyser.@Parsers)
         ✔ @important Chequear si los ficheros cumplen con la interfaz de antes de suponer que son parsers( Lanzar warning si no la cumple) @done(19-01-23 00:17) @project(Analyser.@Parsers)
@@ -62,12 +57,25 @@ Analyser:
         ✔ adaptar AN_Parsers @done(18-10-29 20:09) @project(Analyser.@Parsers)
 
     ✔ @Graphicsics
+        ✔ @Now Annadir funcion que genere JS para annadir graficos de highchars que no estan en pyhton-highcharts @done(19-02-21 15:24) @project(Analyser.@Graphics)
+        ✔ @Now Annadir Graficos con entradas diferentes @done(19-03-08 17:22) @project(Analyser.@Graphics)
+        ✔ @important crear los graficos con un id @done(19-01-31 00:11) @project(Analyser.@Graphics)
+        ✔ @important poder eliminar agregar graficos (los  files) y seguir pinchando @done(19-02-12 14:39) @project(Analyser.@Graphics)
+        ✔ Chequear si los ficheros cumplen con la interfaz de antes de suponer que son graficos( Lanzar warning si no la cumple) @done(19-02-12 14:39) @project(Analyser.@Graphics)
         ✔ lisatar graficos disponibles en la ayuda @done(18-12-27 23:45) @project(Analyser.@Graphics)
         ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @project(Analyser.@Graphics) @done(18-12-27 23:23)
 
-    ✔  Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11) @project(Analyser)
-    ✔  output -> out @done(18-12-28 00:10) @project(Analyser)
-    ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(Analyser)
-    ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(Analyser)
-    ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(Analyser)
-    ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(Analyser)
+✔ Generar config.ini automatico @done(19-02-19 17:30) @project(Analyser)
+✔ Meter config en utils @done(19-01-28 16:02) @project(Analyser)
+✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19) @project(Analyser)
+✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16) @project(Analyser)
+✔ Crear una "BD" donde guardar info de los grafico y se sirvio o no @done(19-02-04 19:35) @project(Analyser)
+✔ Update la base de datos @done(19-02-10 15:49) @project(Analyser)
+✔ Hacer script que ejecute el programa ?????? @done(19-01-28 16:16) @project(Analyser)
+✔ @important Archivo Config @done(19-01-22 17:11) @project(Analyser)
+✔  Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11) @project(Analyser)
+✔  output -> out @done(18-12-28 00:10) @project(Analyser)
+✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(Analyser)
+✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(Analyser)
+✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(Analyser)
+✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(Analyser)

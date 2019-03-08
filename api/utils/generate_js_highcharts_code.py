@@ -35,9 +35,10 @@ def add_js_code(data,chart_name="Chart",type='line',chart_id=1,keys=[]):
                         },
                     "tilemap":{
                         dataLabels: {
-                        enabled: true,
-                        format: '{point.name}',
-                    },
+                            enabled: true,
+                            format: '{point.name}'
+                            }
+                        }},
                 "series": {}, "subtitle": {},
                 "title": {"text": '"""+str(chart_name)+"""'},
                 "tooltip": {"pointFormat": "{series.name}: <b>x={point.x} ,y={point.y} </b>"},

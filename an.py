@@ -59,6 +59,7 @@ class Analyser:
         self.file.write("<script src=\"./js_libraries/heatmap.js\"></script>")
         self.file.write("<script src=\"./js_libraries/networkgraph.js\"></script>")
         self.file.write("<script src=\"./js_libraries/bullet.js\"></script>")
+        self.file.write("<script src=\"./js_libraries/tilemap.js\"></script>")
         self.file.write("</head>")
         self.file.write("<body>")
 
