@@ -1,5 +1,8 @@
 from api import an_known_format as formats
 from api.utils.generate_js_highcharts_code import add_js_code 
+from api.utils import distributions 
+import random
+
 class SankeyChart:
     """ Crear un diagrama de sankey"""
     def __init__(self):
@@ -21,3 +24,21 @@ class SankeyChart:
             str(self.g_id)+"> Is the following chart useful? </input>"
         text_to_return += js_code
         return text_to_return
+
+    def generate(self,id):
+        elements=[]
+        current=0
+        layers=[]
+        for layer in range(int(random.uniform(3,7))):
+            temp=[]
+            for lbl in range(int(random.uniform(2,5))):
+                current+=1
+                temp.append('label_'+str(current))
+            layers.append(temp)
+        for i in range(len(layers)-1):
+            for lbl1 in layers[i]:
+                for lbl2 in layers[i+1]:
+                    elements.append([lbl1,lbl2,int(random.uniform(1,5))])
+        my_format=formats.StrStrWeightSeries([elements],['Test_'])
+        code=self.graphic(id,my_format)
+        return code,my_format

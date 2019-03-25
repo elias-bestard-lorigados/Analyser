@@ -52,3 +52,11 @@ class FourTupleList:
             data+="["+middle_data+"]"
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" completo con lagramatica definida! 
+        retorna una None o una descripcioon del la line "FourTupleList" """
+        info = g_four_tuple_list.parse(line)
+        if info:
+            return "FourTupleList"
+        return None

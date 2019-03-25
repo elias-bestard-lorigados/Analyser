@@ -51,3 +51,11 @@ class StrStrNumList:
             data+="["+middle_data+"]"
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" con la gramaitca definida
+        retorna una None o una descripcioon del la line "StrStrNumList" """
+        info = g_str_str_weight_list.parse(line)
+        if info:
+            return "StrStrNumList"
+        return None

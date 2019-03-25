@@ -50,3 +50,11 @@ class StrTupleList:
             data+="["+middle_data+"]"
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" con la gramaitca definida
+        retorna una None o una descripcioon del la line "StrTupleList" """
+        info = g_str_tuple.parse(line)
+        if info:
+            return "StrTupleList"
+        return None

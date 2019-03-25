@@ -49,3 +49,11 @@ class NumPairsList:
             data+="["+middle_data+"]"
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" con la gramaitca definida
+        retorna una None o una descripcioon del la line "NumPairsList" """
+        info = g_num_pairs_list.parse(line)
+        if info:
+            return "NumPairsList"
+        return None

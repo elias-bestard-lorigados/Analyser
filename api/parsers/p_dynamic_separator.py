@@ -72,3 +72,14 @@ class DynamicSeparator:
             file.write(data[:-1]+"\n")
         file.close()
 
+    def describe(self, line,separator=","):
+        """ Ver si matchea el texto "line" completo con la expresion regular definida! 
+        retorna una None o una descripcioon del la line "DynamicSeparator"
+        separator es el separador que espera entre numeros, default ',' """
+        if separator != self.__separator:
+            self.__separator = separator
+            self._re = re.compile(
+                '(([ A-Za-z ]+(_[0-9]+)*)+'+separator+'([0-9]+('+separator+'[0-9]+)*)+[\n]*)*')
+        if self._re.match(line).end() == len(line):
+            return "DynamicSeparator"
+        return None

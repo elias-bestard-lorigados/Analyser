@@ -1,5 +1,6 @@
 from api import an_known_format as formats
-from api.utils.generate_js_highcharts_code import add_js_code 
+from api.utils.generate_js_highcharts_code import add_js_code
+import random
 class VectorChart:
     """ Crear un diagrama de vectores"""
     def __init__(self):
@@ -21,3 +22,19 @@ class VectorChart:
             str(self.g_id)+"> Is the following chart useful? </input>"
         text_to_return += js_code
         return text_to_return
+    
+    def generate(self,id):
+        elements = []
+        numbs_series = int(random.uniform(1,6))
+        count = int(random.uniform(20, 50))
+        for i in range(numbs_series):
+            temp=[]
+            for item in range(count):
+                y = int(random.uniform(1, 15))
+                len_ = random.uniform(1, 3)
+                direct = random.uniform(0, 360)
+                temp.append([y, len_, direct])
+            elements.append(temp)
+        my_format=formats.TriosSeries(elements)
+        code=self.graphic(id,my_format)
+        return code,my_format

@@ -1,4 +1,5 @@
 from api.utils.config import Config
+from api.an_graphs import graphic_generate
 import configparser
 import argparse
 import os
@@ -21,6 +22,8 @@ parser.add_argument("-gl", "--graphs_list", help='''List all the graphs definded
                     action='store_true')
 parser.add_argument("-dg", "--data_generator", help='''To Generate many files of data to analize, depends of the parse of your choice ex:'p_label_value,p_series_list' ''',
                     type=str)
+parser.add_argument("-gg", "--graphics_generator", help='''To Generate many out files with the graphs selected Ex:'g_line_graph.g_pie_graph' ''',
+                    type=str)
 parser.add_argument("-gc", "--generate_config", help='''Generate config.ini ''',
                     action='store_true')
 def parse():
@@ -32,8 +35,8 @@ def parse():
     if os.path.exists('./config.ini'):
         __read_conf()
     __set_config_by_args(args)
-    if config.parser_list == 1 or config.prarsers_help != [] or config.data_generated!=[] or config.graphs_list==1:
-        # if args.parsers_help or args.parsers_list or args.graphs_list or args.data_generator:
+    if config.parser_list == 1 or config.prarsers_help != [] or config.data_generated!=[] or config.graphs_list==1 or config.graphics_g!=[]:
+        # if args.parsers_help or args.parsers_list or args.graphs_list or args.data_generator or args.graphics_generator:
         if config.prarsers_help != []:
         # if args.parsers_help:
             print("PARSERS HELP")
@@ -54,6 +57,10 @@ def parse():
         # if args.data_generator:
             print("GENERATING DATA")
             data_generator()
+        if config.graphics_g != []:
+            # if args.graphics_generator:
+            print("GENERATING GRAPHICS")
+            __graphics_generator()
         return []
     # data=STRING a procesar
     data = ""
@@ -119,6 +126,7 @@ def __read_conf():
     datag_path = config['DATA_G']['path']
     datag_parsers = config['DATA_G']['parsers'] if not config['DATA_G']['parsers'] == "" else None
     db_path=config['DB']['path']
+    graphics_to_generate=config['GRAPHICS_G']['graphichs']
     # Config().db_path=db_path
     Config().set_db_path(db_path)
     Config().set_in_path(input_path)
@@ -133,6 +141,7 @@ def __read_conf():
     Config().set_parsers_list(parser_list)
     Config().set_data_g_path(datag_path)
     Config().set_data_generated_list(datag_parsers)
+    Config().set_graphics_generated_list(graphics_to_generate)
 
 def __set_config_by_args(args):
     if args.file:
@@ -151,6 +160,33 @@ def __set_config_by_args(args):
         Config().set_graphs_list(1)
     if args.data_generator:
         Config().set_data_generated_list(args.data_generator)
+    if args.graphics_generator:
+        Config().set_graphics_generated_list(args.graphics_generator)
+
+def __graphics_generator():
+    ''' Generate a mount of files with examples of info who can be parse by the parsers definded '''
+    path = Config().output_path
+    data_files = [item
+                for item in os.listdir(path) if item.__contains__("output_generated_")]
+    file = open(path+"/output_generated_" +
+                str(len(data_files)+1)+".html", "w")
+    file.write('''<head>
+        <script src=\"./js_libraries/jquery.js\"></script>
+        <script src=\"./js_libraries/highcharts.js\"></script>
+        <script src=\"./js_libraries/highcharts-more.js\"></script>
+        <script src=\"./js_libraries/sankey.js\"></script>
+        <script src=\"./js_libraries/vector.js\"></script>
+        <script src=\"./js_libraries/heatmap.js\"></script>
+        <script src=\"./js_libraries/networkgraph.js\"></script>
+        <script src=\"./js_libraries/bullet.js\"></script>
+        <script src=\"./js_libraries/tilemap.js\"></script>
+        </head>
+        <body>''')
+    graphics_code= graphic_generate(Config().graphics_g)
+    for code in graphics_code:
+        file.write(code)
+    file.write("</body>")
+    file.close()
 
 def __generate_config():
     file=open('config.ini','w')
@@ -203,4 +239,6 @@ parsers =
 ; parsers = all
 
 [DB]
-path=api/utils/data_base.json ''')
+path=api/utils/data_base.json 
+[GRAPHICS_G]
+graphichs=''')

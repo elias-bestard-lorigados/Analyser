@@ -1,9 +1,8 @@
-#! /home/elias/anaconda3/bin/python
+# ! /home/elias/anaconda3/bin/python
 from api.utils.config import Config
 from api.an_identify import identify
 from api.an_graphs import graph
 import input_parser
-import os
 class Analyser:
     def __init__(self,data):
         ''' Inicializar las propiedades de la clase

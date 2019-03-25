@@ -1,5 +1,6 @@
 from api import an_known_format as formats
-from api.utils.generate_js_highcharts_code import add_js_code 
+from api.utils.generate_js_highcharts_code import add_js_code
+import random
 class PackedbubbleChart:
     """ Crear un grafo"""
     def __init__(self):
@@ -21,3 +22,16 @@ class PackedbubbleChart:
             str(self.g_id)+"> Is the following chart useful? </input>"
         text_to_return += js_code
         return text_to_return
+
+    def generate(self, id):
+        elements = []
+        series_nums = int(random.uniform(3, 10))
+        point_nums = int(random.uniform(7, 20))
+        for i in range(series_nums):
+          temp = []
+          for item in range(point_nums):
+            temp.append(['label_'+str(item), round(random.uniform(1, 50), 2)])
+          elements.append(temp)
+        my_format = formats.LabeledPairSeries(elements)
+        code = self.graphic(id, my_format)
+        return code, my_format

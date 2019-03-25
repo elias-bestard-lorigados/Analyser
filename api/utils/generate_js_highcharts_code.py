@@ -34,10 +34,13 @@ def add_js_code(data,chart_name="Chart",type='line',chart_id=1,keys=[]):
                         'minPointSize': 5
                         },
                     "tilemap":{
-                        dataLabels: {
-                            enabled: true,
-                            format: '{point.name}'
+                        'dataLabels': {
+                            'enabled': true,
+                            'format': '{point.name}'
                             }
+                        },
+                        "sankey":{
+                        'tooltip': {"pointFormat": "{series.name}: <b>{point.from}, {point.to} :{point.weight} </b>"}
                         }},
                 "series": {}, "subtitle": {},
                 "title": {"text": '"""+str(chart_name)+"""'},

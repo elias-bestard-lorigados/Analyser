@@ -49,6 +49,8 @@ class Config:
         self.db_path = 'api/utils/data_base.json'
         self.db_count_id=0 #para saber por que id voy generando los graficos
 
+        self.graphics_g=[]
+
     def set_db_path(self,path):
         ''' Set 'path' as the data base path, a file where we puts the necesary info for our system
         if the file exist then update the 'db_count_id'
@@ -171,6 +173,7 @@ class Config:
 
     def set_parsers_help(self,in_parsers_help):
         """ Update self.prarsers_help to a list of parsers who's help are going to be show"""
+        self.prarsers_help=[]
         if in_parsers_help == None:
             return
         if in_parsers_help != "all":
@@ -183,15 +186,23 @@ class Config:
             self.prarsers_help = self.parsers
 
     def set_parsers_list(self,parser_list):
+        '''update self.parser_list to 0 or 1(false or true), 
+        self.parser_list tell us if we need print the list of all parsers implemented  '''
         self.parser_list=int(parser_list)
+
     def set_graphs_list(self,graphs_list):
+        '''update self.graphs_list to 0 or 1(false or true), 
+        self.graphs_list tell us if we need print the list of all graphics implemented  '''
         self.graphs_list=int(graphs_list)
 
     def set_data_g_path(self,dg_path):
+        '''update self.data_generated_path to dg_path, 
+        self.data_generated_path is where we put the data generated  '''
         self.data_generated_path =dg_path
 
     def set_data_generated_list(self,in_dg):
         """ update the self.data_generated to a list of all parser who will be use to generate datasets """
+        self.data_generated=[]
         if in_dg == None:
             return
         if in_dg!="all":
@@ -212,3 +223,26 @@ class Config:
             class_name += item
         return class_name
 
+    def set_graphics_generated_list(self,in_gg):
+        """ update the self.data_generated to a list of all parser who will be use to generate datasets """
+        sys.path.append(self.graphs_path)
+        self.graphics_g=[]
+        if in_gg == None:
+            return
+        if in_gg=="all":
+            in_gg = self.graphs
+        else:
+            in_gg = in_gg.split(",")
+        for graphic in in_gg:
+            if self.graphs.__contains__(graphic):
+                import_module = compile("import "+graphic, 'e', mode='exec')
+                exec(import_module)
+                class_name=self.get_parser_class_name(graphic)
+                temp = eval(str(graphic+'.'+class_name+"()"))
+                if dir(temp).__contains__("generate"):
+                    self.graphics_g.append(class_name)
+                else:
+                    print("WARNING-- THE GRAPHIC "+graphic +
+                            " DOES NOT HAS THE GENERATE METHOD")
+            else:
+                print("WARNING-- THE GRAPHIC "+graphic + " IS NOT DEFIND")

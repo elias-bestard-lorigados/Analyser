@@ -1,49 +1,26 @@
 from highcharts import Highchart
 from api import an_known_format as formats
-
-class AreaRangeChart:
+from charts_hierarchy.my_highchart import MyHighchart
+import random
+class AreaRangeChart(MyHighchart):
     """ Crear un grafico de area por rango """
     def __init__(self):
+        super().__init__()
         self.type="arearange"
-        # self.kf_permited=[formats.NumSeries,formats.PairsSeries,
-                        # formats.TriosSeries,formats.LabeledTriosSeries]
         self.kf_permited=[formats.PairsSeries,
                         formats.TriosSeries,formats.LabeledTriosSeries]
+        self.options['title']= {'text': self.type+' chart'}
 
-    def graphic(self, g_id, format_known):
-        """ Graficar los elementos """
-        if not self.kf_permited.__contains__(type(format_known)):
-            return None
-        self.g_id = g_id
-        return self.__make_js_code(format_known)
-
-    def __make_js_code(self, format_known):
-        ''' Genera el codigo de JS para highcharts y lo retorna '''
-        chart = Highchart(renderTo="chart_container_" +
-                          str(self.g_id))
-        chart.set_options('chart', {'zoomType': 'xy'})
-        options = {
-            'title': {
-                'text': self.type+' chart'
-            },
-            'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.y} </b>',
-                'shared': True,
-                'crosshairs': True,
-            },
-            'plotOptions': {
-                'column': {
-                    'allowPointSelect': True,
-                    'dataLabels': {
-                        'enabled': True
-                    }}
-            }}
-        chart.set_dict_options(options)
-        for item in format_known.elements:
-            chart.add_data_set(
-                format_known.elements[item],series_type=self.type, name=item)
-        chart.buildhtml()
-        text_to_return = "<input type='checkbox' id=" + \
-            str(self.g_id)+"> Is the following chart useful? </input>"
-        text_to_return += chart.content
-        return text_to_return
+    def generate(self, id):
+        elements = []
+        series_nums = int(random.uniform(1, 4))
+        point_nums = int(random.uniform(7, 15))
+        for i in range(series_nums):
+          temp = []
+          for item in range(point_nums):
+            temp.append([round(random.uniform(0, 7), 2),
+                         round(random.uniform(4, 11), 2)])
+          elements.append(temp)
+        my_format = formats.PairsSeries(elements)
+        code = self.graphic(id, my_format)
+        return code, my_format

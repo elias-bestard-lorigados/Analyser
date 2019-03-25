@@ -1,34 +1,16 @@
 from highcharts import Highchart
 from api import an_known_format as formats
-
-class PieGraph:
+from charts_hierarchy.my_highchart import MyHighchart
+import random
+class PieGraph(MyHighchart):
     """ Crear un grafico de Pie """
     def __init__(self):
+        super().__init__()
         self.type = "pie"
         self.kf_permited=[formats.NumSeries,
                         formats.PairsSeries,
-                        formats.LabeledPairSeries]
-
-    def graphic(self, g_id, format_known):
-        """ Graficar los elementos con sus labels si tienen y sale por el output """
-        if not self.kf_permited.__contains__(type(format_known)) or format_known.count>1:
-            return None
-        self.g_id = g_id
-        return self.__make_js_code(format_known)
-
-    def __make_js_code(self, format_known):
-        ''' Genera el codigo de JS para highcharts y lo retorna '''
-        chart = Highchart(renderTo="chart_container_" +
-                          str(self.g_id))
-        chart.set_options('chart', {'zoomType': 'xy'})
-        options = {
-            'title': {
-                'text': self.type+' chart'
-            },
-            'tooltip': {
-                'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'
-            },
-            'plotOptions': {
+                          formats.LabeledPairSeries, formats.DictXy]
+        self.options['plotOptions']= {
                 'pie': {
                     'allowPointSelect': True,
                     'format': '<b>{point.name}</b>: {point.value} ',
@@ -38,12 +20,24 @@ class PieGraph:
                     'showInLegend': True
                 }
             }
-        }
-        chart.set_dict_options(options)
-        for item in format_known.elements:
-            chart.add_data_set(format_known.elements[item], 'pie',name=item)
-        chart.buildhtml()
-        text_to_return = "<input type='checkbox' id=" + \
-            str(self.g_id)+"> Is the following graph useful? </input>"
-        text_to_return += chart.content
-        return text_to_return
+        self.options['tooltip']= {'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'}
+        self.options['title']= {'text': self.type+' chart'}
+
+    def graphic(self, g_id, format_known):
+        """ Graficar los elementos """
+        if not self.kf_permited.__contains__(type(format_known)) or format_known.count > 1:
+            return None
+        self.g_id = g_id
+        return self._make_js_code(format_known)
+    def generate(self,id):
+        elements=[]
+        slices_nums=int(random.uniform(2,9))
+        total=100
+        while slices_nums!=0:
+            temp=random.uniform(1,total)
+            elements.append(['label_'+str(slices_nums),temp])
+            total-=temp
+            slices_nums-=1
+        my_format=formats.LabeledPairSeries([elements])
+        code=self.graphic(id,my_format)
+        return code,my_format

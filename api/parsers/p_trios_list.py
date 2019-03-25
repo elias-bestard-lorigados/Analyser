@@ -48,3 +48,11 @@ class TriosList:
             data+="["+middle_data+"]"
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" con la gramaitca definida
+        retorna una None o una descripcioon del la line "TriosList" """
+        info = g_trios_numbers_list.parse(line)
+        if info:
+            return "TriosList"
+        return None

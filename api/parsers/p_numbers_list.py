@@ -48,3 +48,11 @@ class NumbersList:
                          for x in range(0, num_of_elements)])
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" con la gramaitca definida
+        retorna una None o una descripcioon del la line "NumbersList" """
+        info = g_numbers_list.parse(line)
+        if info:
+            return "NumbersList"
+        return None

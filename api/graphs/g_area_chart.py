@@ -7,5 +7,6 @@ class AreaChart(MyHighchart):
     def __init__(self):
         super().__init__()
         self.type="area"
-        self.kf_permited=[formats.NumSeries,formats.PairsSeries,formats.LabeledPairSeries]
+        self.kf_permited = [formats.NumSeries, formats.PairsSeries,
+                            formats.LabeledPairSeries, formats.DictXy]
         self.options['title']= {'text': self.type+' chart'}

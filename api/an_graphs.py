@@ -1,7 +1,6 @@
-import os
 import sys
 from api.utils.config import Config
-import json
+from api.utils.manage_db import add_data_base
 
 sys.path.append(Config().graphs_path)
 __all_graphs={}
@@ -23,17 +22,18 @@ def graph(known_format,id):
             add_data_base(__all_graphs[chart], known_format,id)
         id+=1
     return result_code
-def add_data_base(graphic,kf,id):
-        ''' Escribe en la base de datos el grafico que se utiliza y la info necesaria '''
-        db_file = open(Config().db_path, 'r')
-        info = db_file.read()
-        deserialization = json.loads(info)
-        myDictObj = {"useful":True , "id": id, "type": graphic.type,
-                     "properties": {"min_value": kf.min_value, "max_value": kf.max_value, "count": kf.count}}
-        deserialization.append(myDictObj)
-        db_file.close()
-        db_file = open(Config().db_path, 'w')
-        serialized = json.dumps(deserialization, sort_keys=True, indent=3)
-        db_file.write(serialized)
-        db_file.close()
 
+def graphic_generate(graphics_list:list):
+    result_code=[]
+    id=Config().db_count_id
+    print("="*20)
+    for chart in graphics_list:
+        content,my_format = __all_graphs[chart].generate(id)
+        if content!=None:
+            print(chart)
+            result_code.append(content)
+            add_data_base(__all_graphs[chart], my_format,id)
+            print("="*20)
+        id+=1
+    Config().db_count_id=id
+    return result_code

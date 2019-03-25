@@ -1,26 +1,32 @@
 Analyser:
-    ☐ Proponer soluciones si no encuentra un formato que parsee la entrada!!
     ☐ Cambiar visual para que se vean por tabs los graficos
+    ☐ Annadir a la CLI seleccionar que tipos de graficos que quiere mostrar segun la info qe muestra cada grafico
+    ☐ Que pasen comno parametro una bd o un excel!!!!
+    ☐ Annadir las distribuciones probabilisticas para generar los datos con estas
+
 
     @Parsers:
         ☐ @Now Annadir loa parsers de cada grafico donde reciben en formato json!!!!
-        ☐ generar juegos de datos a corde a cada grfico
+        ☐ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}];
+        ☐ Crear parser para bd MySql y excel!!!!!!!
+        ☐ Parser que parsee los datos que le paso a los graficos!!!!
 
         ☐ Json Parser
         ☐ XML parser
-        ☐ Hacer algo de Preprocesar definiendo niveles de parseo
-        ☐ eliminar comentarios despues de definir comentarios
+        ✔ @Now Hacer algo de Preprocesar definiendo niveles de parseo(primero sacar una descripcion de cada "linea") sacar comentarios, etc, medio que tokenizar la entrada por linea @done(19-03-25 12:12)
+        ✔ @Now Parseo por secciones @done(19-03-25 12:12)
 
     @Known_Formats:
-        ☐ ver como calcurar bien los count= cantidad de puntos o de series de un kf
+        ☐ ver como calcurar bien las propiedades estadisticas de los KF
         ☐ Annadir comportamiento fuzzi a los KF
         ☐ Annadir propiedades estadisticas!!!
-        ☐ Tests que dadas las propiedades de los datos digan cuales son los mejores graficos para ello
+        ☐ Tests que nos digan cuales son los mejores graficos para mostrar (red neuronal utilizando el feedback)
 
     @Graphics:
-
+        ✔ generar juegos de datos a corde a cada grfico @done(19-03-21 12:26)
+        ✔ Organizar bien los graifcos dada la clase padre MyHighchart @done(19-03-15 20:41)
         ☐ Arreglar otro tipo de salidas que no sean html ej:txt R matplotlist
-    
+
  Archive:
 
   
@@ -65,17 +71,18 @@ Analyser:
         ✔ lisatar graficos disponibles en la ayuda @done(18-12-27 23:45) @project(Analyser.@Graphics)
         ✔ @important Cambiar que los graficos no reciban ningun parametro sino lo reciba el graficador de cada uno @project(Analyser.@Graphics) @done(18-12-27 23:23)
 
-✔ Generar config.ini automatico @done(19-02-19 17:30) @project(Analyser)
-✔ Meter config en utils @done(19-01-28 16:02) @project(Analyser)
-✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19) @project(Analyser)
-✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16) @project(Analyser)
-✔ Crear una "BD" donde guardar info de los grafico y se sirvio o no @done(19-02-04 19:35) @project(Analyser)
-✔ Update la base de datos @done(19-02-10 15:49) @project(Analyser)
-✔ Hacer script que ejecute el programa ?????? @done(19-01-28 16:16) @project(Analyser)
-✔ @important Archivo Config @done(19-01-22 17:11) @project(Analyser)
-✔  Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11) @project(Analyser)
-✔  output -> out @done(18-12-28 00:10) @project(Analyser)
-✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(Analyser)
-✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(Analyser)
-✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(Analyser)
-✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(Analyser)
+    ✔ Generar config.ini automatico @done(19-02-19 17:30) @project(Analyser)
+    ✔ Meter config en utils @done(19-01-28 16:02) @project(Analyser)
+    ✔ hacer un config en la raiz del analice que es opiconal() el cual tiene los parametros por default @done(19-01-30 12:19) @project(Analyser)
+    ✔ annadirle checkbox en grafico para guardar cuando u grafico sea util @done(19-02-02 00:16) @project(Analyser)
+    ✔ Crear una "BD" donde guardar info de los grafico y se sirvio o no @done(19-02-04 19:35) @project(Analyser)
+    ✔ Update la base de datos @done(19-02-10 15:49) @project(Analyser)
+    ✔ Hacer script que ejecute el programa ?????? @done(19-01-28 16:16) @project(Analyser)
+    ✔ @important Archivo Config @done(19-01-22 17:11) @project(Analyser)
+    ✔ Minuscula los name de los ficheros (clases mayus) @done(18-12-28 00:11) @project(Analyser)
+    ✔ output -> out @done(18-12-28 00:10) @project(Analyser)
+    ✔ Revisar fire y click para hacer cli en python(ayuda de las cosas) @done(18-10-24 00:14) @project(Analyser)
+    ✔ Poner directorios como Namespaces @done(18-10-24 00:14) @project(Analyser)
+    ✔ Annadir opcionn como argumento de que tipo de grafico quiere mostrar solamente @done(18-10-24 00:15) @project(Analyser)
+    ✔ Annadir opcion de argumento de que tipo de parser quiere utiliar @done(18-10-24 00:15) @project(Analyser)
+    

@@ -47,3 +47,11 @@ class LabeledPairList:
             data="["+middle_data+"]"
             file.write(data+"\n")
         file.close()
+
+    def describe(self, line):
+        """ Ver si matchea el texto "line" con la gramaitca definida
+        retorna una None o una descripcioon del la line "LabeledPairList" """
+        info = g_labeled_pairs_list.parse(line)
+        if info:
+            return "LabeledPairList"
+        return None

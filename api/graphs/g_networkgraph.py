@@ -1,5 +1,7 @@
 from api import an_known_format as formats
-from api.utils.generate_js_highcharts_code import add_js_code 
+from api.utils.generate_js_highcharts_code import add_js_code
+from api.utils.distributions import get_list_random
+import random
 class Networkgraph:
     """ Crear un grafo"""
     def __init__(self):
@@ -21,3 +23,17 @@ class Networkgraph:
             str(self.g_id)+"> Is the following chart useful? </input>"
         text_to_return += js_code
         return text_to_return
+
+    def generate(self,id):
+        elements = []
+        numbs_vert = int(random.uniform(15, 50))
+        labels = ['label_'+str(i+1) for i in range(numbs_vert)]
+        for lbl in labels:
+            count_neigh = int(random.uniform(0, numbs_vert))
+            neightboors = get_list_random(labels, count_neigh)
+            for item in neightboors:
+                if item != lbl:
+                    elements.append([lbl,item ])
+        my_format= formats.StrPairSeries([elements])
+        code=self.graphic(id,my_format)
+        return code,my_format

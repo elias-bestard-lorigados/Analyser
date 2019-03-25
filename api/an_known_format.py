@@ -8,3 +8,4 @@ from api.known_formats.kf_str_str_weight_series import StrStrWeightSeries
 from api.known_formats.kf_four_tuple_series import FourTupleSeries
 from api.known_formats.kf_labeled_four_tuple_series import LabeledFourTupleSeries
 from api.known_formats.kf_str_pair_series import StrPairSeries
+from api.known_formats.kf_dict_xy import DictXy
