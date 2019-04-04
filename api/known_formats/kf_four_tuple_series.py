@@ -1,4 +1,5 @@
-class FourTupleSeries:
+from api.known_formats.kf_known_format import KnownF
+class FourTupleSeries(KnownF):
     """ Stores a list of series with 4-tuples of numbers [(X,Y,Lenght,Direction),...]"""
 
     def __init__(self, s_values=[],series_names=[]):

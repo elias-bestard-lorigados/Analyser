@@ -1,4 +1,5 @@
-class LabeledTriosSeries:
+from api.known_formats.kf_known_format import KnownF
+class LabeledTriosSeries(KnownF):
     """ Stores a list of series with pairs of numbers [(X_1,Y_1,z1),(X_2,Y_2,Z_2),...,(X_n,Y_n,Z_n)]
         Where the Y_j, Z_j are numbers and X_j is a label"""
 

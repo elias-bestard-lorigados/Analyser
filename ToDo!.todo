@@ -2,22 +2,18 @@ Analyser:
     ☐ Cambiar visual para que se vean por tabs los graficos
     ☐ Annadir a la CLI seleccionar que tipos de graficos que quiere mostrar segun la info qe muestra cada grafico
     ☐ Que pasen comno parametro una bd o un excel!!!!
-    ☐ Annadir las distribuciones probabilisticas para generar los datos con estas
-
 
     @Parsers:
         ☐ @Now Annadir loa parsers de cada grafico donde reciben en formato json!!!!
         ☐ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}];
         ☐ Crear parser para bd MySql y excel!!!!!!!
-        ☐ Parser que parsee los datos que le paso a los graficos!!!!
-
         ☐ Json Parser
         ☐ XML parser
+        
         ✔ @Now Hacer algo de Preprocesar definiendo niveles de parseo(primero sacar una descripcion de cada "linea") sacar comentarios, etc, medio que tokenizar la entrada por linea @done(19-03-25 12:12)
         ✔ @Now Parseo por secciones @done(19-03-25 12:12)
 
     @Known_Formats:
-        ☐ ver como calcurar bien las propiedades estadisticas de los KF
         ☐ Annadir comportamiento fuzzi a los KF
         ☐ Annadir propiedades estadisticas!!!
         ☐ Tests que nos digan cuales son los mejores graficos para mostrar (red neuronal utilizando el feedback)

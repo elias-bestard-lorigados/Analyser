@@ -1,4 +1,5 @@
-class StrPairSeries:
+from api.known_formats.kf_known_format import KnownF
+class StrPairSeries(KnownF):
     """ Stores a list of all the series, serie exp: [[ str, str]...]
         """
 

@@ -20,19 +20,24 @@ for item in Config().parsers:
 def procces_text(text):
     text = remove_blank_line(text)
     text_lines=text.split('\n')
-    description=[]
+    list_kf=[]
     for line in text_lines:
-        description.append(procces_line(line))
-    return text,description
+        list_kf.append(procces_line(line))
+    tm=compress_list(list_kf)
+    return tm
 
 def procces_line(line):
+    """ Verifica si 'line' se puede parsear con algun parser y
+    retorna una lista de todos los KF que se puedan crear a partir de 'line'
+    Verifica igual si es un comentario y en caso que no parsee con ninguno retorna UNKNOWN """
     if is_comment(line):
-        return "COMMENT"
+        return ["COMMENT"]
+    list_kf=[]
     for parser in __all_parsers:
-        description = __all_parsers[parser].describe(line)
-        if description:
-            return description
-    return "UNKNOW"
+        temp = __all_parsers[parser].parse(line)
+        if temp:
+            list_kf.extend(temp)
+    return ["UNKNOW"] if list_kf==[] else list_kf
 
 def is_comment(line):
     return True if line[0] == '#' or(len(line) >= 2 and line[:2] == '//') else False
@@ -45,16 +50,25 @@ def remove_blank_line(text:str):
             new_text+=line+"\n"
     return new_text[:-1]
 
+def compress_list(info_list: list):
+    kf_temp = info_list[0]
+    kf_result=[]
+    for i in range(1,len(info_list)):
+        poss_to_delete=[]
+        for j in range(0,len(kf_temp)):
+            poss=my_contain_by_type(kf_temp[j],info_list[i])
+            if  poss==-1:
+                kf_result.append(kf_temp[j])
+                poss_to_delete.append(kf_temp[j])
+            else:
+                kf_temp[j][0].extend(info_list[i][poss][0])
+        for item in poss_to_delete:
+            kf_temp.remove(item)
+    kf_result.extend(kf_temp)
+    return kf_result
 
-def compress_list(info_list: list, kf_list: list):
-    poss = 0
-    info_result = [info_list[0]]
-    kf_result = [kf_list[0]]
-    for i in range(1, len(kf_list)):
-        if kf_list[i-1] == kf_list[i]:
-            info_result[poss] = info_result[poss]+"\n"+info_list[i]
-        else:
-            poss += 1
-            info_result.append(info_list[i])
-            kf_result.append(kf_list[i])
-    return info_result, kf_result
+def my_contain_by_type(a,b):
+    for i in range(0,len(b)):
+        if type(b[i][0])==type(a[0]):
+            return i
+    return -1

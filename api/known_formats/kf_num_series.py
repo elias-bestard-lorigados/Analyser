@@ -1,4 +1,5 @@
-class NumSeries:
+from api.known_formats.kf_known_format import KnownF
+class NumSeries(KnownF):
     """ Stores a list of series of numbers [X_1,X_2,...,X_n]"""
 
     def __init__(self, series=[],series_names=[]):

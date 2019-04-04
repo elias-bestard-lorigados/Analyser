@@ -1,4 +1,5 @@
-class LabeledFourTupleSeries:
+from api.known_formats.kf_known_format import KnownF
+class LabeledFourTupleSeries(KnownF):
     """ Stores a list of series with 4-tuples of numbers [(X,Y,Lenght,Direction),...]
         where X is the name of the vector"""
 

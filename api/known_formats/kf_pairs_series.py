@@ -1,4 +1,5 @@
-class PairsSeries:
+from api.known_formats.kf_known_format import KnownF
+class PairsSeries(KnownF):
     """ Stores a list of series with pairs of numbers [(X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n)]
         Where the X_j and Y_j are numbers"""
 

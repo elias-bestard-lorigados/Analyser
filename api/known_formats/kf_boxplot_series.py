@@ -1,10 +1,9 @@
 import statistics
 from statistics import median
-class BoxplotSeries:
+from api.known_formats.kf_known_format import KnownF
+class BoxplotSeries(KnownF):
     """ Stores a list of all the series, serie exp: [[ low, q1, median, q3 , high]...]
         """
-
-
     def __init__(self, s_values=[],series_names=[]):
         ''' Recive two lists, s_values where each element is a serie
         and series_name where each elements is a serie_name

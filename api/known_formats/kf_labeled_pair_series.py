@@ -1,4 +1,5 @@
-class LabeledPairSeries:
+from api.known_formats.kf_known_format import KnownF
+class LabeledPairSeries(KnownF):
     """ Stores a list of series with pairs of (label,numbers) [(X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n)]
         Where the X_j list is a label list and Y_j are a numbers list"""
 

@@ -1,4 +1,4 @@
-# ! /home/elias/anaconda3/bin/python
+#! /home/elias/anaconda3/bin/python
 from api.utils.config import Config
 from api.an_identify import identify
 from api.an_graphs import graph

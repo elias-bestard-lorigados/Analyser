@@ -1,4 +1,6 @@
-class DictXy:
+from api.known_formats.kf_known_format import KnownF
+
+class DictXy(KnownF):
     """ Stores a list of series with dictionaries 
     [{'x':VALUE,'y':VALUE,'name':VALUE,'color':value}...]"""
 
