@@ -18,6 +18,7 @@ class PolarAreaChart(MyHighchart):
                 }
 
     def generate(self,id):
+        self.g_id = id
         elements=[]
         len_comp=int(random.uniform(3,9))
         categories=['label_'+str(item) for item in range(len_comp)]

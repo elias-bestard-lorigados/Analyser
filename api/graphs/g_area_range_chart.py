@@ -12,6 +12,7 @@ class AreaRangeChart(MyHighchart):
         self.options['title']= {'text': self.type+' chart'}
 
     def generate(self, id):
+        self.g_id = id
         elements = []
         series_nums = int(random.uniform(1, 4))
         point_nums = int(random.uniform(7, 15))

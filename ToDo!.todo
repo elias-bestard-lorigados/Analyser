@@ -1,5 +1,5 @@
 Analyser:
-    ☐ Cambiar visual para que se vean por tabs los graficos
+    ✔ Cambiar visual para que se vean por tabs los graficos @done(19-05-05 16:21)
     ☐ Annadir a la CLI seleccionar que tipos de graficos que quiere mostrar segun la info qe muestra cada grafico
     ☐ Que pasen comno parametro una bd o un excel!!!!
 
@@ -16,7 +16,7 @@ Analyser:
     @Known_Formats:
         ☐ Annadir comportamiento fuzzi a los KF
         ☐ Annadir propiedades estadisticas!!!
-        ☐ Tests que nos digan cuales son los mejores graficos para mostrar (red neuronal utilizando el feedback)
+        ☐ Sistema en base a reglas para ver que graficos mostrar
 
     @Graphics:
         ✔ generar juegos de datos a corde a cada grfico @done(19-03-21 12:26)

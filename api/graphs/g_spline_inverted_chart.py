@@ -12,6 +12,7 @@ class SplineInvertedChart(MyHighchart):
         self.options['title']= {'text': self.type+' chart'}
         self.options['chart']={'inverted': True}
     def generate(self,id):
+        self.g_id = id
         elements=[]
         series_nums=int(random.uniform(1,5))
         point_nums = int(random.uniform(7, 15))

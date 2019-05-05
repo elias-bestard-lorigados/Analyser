@@ -180,65 +180,78 @@ def __graphics_generator():
         <script src=\"./js_libraries/networkgraph.js\"></script>
         <script src=\"./js_libraries/bullet.js\"></script>
         <script src=\"./js_libraries/tilemap.js\"></script>
+        <script src=\"./js_libraries/vertical_tabs.js\"></script>\n
+        <link rel = \"stylesheet\" href = \"./js_libraries/style.css\">\n
         </head>
         <body>''')
     graphics_code= graphic_generate(Config().graphics_g)
-    for code in graphics_code:
-        file.write(code)
+    code_result=""
+    tabs_result=[]
+    for code,chart_id in graphics_code:
+        code_result+=code
+        chart = chart_id[:chart_id.index("_")]
+        tabs_result.append(
+            "<button class = \"tablinks\" onclick = \"openCity(event,'" +chart_id+"')\" >"+chart+" </button >\n")
+    
+    file.write("<div class = \"tab\" >\n")
+    for tabs in tabs_result:
+        file.write(tabs)
+    file.write("</div>\n")
+    file.write(code_result)
     file.write("</body>")
     file.close()
 
 def __generate_config():
     file=open('config.ini','w')
     file.write('''[INPUT]
-;;  path where is located the info to procces
-path = ./data_generator/
+                ;;  path where is located the info to procces
+                path = ./data_generator/
 
-[OUTPUT]
-;; path where the parsers are located
-path = ./out/
-; name of the resulting file
-name = out_file
+                [OUTPUT]
+                ;; path where the parsers are located
+                path = ./out/
+                ; name of the resulting file
+                name = out_file
 
-[PARSERS]
-; path where the parsers are located
-path = ./api/parsers
+                [PARSERS]
+                ; path where the parsers are located
+                path = ./api/parsers
 
-; List of all parsers that you wnat be availables
-; available = p_labeled_pair_list,p_nums_pair_list,p_numbers_list
-available = all
+                ; List of all parsers that you wnat be availables
+                ; available = p_labeled_pair_list,p_nums_pair_list,p_numbers_list
+                available = all
 
-; List of all parsers will show help
-help =
-; help = p_values_list,p_series_list
-; help = all
+                ; List of all parsers will show help
+                help =
+                ; help = p_values_list,p_series_list
+                ; help = all
 
-;1 if you want see a list with all parsers 0 if not
-list= 0
-; list = 1
+                ;1 if you want see a list with all parsers 0 if not
+                list= 0
+                ; list = 1
 
-[GRAPHS]
-; path where the charts are located
-path = ./api/graphs
-; List of all graphs that you want be availables
-; available = 
-;available = g_pie_graph,g_line_graph,g_column_graph
-available = all
-; available = g_pie_graph
+                [GRAPHS]
+                ; path where the charts are located
+                path = ./api/graphs
+                ; List of all graphs that you want be availables
+                ; available = 
+                ;available = g_pie_graph,g_line_graph,g_column_graph
+                available = all
+                ; available = g_pie_graph
 
-;1 if you want see a list with all graphs 0 if not
-list= 0
-; list= 1
+                ;1 if you want see a list with all graphs 0 if not
+                list= 0
+                ; list= 1
 
-[DATA_G]
-; path where the data_generated is located
-path = ./data_generator
-; List of Parsers wich will be use to generate datasets
-parsers =
-; parsers = p_values_list
-; parsers = all
+                [DATA_G]
+                ; path where the data_generated is located
+                path = ./data_generator
+                ; List of Parsers wich will be use to generate datasets
+                parsers =
+                ; parsers = p_values_list
+                ; parsers = all
 
-[DB]
-path=api/utils/data_base.json 
-[GRAPHICS_G]
-graphichs=''')
+                [DB]
+                path=api/utils/data_base.json 
+                [GRAPHICS_G]
+                graphichs=''')

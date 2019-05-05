@@ -18,8 +18,10 @@ def graph(known_format,id):
     for chart in Config().available_graphs:
         content = __all_graphs[chart].graphic(id,known_format)
         if content!=None:
-            result_code.append(content)
-            add_data_base(__all_graphs[chart], known_format,id)
+            chart_id = __all_graphs[chart].type+"_"+str(id)
+            content = "<div id =\""+chart_id+"\" class = \"tabcontent\" >\n"+content+"\n</div>\n"
+            result_code.append((content,chart_id))
+            add_data_base(__all_graphs[chart], known_format)
         id+=1
     return result_code
 
@@ -30,9 +32,11 @@ def graphic_generate(graphics_list:list):
     for chart in graphics_list:
         content,my_format = __all_graphs[chart].generate(id)
         if content!=None:
+            chart_id = __all_graphs[chart].type+"_"+str(id)
             print(chart)
-            result_code.append(content)
-            add_data_base(__all_graphs[chart], my_format,id)
+            content = "<div id =\""+chart_id+"\" class = \"tabcontent\" >\n"+content+"\n</div>\n"
+            result_code.append((content, chart_id))
+            add_data_base(__all_graphs[chart], my_format)
             print("="*20)
         id+=1
     Config().db_count_id=id

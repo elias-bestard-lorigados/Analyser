@@ -25,6 +25,7 @@ class Networkgraph:
         return text_to_return
 
     def generate(self,id):
+        self.g_id = id
         elements = []
         numbs_vert = int(random.uniform(15, 50))
         labels = ['label_'+str(i+1) for i in range(numbs_vert)]

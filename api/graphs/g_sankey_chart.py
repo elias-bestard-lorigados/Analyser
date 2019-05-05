@@ -26,6 +26,7 @@ class SankeyChart:
         return text_to_return
 
     def generate(self,id):
+        self.g_id = id
         elements=[]
         current=0
         layers=[]

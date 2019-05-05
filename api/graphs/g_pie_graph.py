@@ -30,6 +30,7 @@ class PieGraph(MyHighchart):
         self.g_id = g_id
         return self._make_js_code(format_known)
     def generate(self,id):
+        self.g_id = id
         elements=[]
         slices_nums=int(random.uniform(2,9))
         total=100

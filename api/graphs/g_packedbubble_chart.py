@@ -24,6 +24,7 @@ class PackedbubbleChart:
         return text_to_return
 
     def generate(self, id):
+        self.g_id = id
         elements = []
         series_nums = int(random.uniform(3, 10))
         point_nums = int(random.uniform(7, 20))

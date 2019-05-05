@@ -24,6 +24,7 @@ class VectorChart:
         return text_to_return
     
     def generate(self,id):
+        self.g_id = id
         elements = []
         numbs_series = int(random.uniform(1,6))
         count = int(random.uniform(20, 50))

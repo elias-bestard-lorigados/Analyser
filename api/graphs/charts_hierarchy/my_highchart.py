@@ -68,6 +68,7 @@ class MyHighchart:
         return text_to_return
 
     def generate(self,id):
+      self.g_id = id
       elements=[]
       series_nums=int(random.uniform(2,7))
       point_nums = int(random.uniform(7, 15))

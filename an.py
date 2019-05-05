@@ -16,20 +16,26 @@ class Analyser:
         ''' Trata de analizar self.__data con todos los parsers para generar todos los graficos posibles por defecto'''
         #list of tuple [(KF,#)] # represent how similar is it to a KF
         formats = self.to_identify()
-        results=""
+        results_tabcontent_charts = ""
+        results_tabs = []
         count=len(Config().available_graphs)
         id=Config().db_count_id
         #form ->KF ,sim->similarity
         for form,sim in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
             code = self.to_graphic(form,id)
-            for text in code:
-                results += text
+            for text,chart_id in code:
+                results_tabcontent_charts += text
+                results_tabs.append(self.__generate_tab(chart_id))
             id+=count
         Config().db_count_id=id
-        if results=='':
-            results=''' <h1>Sorry, no Chart could be generated</h1> '''
+        if results_tabcontent_charts=='':
+            results_tabcontent_charts=''' <h1>Sorry, no Chart could be generated</h1> '''
         self.__ini_HTML()   #creo el archivo html
-        self.file.write(results)  # escribo el resultado en el
+        self.file.write("<div class = \"tab\" >\n")
+        for tabs in results_tabs:
+            self.file.write(tabs)
+        self.file.write("</div>\n")
+        self.file.write(results_tabcontent_charts)  # escribo el resultado en el
         self.__end_HTML()   #concluo el html y cierro el archivo
 
     def to_identify(self):
@@ -50,22 +56,29 @@ class Analyser:
         self.file = open(Config().output_path+"/"+Config().output_name+"_"+str(Config().output_count)+".html"
         , "w")
         self.file.write("<head>")
-        self.file.write("<script src=\"./js_libraries/jquery.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/highcharts.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/highcharts-more.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/sankey.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/vector.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/heatmap.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/networkgraph.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/bullet.js\"></script>")
-        self.file.write("<script src=\"./js_libraries/tilemap.js\"></script>")
-        self.file.write("</head>")
-        self.file.write("<body>")
+        self.file.write("<script src=\"./js_libraries/jquery.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/highcharts.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/highcharts-more.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/sankey.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/vector.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/heatmap.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/networkgraph.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/bullet.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/tilemap.js\"></script>\n")
+        self.file.write("<script src=\"./js_libraries/vertical_tabs.js\"></script>\n")
+        self.file.write("<link rel = \"stylesheet\" href = \"./js_libraries/style.css\">\n")
+        self.file.write("</head>\n")
+        self.file.write("<body>\n")
 
     def __end_HTML(self):
         ''' Cerrara el "body" del HTML final '''
         self.file.write("</body>")
         self.file.close()
+
+    def __generate_tab(self,chart_id):
+        chart = chart_id[:chart_id.index("_")]
+        return "<button class = \"tablinks\" onclick = \"openCity(event,'"+chart_id+"')\" >"+chart+" </button >\n"
+
 
 data = input_parser.parse()
 print("="*20)
