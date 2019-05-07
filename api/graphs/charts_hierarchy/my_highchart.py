@@ -80,3 +80,10 @@ class MyHighchart:
       my_format=formats.PairsSeries(elements)
       code=self.graphic(id,my_format)
       return code,my_format
+
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 1
+        return count

@@ -4,7 +4,8 @@ import random
 class VectorChart:
     """ Crear un diagrama de vectores"""
     def __init__(self):
-        self.type="vector"
+        self.message = []
+        self.type = "vector"
         self.kf_permited=[formats.TriosSeries,formats.FourTupleSeries,formats.LabeledFourTupleSeries]
 
     def graphic(self, g_id, format_known):
@@ -39,3 +40,10 @@ class VectorChart:
         my_format=formats.TriosSeries(elements)
         code=self.graphic(id,my_format)
         return code,my_format
+
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 2
+        return count

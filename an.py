@@ -18,16 +18,12 @@ class Analyser:
         formats = self.to_identify()
         results_tabcontent_charts = ""
         results_tabs = []
-        count=len(Config().available_graphs)
-        id=Config().db_count_id
         #form ->KF ,sim->similarity
         for form,sim in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
-            code = self.to_graphic(form,id)
+            code = self.to_graphic(form)
             for text,chart_id in code:
                 results_tabcontent_charts += text
                 results_tabs.append(self.__generate_tab(chart_id))
-            id+=count
-        Config().db_count_id=id
         if results_tabcontent_charts=='':
             results_tabcontent_charts=''' <h1>Sorry, no Chart could be generated</h1> '''
         self.__ini_HTML()   #creo el archivo html
@@ -45,10 +41,10 @@ class Analyser:
         formats_knowns = identify(self.__data)
         return formats_knowns
 
-    def to_graphic(self,format_known,id):
+    def to_graphic(self,format_known):
         ''' graficar los formatos "format_known" de la entrada
         return LIST[STRING] (codigo js de los graficos)'''
-        graphs = graph(format_known, id)
+        graphs = graph(format_known)
         return graphs
 
     def __ini_HTML(self):

@@ -8,6 +8,7 @@ class SankeyChart:
     def __init__(self):
         self.type="sankey"
         self.kf_permited=[formats.StrStrWeightSeries]
+        self.message = []
 
     def graphic(self, g_id, format_known):
         """ Graficar los elementos """
@@ -43,3 +44,10 @@ class SankeyChart:
         my_format=formats.StrStrWeightSeries([elements],['Test_'])
         code=self.graphic(id,my_format)
         return code,my_format
+
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 2
+        return count

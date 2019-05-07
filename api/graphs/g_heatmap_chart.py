@@ -6,7 +6,8 @@ class HeatmapChart(MyHighchart):
     """ Crear un Heat map """
     def __init__(self):
         super().__init__()
-        self.type="heatmap"
+        self.message = []
+        self.type = "heatmap"
         self.kf_permited=[formats.PairsSeries,
                         formats.TriosSeries,formats.LabeledTriosSeries]
         self.options['colorAxis']={'min': 0,'minColor': '#FFFFFF'}
@@ -26,3 +27,10 @@ class HeatmapChart(MyHighchart):
         my_format = formats.TriosSeries(elements)
         code = self.graphic(id, my_format)
         return code, my_format
+
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 2
+        return count

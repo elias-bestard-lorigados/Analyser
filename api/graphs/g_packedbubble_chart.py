@@ -4,7 +4,8 @@ import random
 class PackedbubbleChart:
     """ Crear un grafo"""
     def __init__(self):
-        self.type="packedbubble"
+        self.message = ['comparison']
+        self.type = "packedbubble"
         self.kf_permited=[formats.LabeledPairSeries,formats.NumSeries,formats.PairsSeries]
 
     def graphic(self, g_id, format_known):
@@ -36,3 +37,10 @@ class PackedbubbleChart:
         my_format = formats.LabeledPairSeries(elements)
         code = self.graphic(id, my_format)
         return code, my_format
+
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 2
+        return count

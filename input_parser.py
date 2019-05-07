@@ -4,61 +4,68 @@ import configparser
 import argparse
 import os
 import sys
+
 parser = argparse.ArgumentParser(prog="Analizer")
-parser.add_argument("-f", "--file", help="The path of the file to analize")
-parser.add_argument("-o", "--out", help="Name of the result of the procces")
+parser.add_argument("-f", "--file", help="Path donde se ubica la info a procesar")
+parser.add_argument("-o", "--out", help="Nombre base de los archivos de salida")
 parser.add_argument("-g", "--graph",
-                    help="which one of the graphs do you want graphic the data, ex: 'pie, line, column'",
+                    help="Lista de los graficos que se quieren utilizar, ex: 'g_pie_graph,g_line_graph,g_column_graph'",
                     type=str)
 parser.add_argument("-p", "--parser",
-                    help="To select which one of the parsers do you want parse the info, ex: 'p_label_value, p_series_list' ",
+                    help="Lista de los parsers que se quieren utilizar, ex: 'p_label_value, p_series_list' ",
                     type=str)
 parser.add_argument("-ph", "--parsers_help",
-                    help='''List the help for the parsers that you want separated by ',' , ex: 'p_label_value,p_series_list' ''',
+                    help='''Lista la ayuda de los parsers de la lista separada por ',' , ex: 'p_label_value,p_series_list' ''',
                     type=str)
-parser.add_argument("-pl", "--parsers_list",help='''List all the parsers definded ''',
+parser.add_argument("-pl", "--parsers_list",help='''Lista todos los parsers definidos ''',
                     action='store_true')
-parser.add_argument("-gl", "--graphs_list", help='''List all the graphs definded ''',
+parser.add_argument("-gl", "--graphs_list", help='''List todos los graficos definidos''',
                     action='store_true')
-parser.add_argument("-dg", "--data_generator", help='''To Generate many files of data to analize, depends of the parse of your choice ex:'p_label_value,p_series_list' ''',
+parser.add_argument("-dg", "--data_generator", help='''Generar juegos de datos, genera juegos de datos de los parsers que desee ex:'p_label_value,p_series_list' ''',
                     type=str)
-parser.add_argument("-gg", "--graphics_generator", help='''To Generate many out files with the graphs selected Ex:'g_line_graph.g_pie_graph' ''',
+parser.add_argument("-gg", "--graphics_generator", help='''Genera archivos de salida con los graficos a su eleccion Ex:'g_line_graph.g_pie_graph' ''',
                     type=str)
-parser.add_argument("-gc", "--generate_config", help='''Generate config.ini ''',
-                    action='store_true')
+parser.add_argument("-gc", "--generate_config", help='''Genera config.ini ''',action='store_true')
+parser.add_argument("-gs", "--graphics_selection", help='''Para activar el Sistema en Base Reglas para determinar mejores graficos 0 desactiva 1 activa, por default es 1''',
+                    type=str, choices=['0', '1'], default='1')
+parser.add_argument("-m", "--message", help='''Para definir que mensaje quiere mostrar con los graficos, uno de los siguienes : comparison,composition,relation,distribution''',
+                    type=str, choices=['comparison','composition','relation','distribution'])
+
 def parse():
     args = parser.parse_args()
+    # Ver si el usuario quiere generar el archivo config.ini
     if(args.generate_config):
         __generate_config()
         return []
     config = Config()
     if os.path.exists('./config.ini'):
+        try:
+            __read_conf()
+        except :
+            print("WARNING--- HAY ALGO MAL CON EL ARCHIVO CONFIG.INI")
         __read_conf()
     __set_config_by_args(args)
-    if config.parser_list == 1 or config.prarsers_help != [] or config.data_generated!=[] or config.graphs_list==1 or config.graphics_g!=[]:
-        # if args.parsers_help or args.parsers_list or args.graphs_list or args.data_generator or args.graphics_generator:
+
+    if config.prarsers_help != [] or config.parser_list != 0 or config.graphs_list != 0:
         if config.prarsers_help != []:
-        # if args.parsers_help:
             print("PARSERS HELP")
             parsers_help()
         if config.parser_list == 1:
-        # if args.parsers_help:
             print("PARSERS")
             print("="*20)
             [print(item) for item in config.parsers]
             print("="*20)
         if config.graphs_list == 1:
-        # if args.graphs_list:
             print("GRAPHS")
             print("="*20)
             [print(item) for item in config.graphs]
             print("="*20)
+        return []
+    if config.data_generated!=[] or config.graphics_g!=[]:
         if config.data_generated != []:
-        # if args.data_generator:
             print("GENERATING DATA")
             data_generator()
         if config.graphics_g != []:
-            # if args.graphics_generator:
             print("GENERATING GRAPHICS")
             __graphics_generator()
         return []
@@ -106,44 +113,55 @@ def data_generator(amount=10, on_top=50, below=100):
         print("="*20)
 
 def __read_conf():
-    ''' Read 'config.ini' and set his atributes to the Config() class '''
+    ''' Lee el archivo config.ini y actualiza la instancia de Config() 
+    Mirando si existen las secciones y las opciones buscadas y modificandolas en Config()'''
     config = configparser.ConfigParser()
     config.read('config.ini')
     # file = open('config.ini',"w")
     # config.set('Def', 'GRAPHICS', 'calor')
     # config.write(file)
 
-    input_path = config['INPUT']['path']
-    output_path = config['OUTPUT']['path']
-    output_name = config['OUTPUT']['name']
-    parsers_path = config['PARSERS']['path']
-    parsers_availables = config['PARSERS']['available']
-    parser_help = config['PARSERS']['help'] if not config['PARSERS']['help']=="" else None
-    parser_list = config['PARSERS']['list']
-    graphs_path = config['GRAPHS']['path']
-    graphs_availables = config['GRAPHS']['available']
-    graphs_list = config['GRAPHS']['list']
-    datag_path = config['DATA_G']['path']
-    datag_parsers = config['DATA_G']['parsers'] if not config['DATA_G']['parsers'] == "" else None
-    db_path=config['DB']['path']
-    graphics_to_generate=config['GRAPHICS_G']['graphichs']
-    # Config().db_path=db_path
-    Config().set_db_path(db_path)
-    Config().set_in_path(input_path)
-    Config().set_out_path(output_path)
-    Config().set_output_name(output_name)
-    Config().set_parsers_path(parsers_path)
-    Config().set_graphs_path(graphs_path)
-    Config().set_available_parsers(parsers_availables)
-    Config().set_available_graphs( graphs_availables)
-    Config().set_parsers_help(parser_help)
-    Config().set_graphs_list(graphs_list)
-    Config().set_parsers_list(parser_list)
-    Config().set_data_g_path(datag_path)
-    Config().set_data_generated_list(datag_parsers)
-    Config().set_graphics_generated_list(graphics_to_generate)
+    if config.has_option('INPUT','path'):
+        Config().set_in_path(config['INPUT']['path'])
+
+    if config.has_option('OUTPUT', 'path'):
+        Config().set_out_path(config['OUTPUT']['path'])
+    if config.has_option('OUTPUT', 'name'):
+        Config().set_output_name(config['OUTPUT']['name'])
+
+    if config.has_option('PARSERS', 'path'):
+        Config().set_parsers_path(config['PARSERS']['path'])
+    if config.has_option('PARSERS', 'available'):
+        Config().set_available_parsers(config['PARSERS']['available'])
+    if config.has_option('PARSERS', 'help'):
+        Config().set_parsers_help(config['PARSERS']['help'])
+    if config.has_option('PARSERS', 'list'):
+        Config().set_parsers_list(config['PARSERS']['list'])
+
+    if config.has_option('GRAPHS', 'path'):
+        Config().set_graphs_path(config['GRAPHS']['path'])
+    if config.has_option('GRAPHS', 'available'):
+        Config().set_available_graphs(config['GRAPHS']['available'])
+    if config.has_option('GRAPHS', 'list'):
+        Config().set_graphs_list(config['GRAPHS']['list'])
+    if config.has_option('GRAPHS', 'selection'):
+        Config().set_graphics_selection(config['GRAPHS']['selection'])
+    if config.has_option('GRAPHS', 'message'):
+        Config().set_message(config['GRAPHS']['message'])
+
+    if config.has_option('DATA_G', 'path'):
+        Config().set_data_g_path(config['DATA_G']['path'])
+    if config.has_option('DATA_G', 'parsers'):
+        Config().set_data_generated_list(config['DATA_G']['parsers'])
+
+    if config.has_option('DB', 'path'):
+        Config().set_db_path(config['DB']['path'])
+
+    if config.has_option('GRAPHICS_G', 'graphichs'):
+        Config().set_graphics_generated_list(config['GRAPHICS_G']['graphichs'])
 
 def __set_config_by_args(args):
+    ''' Actualiza la instancia de la clase Config() segun los argumentos recibidos por el CLI '''
     if args.file:
         Config().set_in_path(args.file)
     if args.out:
@@ -162,6 +180,10 @@ def __set_config_by_args(args):
         Config().set_data_generated_list(args.data_generator)
     if args.graphics_generator:
         Config().set_graphics_generated_list(args.graphics_generator)
+    if args.graphics_selection:
+        Config().set_graphics_selection(args.graphics_selection)
+    if args.message:
+        Config().set_message(args.message)
 
 def __graphics_generator():
     ''' Generate a mount of files with examples of info who can be parse by the parsers definded '''
@@ -202,6 +224,7 @@ def __graphics_generator():
     file.close()
 
 def __generate_config():
+    ''' Genera el archivo config.ini con los valores por default '''
     file=open('config.ini','w')
     file.write('''[INPUT]
                 ;;  path where is located the info to procces
@@ -242,6 +265,8 @@ def __generate_config():
                 ;1 if you want see a list with all graphs 0 if not
                 list= 0
                 ; list= 1
+                selection=1
+                message=
 
                 [DATA_G]
                 ; path where the data_generated is located

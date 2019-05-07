@@ -6,7 +6,8 @@ class BoxplotChart(MyHighchart):
     """ Make a boxplot chart """
     def __init__(self):
         super().__init__()
-        self.type="boxplot"
+        self.message = ['comparison']
+        self.type = "boxplot"
         self.kf_permited=[formats.BoxplotSeries]
         self.options['title']= {'text': self.type+' chart'}
         self.options['tooltip']= {
@@ -16,3 +17,9 @@ class BoxplotChart(MyHighchart):
                         Q3: {point.q3}, High: {point.high} 
                     </b>'''}
 
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 2
+        return count

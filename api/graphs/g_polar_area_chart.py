@@ -2,11 +2,19 @@ from highcharts import Highchart
 from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
 import random
+
+from api.utils.rules import check_many_categories
+from api.utils.rules import check_advance_over_time
+from api.utils.rules import check_few_series
+from api.utils.rules import check_same_size_btwn_series
+from api.utils.rules import check_same_x_intervals
+
 class PolarAreaChart(MyHighchart):
     """ Crear un grafico polar """
     def __init__(self):
         super().__init__()
-        self.type="area"
+        self.message = ['comparison', 'distribution']
+        self.type = "area"
         self.kf_permited=[formats.NumSeries,formats.PairsSeries,formats.LabeledPairSeries]
         self.options['chart']={'polar': True,'type': 'area'}
         self.options['title']= {'text': self.type+' chart'}
@@ -31,3 +39,27 @@ class PolarAreaChart(MyHighchart):
         my_format=formats.NumSeries(elements)
         code=self.graphic(id,my_format)
         return code,my_format
+
+    def evaluate_rules(self, kf):
+        ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''
+        count = 0
+        if self.kf_permited.__contains__(type(kf)):
+            count += 1
+            #Verificando que sea una comparacion sobre tiempo, X progrsan
+            if type(kf) == formats.LabeledPairSeries or type(kf) == formats.NumSeries:
+                count += 1
+            elif check_advance_over_time(kf):
+                count += 1
+            #Verificando que las series tienen la misma longitud
+            if not check_same_size_btwn_series(kf):
+                count += 1
+            #Verificando que las series tengan los mismos intervalos en las categorias
+            if not check_same_x_intervals(kf):
+                count += 1
+            #Verificando tener mas de 3 categorias
+            if not check_many_categories(kf, 3):
+                count += 1
+            #Verificando que contenga menos de 10 series
+            if not check_few_series(kf,10):
+                count += 1
+        return count
