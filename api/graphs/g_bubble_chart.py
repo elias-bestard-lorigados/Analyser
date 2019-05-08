@@ -41,7 +41,7 @@ class BubbleChart(MyHighchart):
             if not check_many_points_per_serie(kf, 15):
                 count += 1
             #Verificando que contenga diferentes puntos las series
-            if not check_same_size_btwn_series(kf):
+            if type(kf) != formats.LabeledTriosSeries and not check_same_size_btwn_series(kf):
                 count += 1
             #Verificando que contenga puntos dispersos sin orden
             if not check_same_x_intervals(kf):

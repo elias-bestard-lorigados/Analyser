@@ -5,12 +5,11 @@ class PairsSeries(KnownF):
 
     def __init__(self,series,series_names=[]):
         ''' Recive two lists, series and series_names'''
-        self.elements = {}
+        super().__init__(series, series_names)
         self.min_value = [9999999999, 9999999999]
         self.max_value = [-9999999999, -9999999999]
-        self.count = len(series)
-        if series_names==[]:
-            series_names=["serie_"+str(i) for i in range(len(series))]
+        if series_names == []:
+            series_names = ["serie_"+str(i) for i in range(len(series))]
         for i in range(len(series)):
             self.min_value=min(series[i]) if min(series[i])<self.min_value else self.min_value
             self.max_value=max(series[i]) if max(series[i])>self.max_value else self.max_value

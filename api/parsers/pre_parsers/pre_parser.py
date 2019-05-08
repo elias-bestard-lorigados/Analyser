@@ -11,51 +11,52 @@ for item in Config().parsers:
     import_module = compile("import "+item, 'e', mode='exec')
     exec(import_module)
     parser = eval(str(item+"."+class_name+"()"))
-    if dir(parser).__contains__("describe"):
-        __all_parsers[class_name] = parser
-    else:
-        print(class_name+"does not has the describe method")
+    __all_parsers[class_name] = parser
     # __all_parsers[class_name] = eval(str(class_name+"()"))
 
-def procces_text(text):
-    ''' Procesa un texto linea por linea
-    Remueve lineas en blanco
-    Procesa cada linea independientemente con los parsers definidos creando KF por cada linea que parsee
-    luego junta los KF similares adyacentes '''
-    text = remove_blank_line(text)
+def analyse_line_by_line(text):
+    ''' Analiza un texto linea por linea
+    Procesa cada linea independientemente con los parsers definidos creando listas de KF por cada linea que parsee
+    luego junta los KF similares que estan adyacentes '''
     text_lines=text.split('\n')
     list_kf=[]
     for line in text_lines:
-        list_kf.append(procces_line(line))
+        line_processed = process_text(line)
+        if line_processed != ["UNKNOW"]:
+            list_kf.append(line_processed)
     for item in list_kf:
         print(item)
     tm=compress_list(list_kf)
     return tm
 
-def procces_line(line):
-    """ Verifica si 'line' se puede parsear con algun parser y
-    retorna una lista de todos los KF que se puedan crear a partir de 'line'
-    Verifica igual si es un comentario y en caso que no parsee con ninguno retorna UNKNOWN """
-    if is_comment(line):
-        return ["COMMENT"]
+def analyse_text(text:str):
+    ''' Analiza un texto completo
+    recorre los parsers definidos tratando de parsear el texto completo
+    '''
+    return process_text(text)
+
+def process_text(text:str):
+    """ Verifica si 'text' se puede parsear con algun parser y
+    retorna una lista de todos los KF que se puedan crear a partir de 'text'
+    En caso que no parsee con ninguno retorna UNKNOWN """
     list_kf=[]
-    for parser in __all_parsers:
-        temp = __all_parsers[parser].parse(line)
+    for parser in Config().available_parsers:
+        temp = __all_parsers[parser].parse(text)
         if temp:
             list_kf.extend(temp)
-    return ["UNKNOW"] if list_kf==[] else list_kf
+    return [(["UNKNOW"],0)] if list_kf==[] else list_kf
 
 def is_comment(line):
     ''' considerando que una linea es un comentrio si comienza con # o // 
     Retorna True si la linea es un comentario False si no lo es '''
     return True if line[0] == '#' or(len(line) >= 2 and line[:2] == '//') else False
 
-def remove_blank_line(text:str):
-    ''' remover lineas en blanco de un str '''
+def clean_text(text: str):
+    ''' remover lineas en blanco de un str y los comentarios'''
     text=text.split('\n')
     new_text=''
     for line in text:
-        if line!="":
+        if line!="" and not is_comment(line):
             new_text+=line+"\n"
     return new_text[:-1]
 
@@ -63,6 +64,8 @@ def compress_list(info_list: list):
     ''' info_list<- list de List de KF
     revisa si en lineas adyacentes hay dos Kf iguales para unirlos
      '''
+    if info_list==[]:
+        return []
     kf_temp = info_list[0]
     kf_result=[]
     for i in range(1,len(info_list)):

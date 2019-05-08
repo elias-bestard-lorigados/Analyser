@@ -57,6 +57,7 @@ class MyHighchart:
         chart = Highchart(renderTo="chart_container_" +
                           str(self.g_id))
         chart.set_options('chart', {'zoomType': 'xy'})
+        chart.set_options('xAxis',{'categories':format_known.categories})
         chart.set_dict_options(self.options)
         for item in format_known.elements:
             chart.add_data_set(

@@ -47,7 +47,7 @@ def check_continuous_numbres(kf):
     ''' Chequea que las series tengan numeros continuos '''
     for key in kf.elements:
         for point in kf.elements[key]:
-            if type(point[0]) != str and type(point[0])==float:
+            if type(point)==list and type(point[0]) != str and type(point[0])==float:
                 return True
     return False
 
@@ -58,7 +58,9 @@ def check_same_x_intervals(kf):
     list_of_x=[]
     series_values=list(kf.elements.values())
     for point in series_values[0]:
-        if len(point)>4:
+        if type(point) == int or type(point) == float:
+           return True
+        if len(point) > 4:
             return False
         list_of_x.append(point[0])
 

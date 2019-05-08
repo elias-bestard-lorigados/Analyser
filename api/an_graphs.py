@@ -22,7 +22,7 @@ def graph(kf):
     graphics_list = evaluate_rules(kf) if Config().graphics_selection==1 else Config().available_graphs
     return select_graph_to_do(kf, graphics_list, Config().graphics_selection)
 
-def evaluate_rules(kf,count_to_show=3):
+def evaluate_rules(kf,count_to_show=20):
     ''' Recorre los graficos habilitados y evalua las reglas del RBS para ver cuales 
     son los mejores graficos segun el KF
     return un diccionario con el chart y los puntos que adquirieron '''
@@ -46,7 +46,6 @@ def evaluate_rules(kf,count_to_show=3):
     result.sort(key=(lambda x:x[1]),reverse=True)
     if len(result)>count_to_show:
         result=result[:count_to_show]
-    # result.reverse()
     return result
 
 def select_graph_to_do(known_format,graphics_list: list,call_type=1):
@@ -73,16 +72,14 @@ def select_graph_to_do(known_format,graphics_list: list,call_type=1):
 def check_message(kf):
     ''' Chequea que mensaje es el que se quiere mostrar '''
     result=[]
-    temp = message_comparison(kf)
-    temp += message_comparison(kf)
-    result.append('comparison',
-                  find_count_message_graphic('comparison', kf) + message_comparison(kf))
-    result.append('composition',
-                  find_count_message_graphic('composition', kf) + message_composition(kf))
-    result.append('relation',
-                  find_count_message_graphic('relation', kf) + message_relation(kf))
-    result.append('distribution',
-                  find_count_message_graphic('distribution', kf) + message_distribution(kf))
+    result.append(('comparison',
+                  find_count_message_graphic('comparison', kf) + message_comparison(kf)))
+    result.append(('composition',
+                  find_count_message_graphic('composition', kf) + message_composition(kf)))
+    result.append(('relation',
+                  find_count_message_graphic('relation', kf) + message_relation(kf)))
+    result.append(('distribution',
+                  find_count_message_graphic('distribution', kf) + message_distribution(kf)))
     result.sort(key=(lambda x: x[1]), reverse=True)
     return result[0]
 

@@ -8,12 +8,9 @@ class BoxplotSeries(KnownF):
         ''' Recive two lists, s_values where each element is a serie
         and series_name where each elements is a serie_name
         ASUMING ALL THE VALUES  (low, q1, median, q3 and high) ARE CALCULATED'''
-        self.elements = {}
-        self.min_value = 9999999999 #minimun bettwen the lows values
-        self.max_value = -999999    #maximun bettwen thw highs values
-        self.count = len(s_values)
-        if series_names==[]:
-            series_names=["serie_"+str(i) for i in range(len(s_values))]
+        super().__init__(s_values, series_names)
+        if series_names == []:
+            series_names = ["serie_"+str(i) for i in range(len(s_values))]
         for i in range(len(s_values)):
             self.elements[series_names[i]]=s_values[i]
             current_max= max([item[-1] for item in s_values[i]])
@@ -25,10 +22,6 @@ class BoxplotSeries(KnownF):
         ''' Recive two lists, s_values where each element is a serie
         and series_name where each elements is a serie_name
         ASUMING ALL THE VALUES  (low, q1, median, q3 and high) ARE NOT CALCULATED'''
-        self.elements = {}
-        self.min_value = 9999999999 #minimun bettwen the lows values
-        self.max_value = -999999    #maximun bettwen thw highs values
-        self.count = len(series_list)
         if series_names==[]:
             series_names=["serie_"+str(i) for i in range(len(series_list))]
         for i in range(len(series_list)):

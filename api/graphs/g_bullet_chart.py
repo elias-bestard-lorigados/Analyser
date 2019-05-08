@@ -1,5 +1,5 @@
 from api import an_known_format as formats
-from api.utils.generate_js_highcharts_code import add_js_code
+from charts_hierarchy.my_chart import MyChart
 import random
 
 from api.utils.rules import check_advance_over_time
@@ -8,28 +8,15 @@ from api.utils.rules import check_few_series
 from api.utils.rules import check_same_size_btwn_series
 from api.utils.rules import check_same_x_intervals
 
-class BulletChart:
+class BulletChart(MyChart):
     """ Crear un grafo"""
     def __init__(self):
-        self.message = ['comparison','distribution']
+        super().__init__()
+        self.message = ['comparison', 'distribution']
         self.type = "bullet"
         self.kf_permited=[formats.LabeledTriosSeries,formats.TriosSeries,formats.PairsSeries]
 
-    def graphic(self, g_id, format_known):
-        """ Graficar los elementos """
-        if not self.kf_permited.__contains__(type(format_known)):
-            return None
-        self.g_id = g_id
-        return self.__make_js_code(format_known)
 
-    def __make_js_code(self, format_known):
-        ''' Genera el codigo de JS para highcharts y lo retorna '''
-        name=self.type+" chart"
-        js_code= add_js_code(format_known.elements,name,self.type,self.g_id)
-        text_to_return = "<input type='checkbox' id=" + \
-            str(self.g_id)+"> Is the following chart useful? </input>"
-        text_to_return += js_code
-        return text_to_return
     
     def generate(self,id):
         self.g_id = id
@@ -52,8 +39,8 @@ class BulletChart:
         if self.kf_permited.__contains__(type(kf)):
             count += 1
             #Verificando que sea una comparacion sobre tiempo, X progrsan
-            if type(kf) == formats.LabeledTriosSeries or type(kf) == formats.PairsSeries:
-                count += 1
+            if type(kf) == formats.LabeledTriosSeries or type(kf) == formats.NumSeries:
+                count += 2  # check_advance_over_time y check_same_x_intervals
             elif check_advance_over_time(kf):
                 count += 1
             #Verificando pocas categorias
@@ -63,7 +50,7 @@ class BulletChart:
             if check_few_series(kf):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
-            if check_same_x_intervals(kf):
+            if type(kf) != formats.LabeledTriosSeries or type(kf) != formats.PairsSeries and check_same_x_intervals(kf):
                     count += 1
             #Verificando que las series tengan igual tamanno
             if check_same_size_btwn_series(kf):

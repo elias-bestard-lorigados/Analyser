@@ -47,14 +47,14 @@ class PolarAreaChart(MyHighchart):
             count += 1
             #Verificando que sea una comparacion sobre tiempo, X progrsan
             if type(kf) == formats.LabeledPairSeries or type(kf) == formats.NumSeries:
-                count += 1
+                count += 2  # check_advance_over_time y check_same_x_intervals
             elif check_advance_over_time(kf):
                 count += 1
             #Verificando que las series tienen la misma longitud
             if not check_same_size_btwn_series(kf):
                 count += 1
             #Verificando que las series tengan los mismos intervalos en las categorias
-            if not check_same_x_intervals(kf):
+            if type(kf) != formats.LabeledPairSeries or type(kf) != formats.NumSeries and not check_same_x_intervals(kf):
                 count += 1
             #Verificando tener mas de 3 categorias
             if not check_many_categories(kf, 3):

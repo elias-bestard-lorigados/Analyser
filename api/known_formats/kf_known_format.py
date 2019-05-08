@@ -4,7 +4,8 @@ class KnownF:
         self.min_value = 9999999999 #minimun bettwen the lows values
         self.max_value = -999999    #maximun bettwen thw highs values
         self.count = len(s_values)
-
+        self.categories = []
+        self.keys = []
     def extend(self,kf_to_extend):
         num=len(kf_to_extend.elements)+len(self.elements)
         for key in kf_to_extend.elements:

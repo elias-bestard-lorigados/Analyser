@@ -20,12 +20,16 @@ class Analyser:
         results_tabs = []
         #form ->KF ,sim->similarity
         for form,sim in formats:    #recorro todos los formatos para graficar de cada formto todos los graficos posibles
+            if form == ['UNKNOW']:
+                continue
             code = self.to_graphic(form)
             for text,chart_id in code:
                 results_tabcontent_charts += text
                 results_tabs.append(self.__generate_tab(chart_id))
         if results_tabcontent_charts=='':
-            results_tabcontent_charts=''' <h1>Sorry, no Chart could be generated</h1> '''
+            # results_tabcontent_charts=''' <h1>Sorry, no Chart could be generated</h1> '''
+            print("Lo sentimos no se pudo generar ningun grafico")
+            return
         self.__ini_HTML()   #creo el archivo html
         self.file.write("<div class = \"tab\" >\n")
         for tabs in results_tabs:
