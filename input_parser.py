@@ -1,5 +1,8 @@
 from api.utils.config import Config
 from api.an_graphs import graphic_generate
+from api.utils.analyse import ini_html
+from api.utils.analyse import generate_tab, end_html
+from api.utils.analyse import end_html
 import configparser
 import argparse
 import os
@@ -32,6 +35,10 @@ parser.add_argument("-m", "--message", help='''Para definir que mensaje quiere m
                     type=str, choices=['comparison','composition','relation','distribution'])
 
 def parse():
+    ''' Parsear la entrada por default y luego ajustar los archivos de configuracion de acuerdo a los parametros
+    1ro lee archivo CONFIG.INI si existe y se ajusta la config acorde a este
+    2do se leen los parametros del CLI y se ajusta CONFIG a estos
+    luego lee el archivo a analizar y comienza el flujo del programa '''
     args = parser.parse_args()
     # Ver si el usuario quiere generar el archivo config.ini
     if(args.generate_config):
@@ -83,7 +90,7 @@ def parse():
     return data
 
 def parsers_help():
-    ''' List all the parsers defined with an example '''
+    '''Lista todos los parsers definidos con su ayuda '''
     print("="*20)
     for item in Config().prarsers_help:
         class_name = Config().get_parser_class_name(item)
@@ -95,7 +102,7 @@ def parsers_help():
         print("="*20)
 
 def data_generator(amount=10, on_top=50, below=100):
-    ''' Generate a mount of files with examples of info who can be parse by the parsers definded '''
+    ''' Generar varios archivos con juegos de datos para poder parsearlos '''
     path = Config().data_generated_path
     sys.path.append(Config().parsers_path)
     print("="*20)
@@ -186,42 +193,22 @@ def __set_config_by_args(args):
         Config().set_message(args.message)
 
 def __graphics_generator():
-    ''' Generate a mount of files with examples of info who can be parse by the parsers definded '''
+    ''' Genera ejemplos con valores aleatorios de los graficos elejidos  '''
     path = Config().output_path
     data_files = [item
                 for item in os.listdir(path) if item.__contains__("output_generated_")]
-    file = open(path+"/output_generated_" +
-                str(len(data_files)+1)+".html", "w")
-    file.write('''<head>
-        <script src=\"./js_libraries/jquery.js\"></script>
-        <script src=\"./js_libraries/highcharts.js\"></script>
-        <script src=\"./js_libraries/highcharts-more.js\"></script>
-        <script src=\"./js_libraries/sankey.js\"></script>
-        <script src=\"./js_libraries/vector.js\"></script>
-        <script src=\"./js_libraries/heatmap.js\"></script>
-        <script src=\"./js_libraries/networkgraph.js\"></script>
-        <script src=\"./js_libraries/bullet.js\"></script>
-        <script src=\"./js_libraries/tilemap.js\"></script>
-        <script src=\"./js_libraries/vertical_tabs.js\"></script>\n
-        <link rel = \"stylesheet\" href = \"./js_libraries/style.css\">\n
-        </head>
-        <body>''')
+    file_name = "output_generated_" +str(len(data_files)+1)
     graphics_code= graphic_generate(Config().graphics_g)
     code_result=""
     tabs_result=[]
     for code,chart_id in graphics_code:
         code_result+=code
-        chart = chart_id[:chart_id.index("_")]
-        tabs_result.append(
-            "<button class = \"tablinks\" onclick = \"openCity(event,'" +chart_id+"')\" >"+chart+" </button >\n")
-    
-    file.write("<div class = \"tab\" >\n")
-    for tabs in tabs_result:
-        file.write(tabs)
-    file.write("</div>\n")
-    file.write(code_result)
-    file.write("</body>")
-    file.close()
+        tabs_result.append(generate_tab(chart_id))
+    if code_result == '':
+        print("Lo sentimos no se pudo generar ningun grafico")
+        return
+    file = ini_html(file_name)
+    end_html(file,code_result,tabs_result)
 
 def __generate_config():
     ''' Genera el archivo config.ini con los valores por default '''
