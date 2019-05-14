@@ -1,8 +1,6 @@
-from api.utils.config import Config
 from api.an_graphs import graphic_generate
-from api.utils.analyse import ini_html
-from api.utils.analyse import generate_tab, end_html
-from api.utils.analyse import end_html
+from api.utils.config import Config
+from api.utils.analyse import ini_html, end_html, generate_tab
 import configparser
 import argparse
 import os

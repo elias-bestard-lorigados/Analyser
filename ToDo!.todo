@@ -8,6 +8,7 @@ Analyser:
         ☐ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}];
         ☐ Crear parser para bd MySql y excel!!!!!!!
         ☐ Json Parser
+        ☐ Preeprocess y limpiar mas el fila, quitar tildes, quitar caracteres raros
         ✔ CSV Parser @done(19-05-08 21:47)
         ☐ XML parser
         ☐ Ver que hacer en el preeparsers cuando estoy mexclando los kf adyacentes si hay mas de uno igual a ti adyacente
@@ -24,7 +25,49 @@ Analyser:
         ✔ Organizar bien los graifcos dada la clase padre MyHighchart @done(19-03-15 20:41)
         ☐ Arreglar otro tipo de salidas que no sean html ej:txt R matplotlist
 
- Archive:
+    @Escritura:
+        ☐ Presentación
+        ☐ Agradecimientos y dedicatorias
+        ☐ Abstract (resumen)
+        ☐ Tabla de contenidos
+        ☐ Tabla de gráficos (opcional)
+        ☐ Tabla de tablas (opcional)
+        ☐ Introducción
+            ☐ Motivación
+            ☐ Antecedentes
+            ☐ Objetivos
+            ☐ Estructura del documento
+        ☐ Estado del arte (puede ir dentro de la introducción si es pequeño)
+            ☐ Introducción 
+            ☐ Herramientas de extracción (reconocimiento) de datos
+            ☐ Herramientas de graficacion
+            ☐ Herramientas como esta 
+            ☐ Algoritmos, técnicas de aprendizaje, etc. 
+        ☐ Marco teórico (opcional) (puede ir, diluido, en el capítulo de diseño si es corto)
+            ☐ Definiciones
+            ☐ Teoremas
+            ☐ Contextos
+            ☐ Definir una base, un lenguaje común para el lector y el escritor
+        ☐ Diseño de la aplicación, modelación, parte lógica
+            ☐ Cli (esto creo que va en la implementación)
+            ☐ Configuraciones
+            ☐ Fichero 
+            ☐ Valores por defecto
+            ☐ Parsing
+            ☐ Capa intermedia de datos conocidos
+            ☐ Graficar
+            ☐ Módulo de aprendizaje
+            ☐ Ensamblar todo eso
+        ☐ Detalles de implementación (implementación)
+        ☐ Pruebas (opcional)
+        ☐ Conclusiones
+        ☐ Recomendaciones
+        ☐ Bibliografía
+        ☐ Anexos
+
+ 
+
+Archive:
 
   
     ✔ @Known_Formats
