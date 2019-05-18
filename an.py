@@ -8,6 +8,6 @@ print("="*20)
 for info in data:
     print(info)
     analyse_data(info)
-    print("========== EL PROCESO CONCLUYO ==========")
+    print("========== EL PROCESO DEL ARCHIVO CONCLUYO ==========")
     Config().output_count+=1
     print("="*20)

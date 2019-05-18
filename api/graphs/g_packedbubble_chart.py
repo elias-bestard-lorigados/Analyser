@@ -1,13 +1,23 @@
 from api import an_known_format as formats
-from charts_hierarchy.my_chart import MyChart
+from charts_hierarchy.my_highchart import MyHighchart
 import random
-class PackedbubbleChart(MyChart):
+class PackedbubbleChart(MyHighchart):
     """ Crear un grafo"""
     def __init__(self):
         super().__init__()
         self.message = ['comparison']
         self.type = "packedbubble"
         self.kf_permited=[formats.LabeledPairSeries,formats.NumSeries,formats.PairsSeries]
+        self.options["plotOptions"]["packedbubble"] = {
+            'dataLabels': {
+                'enabled': 'true',
+                'format': '{point.name}',
+                'style': {
+                    'color': 'black',
+                    'textOutline': 'none',
+                    'fontWeight': 'normal'}},
+            'minPointSize': 5
+        }
 
     def generate(self, id):
         self.g_id = id

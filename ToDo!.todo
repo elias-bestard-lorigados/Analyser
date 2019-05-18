@@ -8,7 +8,7 @@ Analyser:
         ☐ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}];
         ☐ Crear parser para bd MySql y excel!!!!!!!
         ☐ Json Parser
-        ☐ Preeprocess y limpiar mas el fila, quitar tildes, quitar caracteres raros
+        ✔ Preeprocess y limpiar mas el fila, quitar tildes, quitar caracteres raros @done(19-05-17 20:20)
         ✔ CSV Parser @done(19-05-08 21:47)
         ☐ XML parser
         ☐ Ver que hacer en el preeparsers cuando estoy mexclando los kf adyacentes si hay mas de uno igual a ti adyacente
@@ -16,7 +16,6 @@ Analyser:
         ✔ @Now Parseo por secciones @done(19-03-25 12:12)
 
     @Known_Formats:
-        ☐ Annadir comportamiento fuzzi a los KF
         ☐ Revisar bien SBR
         ✔ Sistema en base a reglas para ver que graficos mostrar @done(19-05-07 03:38)
 

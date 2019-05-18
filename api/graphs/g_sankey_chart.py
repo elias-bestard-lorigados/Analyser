@@ -1,16 +1,18 @@
 from api import an_known_format as formats
-from charts_hierarchy.my_chart import MyChart
+from charts_hierarchy.my_highchart import MyHighchart
 from api.utils import distributions 
 import random
 
-class SankeyChart(MyChart):
+class SankeyChart(MyHighchart):
     """ Crear un diagrama de sankey"""
     def __init__(self):
         super().__init__()
         self.type="sankey"
         self.kf_permited=[formats.StrStrWeightSeries]
         self.message = []
-
+        self.options["plotOptions"]["sankey"] = {
+            'tooltip': {"pointFormat": "{series.name}: <b>{point.from}, {point.to} :{point.weight} </b>"}
+        }
     def generate(self,id):
         self.g_id = id
         elements=[]

@@ -20,6 +20,8 @@ class DictXy:
         data=data.split('\n')
         elements=[]
         for item in data:
+            if item=='':
+                continue
             deserialization = json.loads(item)
             for x in deserialization:
                 if not x.keys().__contains__('y') or (type(x['y']) != float and type(x['y']) != int):

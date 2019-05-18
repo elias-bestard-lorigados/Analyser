@@ -16,7 +16,7 @@ class PolarAreaChart(MyHighchart):
         self.message = ['comparison', 'distribution']
         self.type = "area"
         self.kf_permited=[formats.NumSeries,formats.PairsSeries,formats.LabeledPairSeries]
-        self.options['chart']={'polar': True,'type': 'area'}
+        self.options['chart']={'polar': 'true','type': 'area'}
         self.options['title']= {'text': self.type+' chart'}
         self.options['xAxis']= {'tickmarkPlacement': 'on','lineWidth': 0}
         self.options['yAxis']= {

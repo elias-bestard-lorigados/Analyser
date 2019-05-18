@@ -189,7 +189,8 @@ class Config:
                 graph) for graph in self.graphs]
 
     def set_parsers_help(self,in_parsers_help):
-        """ Actualiza self.prarsers_help a una lista de los parsers que mostraran su ayuda"""
+        """ Actualiza self.prarsers_help a una lista de los parsers que mostraran su ayuda 
+        si los parsers entrados no existen devuelve una lista con valor none ['none']"""
         self.prarsers_help=[]
         if in_parsers_help != "all":
             in_parsers_help = in_parsers_help.split(",")
@@ -202,6 +203,8 @@ class Config:
                     print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
         else:
             self.prarsers_help = self.parsers
+        if len(in_parsers_help)!=0 and self.prarsers_help==[]:
+            self.prarsers_help=['none']
 
     def set_parsers_list(self,parser_list):
         '''Actualiza self.parser_list a 0 or 1(false o true), 
@@ -233,9 +236,11 @@ class Config:
                 if self.parsers.__contains__(parser):
                     self.data_generated.append(parser)
                 else:
-                    print("WARNING-- EL PARSER "+parser + " nO ESTA DEFINIDO EN EL PATH")
+                    print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
         else:
             self.data_generated = self.parsers
+        if len(in_dg) != 0 and self.data_generated == []:
+            self.data_generated = ['none']
 
     def get_parser_class_name(self,parser_name):
         """ From a parser name return the class name 
@@ -269,7 +274,8 @@ class Config:
                             " NO TIENE IMPLEMENTADO EL METODO 'GENERATE'")
             else:
                 print("WARNING-- EL GRAFICO "+graphic + " NO ESTA DEFINIDO EN EL PATH")
-
+        if len(in_gg) != 0 and self.graphics_g == []:
+            self.graphics_g = ['none']
     def set_db_path(self, path):
         ''' Actualiza self.db_path
         Si el archivo path existe actualizamos self.db_count

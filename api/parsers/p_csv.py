@@ -24,6 +24,7 @@ class Csv:
     def process(self, data, separator=','):
         """ Procesa el string 'data'.
         Espera csv format for data"""
+        formats_list = []
         data = StringIO(data)
         csvreader = csv.reader(data)
         rows = []
@@ -38,17 +39,43 @@ class Csv:
                 elif i!=0 and j!=0:
                     csvreader[i][j] = 0
             rows.append(csvreader[i])
+        if self.__has_series_name == 0: #si la primera fila tiene strings es series/categorias
+            series_name = []
+        else:
+            series_name=[str(item) for item in rows[0]]
+        #si la primera columna tiene strings es categorias/series_name
+        categories_name=''
+        categories = [str(item[0]) for item in rows] if self.__has_series_name == 0 else [str(item[0]) for item in rows[1:]]
+        if not self.__check_series_name_line(categories):
+            categories=[]
+        has_categories=0 if len(categories)==0 else 1
+        if has_categories==1:#si la primera columna tiene vstrings quito el elemento 0,0
+            categories_name=series_name[0]
+            series_name=series_name[1:]
+        series=[]
+        #estableco las series
+        for i in range(self.__has_series_name,len(rows)):
+            temp=[]
+            for j in range(len(rows[i])):
+                if has_categories==1 and j==0:
+                    continue
+                temp.append(rows[i][j])
+            series.append(temp)
+        categories = self.rename(categories)
+        series_name = self.rename(series_name)
+        kf = formats.NumSeries(series, categories)
+        kf.categories = series_name
+        if len(kf.elements) != 0:
+            formats_list.append((kf, 1))
+        chart_boxplot = formats.BoxplotSeries()
+        chart_boxplot.categories = series_name
+        chart_boxplot.calculate_boxplot_from_list(series, categories)
+        if len(chart_boxplot.elements) != 0:
+            formats_list.append((chart_boxplot, 1))
 
-        series_name = [] if self.__has_series_name == 0 else rows[0]
-        series = self.__invert_matrix(
-            rows) if self.__has_series_name == 0 else self.__invert_matrix(rows[1:])
-        if len(series)!=0:
-            categories = [] if not self.__check_series_name_line(
-                series[0]) else series[0]
-        else: categories=[]
-        series = series if categories == [] else series[1:]
+        # invierto la matriz de valores
+        series = self.__invert_matrix(series)
 
-        formats_list=[]
         kf=formats.NumSeries(series,series_name)
         kf.categories=categories
         if len(kf.elements) != 0:
@@ -63,7 +90,7 @@ class Csv:
     def check_csv(self, text: str, separator=','):
         ''' Chequea que text sean labels separados por comas y numeros separados por coma
         Formato CSV donde todas las filas tienen la misma longitud'''
-        series = '([ A-Za-z0-9_ ]*'+separator+'*([0-9]+(.[0-9]+)*)+[ \n]*)*'
+        series = '([ A-Za-z0-9_ ]*'+separator+'*([0-9]+(.[0-9]+)*)*[ \n]*)*'
         regex = re.compile(series)
         text = text.split("\n")
         if len(text) == 0:
@@ -106,7 +133,7 @@ class Csv:
                 Atletico,23,32,24
                 Paris,31,12,31'''
 
-    def data_generator(self, path, amount=50, on_top=50, below=100, separator=','):
+    def data_generator(self, path, amount=20, on_top=50, below=100, separator=','):
         ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
         amount= 50 cantidad de lineas, lineas =label + value +'\\n'
         on_top=50  below=100 numeros x on_top<=x<=below
@@ -129,3 +156,16 @@ class Csv:
         if len(matrix)==0:
             return []
         return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+
+    def rename( self,lista: list):
+        new_list=[]
+        for i in range(0, len(lista)):
+            temp = lista[i]
+            lista.remove(lista[i])
+            if new_list.__contains__(temp):
+                temp = temp+'_'+str(i)
+            lista.insert(i,temp)
+            new_list.append(temp)
+        return new_list
+
+

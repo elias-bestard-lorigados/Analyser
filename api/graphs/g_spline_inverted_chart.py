@@ -18,7 +18,7 @@ class SplineInvertedChart(MyHighchart):
         self.kf_permited = [formats.NumSeries, formats.PairsSeries,
                             formats.LabeledPairSeries, formats.DictXy]
         self.options['title']= {'text': self.type+' chart'}
-        self.options['chart']={'inverted': True}
+        self.options['chart']={'inverted': 'true'}
     def generate(self,id):
         self.g_id = id
         elements=[]

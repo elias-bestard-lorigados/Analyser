@@ -1,16 +1,21 @@
 from api import an_known_format as formats
-from charts_hierarchy.my_chart import MyChart
+from charts_hierarchy.my_highchart import MyHighchart
 import random
 
 
-class TilemapChart(MyChart):
+class TilemapChart(MyHighchart):
     """ Crear un grafo"""
     def __init__(self):
         super().__init__()
         self.message = []
         self.type = "tilemap"
         self.kf_permited=[formats.LabeledTriosSeries,formats.TriosSeries,formats.PairsSeries]
-
+        self.options["plotOptions"]["tilemap"] = {
+            'dataLabels': {
+                'enabled': "true",
+                'format': "{point.name}"
+            }
+        }
     def generate(self, id):
         self.g_id = id
         elements = []

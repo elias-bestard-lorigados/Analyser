@@ -16,7 +16,12 @@ class ScatterChart(MyHighchart):
         self.message = ['comparison', 'distribution','relation']
         self.kf_permited = [formats.NumSeries, formats.PairsSeries,
                             formats.LabeledPairSeries, formats.DictXy]
-        self.options['title']= {'text': self.type+' chart'}
+        self.options['title'] = {'text': self.type+' chart'}
+        self.options['plotOptions']['scatter'] = {
+            "marker": {"radius": 7, "states": {"hover": {"enabled": 'true', "lineColor": "rgb(100,100,100)"}}},
+            "states": {"hover": {"marker": {"enabled": 'false'}}},
+            "tooltip": {"headerFormat": "<b>{series.name}</b><br>", "pointFormat": "{point.x}, {point.y}"}
+        }
     
     def evaluate_rules(self, kf):
         ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''

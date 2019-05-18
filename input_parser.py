@@ -1,10 +1,10 @@
 from api.an_graphs import graphic_generate
+from api.an_identify import parsers_help, data_generator
 from api.utils.config import Config
 from api.utils.analyse import ini_html, end_html, generate_tab
 import configparser
 import argparse
 import os
-import sys
 
 parser = argparse.ArgumentParser(prog="Analizer")
 parser.add_argument("-f", "--file", help="Path donde se ubica la info a procesar")
@@ -51,8 +51,8 @@ def parse():
         __read_conf()
     __set_config_by_args(args)
 
-    if config.prarsers_help != [] or config.parser_list != 0 or config.graphs_list != 0:
-        if config.prarsers_help != []:
+    if (config.prarsers_help != [] or config.parser_list != 0 or config.graphs_list != 0):
+        if config.prarsers_help != [] and config.prarsers_help !=['none']:
             print("PARSERS HELP")
             parsers_help()
         if config.parser_list == 1:
@@ -67,55 +67,33 @@ def parse():
             print("="*20)
         return []
     if config.data_generated!=[] or config.graphics_g!=[]:
-        if config.data_generated != []:
+        if config.data_generated != [] and config.data_generated != ['none']:
             print("GENERATING DATA")
             data_generator()
-        if config.graphics_g != []:
+        if config.graphics_g != [] and config.graphics_g != ['none']:
             print("GENERATING GRAPHICS")
             __graphics_generator()
         return []
-    # data=STRING a procesar
-    data = ""
     path_to_proccess=config.input_path
-    data=[]
-    if os.path.isdir(path_to_proccess):# si e sun directorio
-        for item in os.listdir(path_to_proccess):
-            temp = open(path_to_proccess+'/'+item, "r")
-            data.append(temp.read())
-            temp.close()
-    else: #si es un file
-        data = [open(path_to_proccess, "r").read()]
+    data= __read_dir(path_to_proccess)
     return data
 
-def parsers_help():
-    '''Lista todos los parsers definidos con su ayuda '''
-    print("="*20)
-    for item in Config().prarsers_help:
-        class_name = Config().get_parser_class_name(item)
-        print(item)
-        import_module = compile(
-            "from api.parsers."+item+" import "+class_name, 'e', mode='exec')
-        exec(import_module)
-        print(eval(str(class_name+"().help()")))
-        print("="*20)
-
-def data_generator(amount=10, on_top=50, below=100):
-    ''' Generar varios archivos con juegos de datos para poder parsearlos '''
-    path = Config().data_generated_path
-    sys.path.append(Config().parsers_path)
-    print("="*20)
-    #Recorrer todos los parsers que quiere ser procesados
-    for item in Config().data_generated:
-        #Adquirir el nombre de la clase dentro del file item
-        print(item)
-        class_name = Config().get_parser_class_name(item)
-        import_module = compile("import "+item, 'e', mode='exec')
-        exec(import_module)
-        try:
-            eval(item+"."+class_name + "().data_generator('{0}',{1},{2},{3})".format(path,amount,on_top,below))
-        except:
-            print("WARNING-- THE PARSER "+item+" DOES NOT HAVE THE METHOD data_generator")
-        print("="*20)
+def __read_dir(path_to_proccess):
+    ''' si path_to_proccess es una direccion de un archivo, lo lee
+    si es una direccion de un directorio, lee todos los archivos dentro de este
+    retorna una lista con los datos de los archivos a procesar '''
+    data = []
+    try:
+        if os.path.isdir(path_to_proccess):  # si e sun directorio
+            for item in os.listdir(path_to_proccess):
+                temp = open(path_to_proccess+'/'+item, "r")
+                data.append(temp.read())
+                temp.close()
+        else:  # si es un file
+            data = [open(path_to_proccess, "r").read()]
+    except:
+        print("HA OCURRIDO UN ERROR LEYENDO LOS ARCHIVOS DE ENTRADA")
+    return data
 
 def __read_conf():
     ''' Lee el archivo config.ini y actualiza la instancia de Config() 
@@ -178,9 +156,9 @@ def __set_config_by_args(args):
     if args.parsers_help:
         Config().set_parsers_help(args.parsers_help)
     if args.parsers_list:
-        Config().set_parsers_list(1)
+        Config().set_parsers_list("1")
     if args.graphs_list:
-        Config().set_graphs_list(1)
+        Config().set_graphs_list("1")
     if args.data_generator:
         Config().set_data_generated_list(args.data_generator)
     if args.graphics_generator:

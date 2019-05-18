@@ -1,9 +1,9 @@
 from api import an_known_format as formats
-from charts_hierarchy.my_chart import MyChart
+from charts_hierarchy.my_highchart import MyHighchart
 import random
 
 
-class VectorChart(MyChart):
+class VectorChart(MyHighchart):
     """ Crear un diagrama de vectores"""
     def __init__(self):
         super().__init__()

@@ -34,7 +34,7 @@ def ini_html(file_name=None):
     """ Inicializar un HTML enl a carpeta de salida donde se escribira el resultado de analizar los datos """
     name = Config().output_name +"_"+str(Config().output_count)
     file_name=name if name==None else file_name
-    file = open(Config().output_path+"/"+file_name+".html", "w")
+    file = open(Config().output_path+"/"+name+".html", "w")
     file.write("<head>")
     file.write("<script src=\"./js_libraries/jquery.js\"></script>\n")
     file.write(

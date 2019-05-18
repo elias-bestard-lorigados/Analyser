@@ -16,7 +16,8 @@ class ColumnGraph(MyHighchart):
         self.type = "column"
         self.kf_permited = [formats.NumSeries, formats.PairsSeries,
                             formats.LabeledPairSeries, formats.DictXy]
-        self.options['title']= {'text': self.type+' chart'}
+        self.options['title'] = {'text': self.type+' chart'}
+        self.options['plotOptions']["column"] = {"allowPointSelect": 'true', "dataLabels": {"enabled": 'true'}}
 
     def evaluate_rules(self, kf):
         ''' Evalua las reglas que puntua al grafico y retorna el monto de puntos obtenido '''

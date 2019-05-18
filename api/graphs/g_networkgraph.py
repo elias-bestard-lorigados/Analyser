@@ -1,8 +1,8 @@
 from api import an_known_format as formats
-from charts_hierarchy.my_chart import MyChart
+from charts_hierarchy.my_highchart import MyHighchart
 from api.utils.distributions import get_list_random
 import random
-class Networkgraph(MyChart):
+class Networkgraph(MyHighchart):
     """ Crear un grafo"""
     def __init__(self):
         super().__init__()

@@ -1,5 +1,5 @@
 from api import an_known_format as formats
-from charts_hierarchy.my_chart import MyChart
+from charts_hierarchy.my_highchart import MyHighchart
 import random
 
 from api.utils.rules import check_advance_over_time
@@ -8,7 +8,7 @@ from api.utils.rules import check_few_series
 from api.utils.rules import check_same_size_btwn_series
 from api.utils.rules import check_same_x_intervals
 
-class BulletChart(MyChart):
+class BulletChart(MyHighchart):
     """ Crear un grafo"""
     def __init__(self):
         super().__init__()
