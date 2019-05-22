@@ -70,7 +70,7 @@ def select_graph_to_do(known_format,graphics_list: list,call_type=1):
     return result_code
 
 def check_message(kf):
-    ''' Chequea que mensaje es el que se quiere mostrar '''
+    ''' Chequea que mensaje es el que se quiere mostrar a corde a las reglas'''
     result=[]
     result.append(('comparison',
                   find_count_message_graphic('comparison', kf) + message_comparison(kf)))
