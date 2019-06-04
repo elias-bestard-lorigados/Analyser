@@ -68,7 +68,7 @@ class Csv:
         if len(kf.elements) != 0:
             formats_list.append((kf, 1))
         chart_boxplot = formats.BoxplotSeries()
-        chart_boxplot.categories = series_name
+        # chart_boxplot.categories = series_name
         chart_boxplot.calculate_boxplot_from_list(series, categories)
         if len(chart_boxplot.elements) != 0:
             formats_list.append((chart_boxplot, 1))
@@ -81,7 +81,7 @@ class Csv:
         if len(kf.elements) != 0:
             formats_list.append((kf, 1))
         chart_boxplot = formats.BoxplotSeries()
-        chart_boxplot.categories=categories
+        # chart_boxplot.categories=categories
         chart_boxplot.calculate_boxplot_from_list(series,series_name)
         if len(chart_boxplot.elements) != 0:
             formats_list.append((chart_boxplot, 1))

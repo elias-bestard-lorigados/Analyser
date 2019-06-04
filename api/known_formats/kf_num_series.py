@@ -11,4 +11,4 @@ class NumSeries(KnownF):
             self.elements[series_names[i]]=series[i]
             self.min_value=min(series[i]) if min(series[i])<self.min_value else self.min_value
             self.max_value=max(series[i]) if max(series[i])>self.max_value else self.max_value
-                
+

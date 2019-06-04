@@ -1,4 +1,4 @@
-# ! /home/elias/anaconda3/bin/python
+#! /home/elias/anaconda3/bin/python
 from api.utils.analyse import analyse_data
 from api.utils.config import Config
 import input_parser

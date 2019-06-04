@@ -29,6 +29,7 @@ class MyHighchart:
         if not self.kf_permited.__contains__(type(format_known)):
             return None
         self.g_id = g_id
+        self.options['series'].clear()
         return self._make_js_code(format_known)
 
     def _make_js_code(self, format_known):
@@ -57,6 +58,7 @@ class MyHighchart:
         return text_to_return
 
     def generate(self, id):
+        '''Genera un gráfico con valores aleatorios '''
         self.g_id = id
         elements = []
         series_nums = int(random.uniform(2, 7))

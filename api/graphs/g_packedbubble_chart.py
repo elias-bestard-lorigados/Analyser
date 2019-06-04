@@ -15,10 +15,19 @@ class PackedbubbleChart(MyHighchart):
                 'style': {
                     'color': 'black',
                     'textOutline': 'none',
-                    'fontWeight': 'normal'}},
+                    'fontWeight': 'normal'},
+                'layoutAlgorithm':{'splitSeries':'true',
+                                    'dragBetweenSeries':'true'}
+                    },
+            'layoutAlgorithm': {
+                'gravitationalConstant': 0.6,
+                'splitSeries': 'true',
+                'seriesInteraction': 'false',
+                'dragBetweenSeries': 'true',
+                'parentNodeLimit': 'true'},
             'minPointSize': 5
         }
-
+        self.options["tooltip"]["pointFormat"]= "{point.name}: <b>{point.y} </b>"
     def generate(self, id):
         self.g_id = id
         elements = []

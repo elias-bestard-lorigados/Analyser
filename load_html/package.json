@@ -9,7 +9,7 @@
   "author": "Elias Bestard Lorigados",
   "license": "ISC",
   "dependencies": {
-    "highcharts": "^7.0.3",
+    "highcharts": "^7.1.2",
     "jquery": "^3.3.1"
   },
   "devDependencies": {

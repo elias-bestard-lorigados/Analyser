@@ -11,9 +11,10 @@ def analyse_line_by_line(text,all_parsers):
         line_processed = process_text(line, all_parsers)
         if line_processed != [(["UNKNOW"], 0)]:
             list_kf.append(line_processed)
-    tm=compress_list(list_kf)
+    tm = compress_list1(list_kf)
     print("~~~~ FORMATOS EXRAIDOS~~~~~~~")
     print(tm)
+    # km = compress_list1(list_kf)
     return tm
 
 
@@ -83,3 +84,34 @@ def my_contain_by_type(a,b):
         if type(b[i][0])==type(a[0]):
             return i
     return -1
+
+
+def my_contain_by_type1(type_to_compare, elements):
+    ''' retorna lista de elementos de igual tipo que type_to_compare
+    de los elementos de elements'''
+    result=[]
+    for item in elements:
+        if type_to_compare == type(item[0]):
+            result.append(item)
+    return result
+
+
+def compress_list1(info_list: list):
+    ''' info_list<- list de List de KF
+    revisa si en lineas adyacentes hay dos Kf iguales para unirlos
+     '''
+    result=[]
+    while len(info_list)!=0:
+        my_elements=info_list[0]
+        for item in my_elements:
+            for i in range(1,len(info_list)):
+                elements_to_compress = my_contain_by_type1(type(item[0]), info_list[i])
+                if elements_to_compress!=[]:
+                    for x in elements_to_compress:
+                        item[0].extend(x[0])
+                        info_list[i].remove(x)
+                else:
+                    break
+        result.extend(my_elements)
+        info_list.remove(info_list[0])
+    return result

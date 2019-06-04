@@ -6,12 +6,12 @@ Analyser:
     @Parsers:
         ☐ @Now Annadir loa parsers de cada grafico donde reciben en formato json!!!!
         ☐ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}];
-        ☐ Crear parser para bd MySql y excel!!!!!!!
         ☐ Json Parser
         ✔ Preeprocess y limpiar mas el fila, quitar tildes, quitar caracteres raros @done(19-05-17 20:20)
         ✔ CSV Parser @done(19-05-08 21:47)
         ☐ XML parser
-        ☐ Ver que hacer en el preeparsers cuando estoy mexclando los kf adyacentes si hay mas de uno igual a ti adyacente
+        ☐ Crear pa rser para bd MySql y excel!!!!!!!
+        ✔ Ver que hacer en el preeparsers cuando estoy mexclando los kf adyacentes si hay mas de uno igual a ti adyacente @done(19-06-03 23:59)
         ✔ @Now Hacer algo de Preprocesar definiendo niveles de parseo(primero sacar una descripcion de cada "linea") sacar comentarios, etc, medio que tokenizar la entrada por linea @done(19-03-25 12:12)
         ✔ @Now Parseo por secciones @done(19-03-25 12:12)
 
@@ -23,48 +23,6 @@ Analyser:
         ✔ generar juegos de datos a corde a cada grfico @done(19-03-21 12:26)
         ✔ Organizar bien los graifcos dada la clase padre MyHighchart @done(19-03-15 20:41)
         ☐ Arreglar otro tipo de salidas que no sean html ej:txt R matplotlist
-
-    @Escritura:
-        ☐ Presentación
-        ☐ Agradecimientos y dedicatorias
-        ☐ Abstract (resumen)
-        ☐ Tabla de contenidos
-        ☐ Tabla de gráficos (opcional)
-        ☐ Tabla de tablas (opcional)
-        ☐ Introducción
-            ☐ Motivación
-            ☐ Antecedentes
-            ☐ Objetivos
-            ☐ Estructura del documento
-        ☐ Estado del arte (puede ir dentro de la introducción si es pequeño)
-            ☐ Introducción 
-            ☐ Herramientas de extracción (reconocimiento) de datos
-            ☐ Herramientas de graficacion
-            ☐ Herramientas como esta 
-            ☐ Algoritmos, técnicas de aprendizaje, etc. 
-        ☐ Marco teórico (opcional) (puede ir, diluido, en el capítulo de diseño si es corto)
-            ☐ Definiciones
-            ☐ Teoremas
-            ☐ Contextos
-            ☐ Definir una base, un lenguaje común para el lector y el escritor
-        ☐ Diseño de la aplicación, modelación, parte lógica
-            ☐ Cli (esto creo que va en la implementación)
-            ☐ Configuraciones
-            ☐ Fichero 
-            ☐ Valores por defecto
-            ☐ Parsing
-            ☐ Capa intermedia de datos conocidos
-            ☐ Graficar
-            ☐ Módulo de aprendizaje
-            ☐ Ensamblar todo eso
-        ☐ Detalles de implementación (implementación)
-        ☐ Pruebas (opcional)
-        ☐ Conclusiones
-        ☐ Recomendaciones
-        ☐ Bibliografía
-        ☐ Anexos
-
- 
 
 Archive:
 

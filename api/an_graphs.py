@@ -22,7 +22,7 @@ def graph(kf):
     graphics_list = evaluate_rules(kf) if Config().graphics_selection==1 else Config().available_graphs
     return select_graph_to_do(kf, graphics_list, Config().graphics_selection)
 
-def evaluate_rules(kf,count_to_show=5):
+def evaluate_rules(kf,count_to_show=3):
     ''' Recorre los graficos habilitados y evalua las reglas del RBS para ver cuales 
     son los mejores graficos segun el KF
     return un diccionario con el chart y los puntos que adquirieron '''

@@ -1,4 +1,3 @@
-from highcharts import Highchart
 from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
 

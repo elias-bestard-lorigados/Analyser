@@ -34,7 +34,7 @@ class BoxplotSeries(KnownF):
             current_median=statistics.median(temp_list)
             current_min=min(temp_list)
             self.min_value=current_min if current_min<self.min_value else self.min_value
-            current_max=min(temp_list)
+            current_max=max(temp_list)
             self.max_value=current_max if current_max>self.max_value else self.max_value
             current_q1=median(temp_list[:middle])
             current_q3=median(temp_list[middle:])

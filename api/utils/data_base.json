@@ -1,1 +1,3367 @@
-[]
+[
+   {
+      "id": 1,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 22,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 23,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 46,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 24,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            9
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 25,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 26,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 1,
+         "max_value": [
+            2,
+            2
+         ],
+         "min_value": [
+            0,
+            9
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 27,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 1,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 28,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 1,
+         "max_value": 46,
+         "min_value": 5
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 29,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 5,
+         "min_value": 5
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 30,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 1,
+         "max_value": 26,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 31,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 2,
+         "min_value": 2
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 32,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 33,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 46,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 34,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 5,
+         "min_value": 2
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 35,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 36,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 46,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 37,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 5,
+         "min_value": 2
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 38,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 39,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 46,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 40,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 41,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 42,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 46,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 43,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 5,
+         "min_value": 2
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 44,
+      "kf": "PairsSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": [
+            2,
+            7
+         ],
+         "min_value": [
+            0,
+            5
+         ]
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 45,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 2,
+         "max_value": 46,
+         "min_value": 2
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 46,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 47,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 48,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 49,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 50,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 29,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 51,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 0,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 52,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 12,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 53,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 12,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 54,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 12,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 55,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 12,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 56,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 12,
+         "max_value": 357.2,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 57,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 14,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 58,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 59,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 60,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 61,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 62,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 63,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 0.918,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 64,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 65,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 66,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 67,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 68,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 69,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 56.1,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 70,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 71,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 72,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 73,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 74,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 75,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 0.918,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 76,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 77,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 78,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 79,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 80,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 81,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 56.1,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 82,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 83,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 84,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 85,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 86,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 87,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 0.918,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 88,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 89,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 90,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 91,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 92,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 93,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 56.1,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 94,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 95,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 96,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 97,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 98,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 99,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 100,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 101,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 102,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 103,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 104,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 105,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 106,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 107,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 108,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": false
+   },
+   {
+      "id": 109,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 110,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": false
+   },
+   {
+      "id": 111,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": false
+   },
+   {
+      "id": 112,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 113,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": false
+   },
+   {
+      "id": 114,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": false
+   },
+   {
+      "id": 115,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": false
+   },
+   {
+      "id": 116,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "spline",
+      "useful": false
+   },
+   {
+      "id": 117,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": false
+   },
+   {
+      "id": 118,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 119,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 120,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": false
+   },
+   {
+      "id": 121,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": false
+   },
+   {
+      "id": 122,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 123,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 124,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "area",
+      "useful": false
+   },
+   {
+      "id": 125,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 126,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 127,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 128,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 129,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 130,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 131,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 132,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 133,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 134,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 135,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 136,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 137,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 138,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 139,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 140,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 141,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 142,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 143,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 144,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 145,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 146,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 147,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 148,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 149,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 150,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 151,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 152,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 153,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 154,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 155,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 156,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 157,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 158,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 159,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 160,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 161,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 162,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 163,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 164,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 165,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 166,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 167,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 168,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 169,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 170,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 171,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 172,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 173,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 174,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 175,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 176,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 177,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 178,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 179,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 180,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 181,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 182,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 183,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 184,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 185,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 186,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 187,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 188,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 189,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 190,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 191,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 192,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 193,
+      "kf": "NumSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 194,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 195,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution",
+         "relation"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "scatter",
+      "useful": true
+   },
+   {
+      "id": 196,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 197,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 17,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 198,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 199,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "composition"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 200,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 201,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "line",
+      "useful": true
+   },
+   {
+      "id": 202,
+      "kf": "NumSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 203,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "area",
+      "useful": true
+   },
+   {
+      "id": 204,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution",
+         "relation"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "scatter",
+      "useful": true
+   },
+   {
+      "id": 205,
+      "kf": "NumSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 206,
+      "kf": "NumSeries",
+      "message": [],
+      "properties": {
+         "count": 10,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "spline",
+      "useful": true
+   },
+   {
+      "id": 207,
+      "kf": "BoxplotSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 0,
+         "max_value": 230.722,
+         "min_value": 0.0
+      },
+      "type": "boxplot",
+      "useful": true
+   },
+   {
+      "id": 208,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "bar",
+      "useful": true
+   },
+   {
+      "id": 209,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 210,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 211,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 212,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 213,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 214,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 10,
+         "max_value": 99.34,
+         "min_value": 50.92
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 215,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 216,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 217,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 218,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 219,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 220,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 221,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 222,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 223,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 224,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 225,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 226,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 227,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 228,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 229,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 230,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 231,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 232,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 233,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 234,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 235,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 236,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 237,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 238,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 239,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 240,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 241,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   },
+   {
+      "id": 242,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 243,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 244,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison",
+         "distribution"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "column",
+      "useful": true
+   },
+   {
+      "id": 245,
+      "kf": "LabeledPairSeries",
+      "message": [
+         "comparison"
+      ],
+      "properties": {
+         "count": 11,
+         "max_value": 99.34,
+         "min_value": 2.0
+      },
+      "type": "packedbubble",
+      "useful": true
+   }
+]

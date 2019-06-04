@@ -28,7 +28,7 @@ parser.add_argument("-gg", "--graphics_generator", help='''Genera archivos de sa
                     type=str)
 parser.add_argument("-gc", "--generate_config", help='''Genera config.ini ''',action='store_true')
 parser.add_argument("-gs", "--graphics_selection", help='''Para activar el Sistema en Base Reglas para determinar mejores graficos 0 desactiva 1 activa, por default es 1''',
-                    type=str, choices=['0', '1'], default='1')
+                    type=str, choices=['0', '1'])
 parser.add_argument("-m", "--message", help='''Para definir que mensaje quiere mostrar con los graficos, uno de los siguienes : comparison,composition,relation,distribution''',
                     type=str, choices=['comparison','composition','relation','distribution'])
 
