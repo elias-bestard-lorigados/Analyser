@@ -1,5 +1,6 @@
 from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
+import random
 
 class BoxplotChart(MyHighchart):
     """ Make a boxplot chart """
@@ -22,3 +23,17 @@ class BoxplotChart(MyHighchart):
         if self.kf_permited.__contains__(type(kf)):
             count += 2
         return count
+    # def generate(self, id):
+    #     '''Genera un gráfico con valores aleatorios '''
+    #     self.g_id = id
+    #     elements = []
+    #     series_nums = int(random.uniform(2, 7))
+    #     point_nums = int(random.uniform(7, 15))
+    #     for i in range(series_nums):
+    #       temp = []
+    #       for item in range(point_nums):
+    #         temp.append([item, round(random.uniform(0, 15), 2)])
+    #       elements.append(temp)
+    #     my_format = formats.PairsSeries(elements)
+    #     code = self.graphic(id, my_format)
+    #     return code, my_format

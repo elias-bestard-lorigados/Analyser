@@ -7,18 +7,11 @@ class DynamicSeparator:
     """Intenta parsear una cadena en saltos de linea  donde
         cada linea= linea= label + value1 value2 value3... val_i
         """
-    def __init__(self):
-        ''' RE -> value1 value2... '''
-        self._re = re.compile('(([0-9]+(,[0-9]+)*)+[\n]*)*')
-        self.__separator=','
-    
     def parse(self, data,separator=','):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
         retorna un FK si matchea con num separados por 'separator'
         val"salto"... """
-        if separator!=self.__separator:
-            self.__separator=separator
-            self._re = re.compile('(([0-9]+('+separator+'[0-9]+)*)+[\n]*)*')
+        self._re = re.compile("(\d+(\.\d+)?("+separator+"\d+(\.\d+)?)*[\n]*)*")
         if self._re.match(data).end() == len(data):
             return self.process(data,separator)
         return None
@@ -32,10 +25,10 @@ class DynamicSeparator:
         #for pairs
         pairs_values = [] #elementos en pairs si son cantidad de numeros pairs
         data=data.split('\n')
-        for item in data:
-            if  item=='':
+        for line in data:
+            if  line=='':
                 continue
-            values = [int(x) for x in re.findall("[0-9]+", item)]
+            values = [float(x) for x in line.split(separator)]
             elements.append(values)
             if len(values) % 2 == 0: #si la cantidad de elementos es par hago una lista con los pares consecutivos
                 pairs_values.append([[values[i],values[i+1]] for i in range(0,len(values),2)])
@@ -72,14 +65,3 @@ class DynamicSeparator:
             file.write(data[:-1]+"\n")
         file.close()
 
-    def describe(self, line,separator=","):
-        """ Ver si matchea el texto "line" completo con la expresion regular definida! 
-        retorna una None o una descripcioon del la line "DynamicSeparator"
-        separator es el separador que espera entre numeros, default ',' """
-        if separator != self.__separator:
-            self.__separator = separator
-            self._re = re.compile(
-                '(([ A-Za-z ]+(_[0-9]+)*)+'+separator+'([0-9]+('+separator+'[0-9]+)*)+[\n]*)*')
-        if self._re.match(line).end() == len(line):
-            return "DynamicSeparator"
-        return None

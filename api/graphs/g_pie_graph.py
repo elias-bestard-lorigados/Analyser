@@ -18,12 +18,12 @@ class PieGraph(MyHighchart):
                           formats.LabeledPairSeries, formats.DictXy]
         self.options['plotOptions']= {
                 'pie': {
-                    'allowPointSelect': True,
+                    'allowPointSelect': 'true',
                     'format': '<b>{point.name}</b>: {point.value} ',
                     'dataLabels': {
-                        'enabled': True
+                        'enabled': 'true'
                     },
-                    'showInLegend': True
+                    'showInLegend': 'true'
                 }
             }
         self.options['tooltip']= {'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'}

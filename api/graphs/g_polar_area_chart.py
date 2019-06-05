@@ -23,7 +23,12 @@ class PolarAreaChart(MyHighchart):
                     'lineWidth': 0,
                     'min': 0
                 }
-
+    def graphic(self, g_id, format_known):
+        """ Graficar los elementos """
+        if not self.kf_permited.__contains__(type(format_known)) or format_known.count < 3:
+            return None
+        self.g_id = g_id
+        return self._make_js_code(format_known)
     def generate(self,id):
         self.g_id = id
         elements=[]

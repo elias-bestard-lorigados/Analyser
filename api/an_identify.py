@@ -12,6 +12,7 @@ for item in Config().parsers:
     __all_parsers[class_name] = eval(str(item+"."+class_name+"()"))
 
 parsers_phases = [analyse_line_by_line]
+
 def identify(data):
     """ recorre las fases de parseo y se queda con los formatos conocidos que se extrajeron del texto
         las fases de parseo reciben la cadena a procesar y devuelven una lista de KF

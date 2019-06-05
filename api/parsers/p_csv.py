@@ -8,9 +8,10 @@ import csv
 class Csv:
     """Chequea si la cadena son listas separadas por comas
     si lo es asume que es un CSV file y la procesa"""
-
+    
     def __init__(self):
         self.__has_series_name = 0
+        self.__has_categories_name = 0
 
     def parse(self, data, separator=','):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
@@ -27,101 +28,97 @@ class Csv:
         formats_list = []
         data = StringIO(data)
         csvreader = csv.reader(data)
-        rows = []
+        values = []
         csvreader = list(csvreader)
+        self.__has_categories_name=1 if self.__check_lbls_line([item[0] for item in csvreader],separator) else 0
 
-        for i in range(0, len(csvreader)):
-            for j in range(len(csvreader[i])):
-                if csvreader[i][j] == '':
-                    csvreader[i][j] = '0'
-                if self.__is_num(csvreader[i][j]):
-                    csvreader[i][j] = float(csvreader[i][j])
-                elif i!=0 and j!=0:
+        for i in range(self.__has_series_name, len(csvreader)):
+            values_temp=[]
+            for j in range(self.__has_categories_name,len(csvreader[i])):
+                if csvreader[i][j] == '' or self.__is_num(csvreader[i][j])==False:
                     csvreader[i][j] = 0
-            rows.append(csvreader[i])
-        if self.__has_series_name == 0: #si la primera fila tiene strings es series/categorias
-            series_name = []
-        else:
-            series_name=[str(item) for item in rows[0]]
+                values_temp.append(float(csvreader[i][j]))
+            values.append(values_temp)
+        #si la primera fila tiene lbl la considero series names
+        series_name=[str(item) for item in csvreader[0][self.__has_categories_name:]] if self.__has_series_name == 1 else []
         #si la primera columna tiene strings es categorias/series_name
-        categories_name=''
-        categories = [str(item[0]) for item in rows] if self.__has_series_name == 0 else [str(item[0]) for item in rows[1:]]
-        if not self.__check_series_name_line(categories):
-            categories=[]
-        has_categories=0 if len(categories)==0 else 1
-        if has_categories==1:#si la primera columna tiene vstrings quito el elemento 0,0
-            categories_name=series_name[0]
-            series_name=series_name[1:]
+        categories = [str(item[0]) for item in csvreader[self.__has_series_name:]] if self.__has_categories_name == 1 else []
         series=[]
-        #estableco las series
-        for i in range(self.__has_series_name,len(rows)):
-            temp=[]
-            for j in range(len(rows[i])):
-                if has_categories==1 and j==0:
-                    continue
-                temp.append(rows[i][j])
-            series.append(temp)
         categories = self.rename(categories)
         series_name = self.rename(series_name)
-        kf = formats.NumSeries(series, categories)
-        kf.categories = series_name
+        #creo los KF
+        kf = formats.NumSeries(values,series_name)
+        kf.categories = categories
         if len(kf.elements) != 0:
             formats_list.append((kf, 1))
         chart_boxplot = formats.BoxplotSeries()
-        # chart_boxplot.categories = series_name
-        chart_boxplot.calculate_boxplot_from_list(series, categories)
+        chart_boxplot.calculate_boxplot_from_list(series, series_name)
+        # chart_boxplot.categories = categories
         if len(chart_boxplot.elements) != 0:
             formats_list.append((chart_boxplot, 1))
-
-        # invierto la matriz de valores
-        series = self.__invert_matrix(series)
-
-        kf=formats.NumSeries(series,series_name)
-        kf.categories=categories
+        #invierto la matriz de valores
+        series = self.__invert_matrix(values)
+        #creo los KF
+        kf=formats.NumSeries(series,categories)
+        kf.categories=series_name
         if len(kf.elements) != 0:
             formats_list.append((kf, 1))
         chart_boxplot = formats.BoxplotSeries()
-        # chart_boxplot.categories=categories
-        chart_boxplot.calculate_boxplot_from_list(series,series_name)
+        chart_boxplot.calculate_boxplot_from_list(series,categories)
+        #chart_boxplot.categories=series_names
         if len(chart_boxplot.elements) != 0:
             formats_list.append((chart_boxplot, 1))
         return formats_list
 
     def check_csv(self, text: str, separator=','):
-        ''' Chequea que text sean labels separados por comas y numeros separados por coma
+        ''' Chequea que text sean labels y numeros separados por comas
         Formato CSV donde todas las filas tienen la misma longitud'''
-        series = '([ A-Za-z0-9_ ]*'+separator+'*([0-9]+(.[0-9]+)*)*[ \n]*)*'
-        regex = re.compile(series)
         text = text.split("\n")
         if len(text) == 0:
             return False
-        begin = 1 if self.__check_series_name_line(
-            text[0].split(separator)) else 0
-        self.__has_series_name = begin
-        long = len(text[0].split(separator))
-        for i in range(begin, len(text)):
-            if regex.match(text[i]).end() != len(text[i]):
-                return False
-            if len(text[i].split(separator)) != long:
+        lines=[item.split(separator) for item in text]
+        # self.__has_series_name dice si la primera fila del archivo contiene algun lbl
+        self.__has_series_name = 1 if self.__check_lbls_line(lines[0]) else 0
+        # long para asegurarme que todas las filas tienen la misma longitud
+        long = len(lines[0])
+        for i in range(self.__has_series_name, len(lines)):
+            if len(lines[i]) != long:
                 return False
         return True
-
-    def __check_series_name_line(self, line: list, separator=','):
-        ''' Chequea que la linea sean lbl'''
+    
+    def __check_lbls_line(self, line: list, separator=','):
+        ''' Chequea que la linea contenga almenos un lbl'''
         for item in line:
             if not self.__is_num(item):
                 return True
         return False
-
+    
     def __is_num(self, cadena: str):
         ''' Chequea si la cadena es un numero 
         considero que sea lbl si no es un numero'''
-        num = '[0-9]+(.[0-9]+)*'
+        num = "\d+(\.\d+)?"
         regex = re.compile(num)
         match = regex.match(str(cadena))
         if match == None or match.end() != len(str(cadena)):
             return False
         return True
+    
+    def __invert_matrix(self, matrix):
+        ''' Invertir matriz '''
+        if len(matrix)==0:
+            return []
+        return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+    
+    def rename( self,lista: list):
+        new_list=[]
+        for i in range(0, len(lista)):
+            temp = lista[i]
+            lista.remove(lista[i])
+            if new_list.__contains__(temp):
+                temp = temp+'~_~'+str(i)
+            lista.insert(i,temp)
+            new_list.append(temp)
+        return new_list
 
     def help(self):
         return ''' parsea una cadena con formato CSV
@@ -150,22 +147,3 @@ class Csv:
                 data += str(int(uniform(on_top, below)))+separator
             file.write(data[:-1]+"\n")
         file.close()
-
-    def __invert_matrix(self, matrix):
-        ''' Invertir matriz '''
-        if len(matrix)==0:
-            return []
-        return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
-
-    def rename( self,lista: list):
-        new_list=[]
-        for i in range(0, len(lista)):
-            temp = lista[i]
-            lista.remove(lista[i])
-            if new_list.__contains__(temp):
-                temp = temp+'_'+str(i)
-            lista.insert(i,temp)
-            new_list.append(temp)
-        return new_list
-
-

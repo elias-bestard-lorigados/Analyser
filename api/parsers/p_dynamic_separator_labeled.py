@@ -8,20 +8,13 @@ class DynamicSeparatorLabeled:
         separator es el separador que espera entre numeros, default ','
         cada linea= linea= label + value1 value2 value3... val_i
         """
-    def __init__(self):
-        ''' RE -> value1 value2... '''
-        self._re = re.compile('(([ A-Za-z ]+(_[0-9]+)*)+,([0-9]+(,[0-9]+)*)[\n]*)*')
-        self.__separator=','
-        
+
     def parse(self, data,separator=','):
         """ Ver si matchea el texto "data" completo con la expresion regular definida! 
         retorna un FK si matchea con num separados por saltos de linea
         val"salto"... 
         separator es el separador que espera entre numeros, default ',' """
-        if separator!=self.__separator:
-            self.__separator=separator
-            self._re = re.compile('(([ A-Za-z ]+(_[0-9]+)*)+'+separator+'([0-9]+('+separator+'[0-9]+)*)+[\n]*)*')
-        if self._re.match(data).end() == len(data):
+        if self.is_this_format(data,separator):
             return self.process(data,separator)
         return None
 
@@ -38,7 +31,7 @@ class DynamicSeparatorLabeled:
                 continue
             line=line.split(separator)
             labels.append(line[0])
-            temp_value=[int(line[i]) for i in range(1,len(line)) ]
+            temp_value=[float(line[i]) for i in range(1,len(line)) ]
             values.append(temp_value)
             #Si tiene cantidad par de numeros los agrupo en pares y agrego una nueva serie!!!!
             if len(temp_value) % 2 == 0:
@@ -78,14 +71,15 @@ class DynamicSeparatorLabeled:
             file.write(data[:-1]+"\n")
         file.close()
 
-    def describe(self, line,separator=","):
-        """ Ver si matchea el texto "line" completo con la expresion regular definida! 
-        retorna una None o una descripcioon del la line "DynamicSeparatorLabeled"
-        separator es el separador que espera entre numeros, default ',' """
-        if separator != self.__separator:
-            self.__separator = separator
-            self._re = re.compile(
-                '(([ A-Za-z ]+(_[0-9]+)*)+'+separator+'([0-9]+('+separator+'[0-9]+)*)+[\n]*)*')
-        if self._re.match(line).end() == len(line):
-            return "DynamicSeparatorLabeled"
-        return None
+    def is_this_format(self, data,separator=","):
+        regex= re.compile('\d+(\.\d+)?')
+        data=data.split('\n')
+        lines=[item.split(separator) for item in data]
+        for i in range(0,len(lines)):
+            for j in range(0,len(lines[i])):
+                if j==0:
+                    if regex.match(lines[i][j])==len(lines[i][j]):
+                        return False
+                elif not regex.match(lines[i][j]).end()==len(lines[i][j]):
+                    return False
+        return True

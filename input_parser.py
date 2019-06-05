@@ -31,7 +31,8 @@ parser.add_argument("-gs", "--graphics_selection", help='''Para activar el Siste
                     type=str, choices=['0', '1'])
 parser.add_argument("-m", "--message", help='''Para definir que mensaje quiere mostrar con los graficos, uno de los siguienes : comparison,composition,relation,distribution''',
                     type=str, choices=['comparison','composition','relation','distribution'])
-
+parser.add_argument("-of", "--open_feedback", help='''Abre la aplicacion para guardar criterio del usuario''',
+                    action='store_true')
 def parse():
     ''' Parsear la entrada por default y luego ajustar los archivos de configuracion de acuerdo a los parametros
     1ro lee archivo CONFIG.INI si existe y se ajusta la config acorde a este
@@ -48,9 +49,10 @@ def parse():
             __read_conf()
         except :
             print("WARNING--- HAY ALGO MAL CON EL ARCHIVO CONFIG.INI")
-        __read_conf()
     __set_config_by_args(args)
-
+    if  args.open_feedback:
+        os.system('electron ./load_html')
+        return []
     if (config.prarsers_help != [] or config.parser_list != 0 or config.graphs_list != 0):
         if config.prarsers_help != [] and config.prarsers_help !=['none']:
             print("PARSERS HELP")
