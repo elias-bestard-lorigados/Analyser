@@ -45,7 +45,7 @@ class JsonHighchartsSeries:
                     categories.append((categorie,serie[categorie]))
         formts=[]
         num_series=formats.NumSeries(series,series_name)
-        if len(num_series.elements)!=0:
+        if num_series.count!=0:
             formts.append((num_series,1)) 
         chart_boxplot=formats.BoxplotSeries()
         chart_boxplot.calculate_boxplot_from_list(series,series_name)

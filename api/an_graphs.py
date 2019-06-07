@@ -28,29 +28,25 @@ def to_graphic(kf_list):
         if kf == ['UNKNOW']:
             continue
         logging.info("KF: "+str(type(kf).__name__)+" --> : ")
-        code = graph(kf)
+        code = find_charts_for_kf(kf)
         for text, chart_id in code:
             results_tabcontent_charts += text
             results_tabs.append(generate_tab(chart_id))
         logging.info("-"*30)
     return results_tabcontent_charts,results_tabs
 
-def graph(kf):
-    """ decide si ver cuales son los mejores graficos a mostrar
-    o si los muestra todos los posibles """
+def find_charts_for_kf(kf):
+    """ buscar la lista de graficos a graficar y tratar de generar su codigo si acepta el kf"""
     graphics_list = evaluate_rules(kf) if Config().graphics_selection==1 else Config().available_graphs
-    return select_graph_to_do(kf, graphics_list, Config().graphics_selection)
+    return try_plot(kf, graphics_list)
 
-def select_graph_to_do(known_format,graphics_list: list,call_type=1):
+def try_plot(known_format,graphics_list: list):
     """ Dado un KF busca que tipos de graficos lo pueden plotear de los graficos dados
     graphs: graphics_list <- lista de graficos a graficar
-    call_type==0 se trabaja con los graficos habilitados,
-    call_type==1 se trabaja con los graficos que se asumen mas importantes
     Retorna el codigo de los graficos con sus ids"""
     id = Config().db_count_id
-    to_graphic = [items for items in graphics_list] if call_type == 1 else graphics_list
     result_code=[]
-    for chart in to_graphic:
+    for chart in graphics_list:
         if Config().message != '' and not __all_graphs[chart].message.__contains__(Config().message):
             continue
         content = __all_graphs[chart].graphic(id,known_format)

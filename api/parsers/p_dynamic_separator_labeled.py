@@ -78,8 +78,8 @@ class DynamicSeparatorLabeled:
         for i in range(0,len(lines)):
             for j in range(0,len(lines[i])):
                 match=regex.match(lines[i][j])
-                if match and j==0:
-                    if match.end()==len(lines[i][j]):
+                if j==0:
+                    if match and match.end()==len(lines[i][j]):
                         return False
                 elif (not match) or (not match.end()==len(lines[i][j])):
                     return False

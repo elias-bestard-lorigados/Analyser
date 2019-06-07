@@ -25,8 +25,7 @@ class KnownF:
         self.min_value=min(self.min_value,kf_to_extend.min_value)
         self.max_value = max(self.max_value, kf_to_extend.max_value)
         self.update_min_max_meddian(mins,maxs,proms)
-        
-    
+
     def update_min_max_meddian(self,mins,maxs,proms):
         """ Para update las series min max y promedio """
         pass

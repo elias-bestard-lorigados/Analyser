@@ -22,10 +22,10 @@ class PairsSeries(KnownF):
             self.max_value=max(series[i]) if max(series[i])>self.max_value else self.max_value
             self.elements[series_names[i]]=series[i]
             for j in range(len(series[i])):
-                if j> len(mins):
+                if j>= len(mins):
                     mins.append(series[i][j])
                     maxs.append(series[i][j])
-                    mins.append((series[i][j],1))
+                    self.proms.append((series[i][j],1))
                 else:
                     mins[j]= series[i][j] if series[i][j]<mins[j] else mins[j]
                     maxs[j]= series[i][j] if series[i][j]>maxs[j] else maxs[j]
@@ -42,7 +42,7 @@ class PairsSeries(KnownF):
         mins=self.elements["Mins_Series"]
         proms=self.proms
         for i in range(len(kf_mins)):
-            if i>len(mins):
+            if i>=len(mins):
                 mins.append(kf_mins[i])
                 maxs.append(kf_maxs[i])
                 proms.append(kf_proms[i])

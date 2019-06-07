@@ -45,18 +45,7 @@ class Csv:
         categories = [str(item[0]) for item in csvreader[self.__has_series_name:]] if self.__has_categories_name == 1 else []
         categories = self.rename(categories)
         series_name = self.rename(series_name)
-        #creo los KF
-        kf = formats.NumSeries(values,series_name)
-        kf.categories = categories
-        if kf.count != 0:
-            formats_list.append((kf, 1))
-        chart_boxplot = formats.BoxplotSeries()
-        chart_boxplot.calculate_boxplot_from_list(values, series_name)
-        # chart_boxplot.categories = categories
-        if len(chart_boxplot.elements) != 0:
-            formats_list.append((chart_boxplot, 1))
-        #invierto la matriz de valores
-        values = self.__invert_matrix(values)
+        
         #creo los KF
         kf=formats.NumSeries(values,categories)
         kf.categories=series_name
@@ -67,6 +56,21 @@ class Csv:
         #chart_boxplot.categories=series_names
         if len(chart_boxplot.elements) != 0:
             formats_list.append((chart_boxplot, 1))
+        
+        #invierto la matriz de valores
+        values = self.__invert_matrix(values)
+        
+        #creo los KF
+        kf = formats.NumSeries(values,series_name)
+        kf.categories = categories
+        if kf.count != 0:
+            formats_list.append((kf, 1))
+        chart_boxplot = formats.BoxplotSeries()
+        chart_boxplot.calculate_boxplot_from_list(values, series_name)
+        # chart_boxplot.categories = categories
+        if len(chart_boxplot.elements) != 0:
+            formats_list.append((chart_boxplot, 1))
+
         return formats_list
 
     def check_csv(self, text: str, separator=','):
