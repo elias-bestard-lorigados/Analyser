@@ -40,3 +40,17 @@ class BoxplotSeries(KnownF):
             current_q3=median(temp_list[middle:])
             curren_serie.append([current_min,current_q1,current_median,current_q3,current_max])
             self.elements[series_names[i]]=curren_serie
+    def extend(self,kf_to_extend):
+        ''' Extiende el KF self, con el KF kf_to_extend
+        agregando a los elements los de kf_to_extend
+        si alguna serie tiene el mimso nombre se le cambia el nombre a esta para no sobreescribir
+        actualiza el minimo, maximo, cantidad de series '''
+        num=len(kf_to_extend.elements)+len(self.elements)
+        proms=kf_to_extend.proms
+        for key in kf_to_extend.elements:
+            new_key=key+"_"+str(num) if  self.elements.keys().__contains__(key) else key
+            self.elements[new_key]=kf_to_extend.elements[key]
+            num+=1
+        self.count=len(self.elements)
+        self.min_value=min(self.min_value,kf_to_extend.min_value)
+        self.max_value = max(self.max_value, kf_to_extend.max_value)

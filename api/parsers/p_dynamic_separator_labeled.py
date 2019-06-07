@@ -77,9 +77,10 @@ class DynamicSeparatorLabeled:
         lines=[item.split(separator) for item in data]
         for i in range(0,len(lines)):
             for j in range(0,len(lines[i])):
-                if j==0:
-                    if regex.match(lines[i][j])==len(lines[i][j]):
+                match=regex.match(lines[i][j])
+                if match and j==0:
+                    if match.end()==len(lines[i][j]):
                         return False
-                elif not regex.match(lines[i][j]).end()==len(lines[i][j]):
+                elif (not match) or (not match.end()==len(lines[i][j])):
                     return False
         return True

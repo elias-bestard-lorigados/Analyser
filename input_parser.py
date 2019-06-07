@@ -1,10 +1,12 @@
-from api.an_graphs import graphic_generate
+from api.utils.manage_html import ini_html, end_html, generate_tab
 from api.an_identify import parsers_help, data_generator
+from api.an_graphs import graphic_generate
 from api.utils.config import Config
-from api.utils.analyse import ini_html, end_html, generate_tab
 import configparser
 import argparse
+import logging
 import os
+
 
 parser = argparse.ArgumentParser(prog="Analizer")
 parser.add_argument("-f", "--file", help="Path donde se ubica la info a procesar")
@@ -42,37 +44,55 @@ def parse():
     # Ver si el usuario quiere generar el archivo config.ini
     if(args.generate_config):
         __generate_config()
+        logging.info("CONFIG.INI GENERATED")
         return []
     config = Config()
     if os.path.exists('./config.ini'):
         try:
             __read_conf()
         except :
-            print("WARNING--- HAY ALGO MAL CON EL ARCHIVO CONFIG.INI")
+            logging.warning('HAY ALGO MAL CON EL ARCHIVO CONFIG.INI')
+            # print("WARNING--- HAY ALGO MAL CON EL ARCHIVO CONFIG.INI")
     __set_config_by_args(args)
+
+    logging.info('GRAPHICS AVAILABLES')
+    logging.info('-'*30)
+    [logging.info(graph) for graph in config.available_graphs]
+    logging.info('-'*30)
+    logging.info('PARSERS AVAILABLES')
+    logging.info('-'*30)
+    [logging.info(parser) for parser in config.available_parsers]
+    logging.info('-'*30)
+
     if  args.open_feedback:
         os.system('electron ./load_html')
         return []
     if (config.prarsers_help != [] or config.parser_list != 0 or config.graphs_list != 0):
         if config.prarsers_help != [] and config.prarsers_help !=['none']:
+            logging.info("--- PARSERS HELP ---")
             print("PARSERS HELP")
             parsers_help()
         if config.parser_list == 1:
-            print("PARSERS")
-            print("="*20)
+            logging.info("--- PARSERS LIST ---")
+            print("PARSERS LIST")
+            print("-"*30)
             [print(item) for item in config.parsers]
-            print("="*20)
+            print("-"*30)
         if config.graphs_list == 1:
-            print("GRAPHS")
-            print("="*20)
+            logging.info("--- GRAPHS LIST ---")
+            print("GRAPHS LIST")
+            print("-"*30)
             [print(item) for item in config.graphs]
-            print("="*20)
+            print("-"*30)
         return []
     if config.data_generated!=[] or config.graphics_g!=[]:
         if config.data_generated != [] and config.data_generated != ['none']:
+            logging.info("--- GENERATING DATA ---")
             print("GENERATING DATA")
             data_generator()
+            logging.info("-"*30)
         if config.graphics_g != [] and config.graphics_g != ['none']:
+            logging.info("--- GENERATING GRAPHICS ---")
             print("GENERATING GRAPHICS")
             __graphics_generator()
         return []
@@ -94,7 +114,8 @@ def __read_dir(path_to_proccess):
         else:  # si es un file
             data = [open(path_to_proccess, "r").read()]
     except:
-        print("HA OCURRIDO UN ERROR LEYENDO LOS ARCHIVOS DE ENTRADA")
+        logging.warning("HA OCURRIDO UN ERROR LEYENDO LOS ARCHIVOS DE ENTRADA")
+        # print("HA OCURRIDO UN ERROR LEYENDO LOS ARCHIVOS DE ENTRADA")
     return data
 
 def __read_conf():
@@ -183,6 +204,7 @@ def __graphics_generator():
         code_result+=code
         tabs_result.append(generate_tab(chart_id))
     if code_result == '':
+        logging.info("No se Pudo generar Ningun Grafico")
         print("Lo sentimos no se pudo generar ningun grafico")
         return
     file = ini_html(file_name)

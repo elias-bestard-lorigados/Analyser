@@ -1,12 +1,10 @@
 import sys
+import logging
 from api.utils.config import Config
-from api.utils.manage_db import add_data_base
-from api.utils.manage_db import find_count_kf_graphic
-from api.utils.manage_db import find_count_message_graphic
-from api.utils.rules import message_comparison
-from api.utils.rules import message_distribution
-from api.utils.rules import message_relation
-from api.utils.rules import message_composition
+from api.utils.manage_db import add_data_base,find_count_kf_graphic,find_count_message_graphic
+from api.utils.rules import message_comparison,message_distribution,message_relation,message_composition
+from api.utils.manage_html import generate_tab, generate_div_html
+
 sys.path.append(Config().graphs_path)
 __all_graphs={}
 
@@ -16,19 +14,63 @@ for item in Config().graphs:
     exec(import_module)
     __all_graphs[class_name] = eval(str(item+"."+class_name+"()"))
 
+def to_graphic(kf_list):
+    ''' generar codigo html para graficar los formatos "KF" de la entrada
+    return LIST[STRING] (codigo js de los graficos)
+    retorna el codigo generado y la lista de tabs en los que se van a mostrar en el html'''
+    results_tabcontent_charts = ""
+    results_tabs = []
+    #form ->KF ,sim->similarity
+    logging.info("---- KF --> GRAPHICS ----")
+    logging.info("-"*30)
+
+    for kf, sim in kf_list:  # recorro todos los formatos para graficar de cada formto todos los graficos posibles
+        if kf == ['UNKNOW']:
+            continue
+        logging.info("KF: "+str(type(kf).__name__)+" --> : ")
+        code = graph(kf)
+        for text, chart_id in code:
+            results_tabcontent_charts += text
+            results_tabs.append(generate_tab(chart_id))
+        logging.info("-"*30)
+    return results_tabcontent_charts,results_tabs
+
 def graph(kf):
     """ decide si ver cuales son los mejores graficos a mostrar
-    o si los muestra sin importancia"""
+    o si los muestra todos los posibles """
     graphics_list = evaluate_rules(kf) if Config().graphics_selection==1 else Config().available_graphs
     return select_graph_to_do(kf, graphics_list, Config().graphics_selection)
+
+def select_graph_to_do(known_format,graphics_list: list,call_type=1):
+    """ Dado un KF busca que tipos de graficos lo pueden plotear de los graficos dados
+    graphs: graphics_list <- lista de graficos a graficar
+    call_type==0 se trabaja con los graficos habilitados,
+    call_type==1 se trabaja con los graficos que se asumen mas importantes
+    Retorna el codigo de los graficos con sus ids"""
+    id = Config().db_count_id
+    to_graphic = [items for items in graphics_list] if call_type == 1 else graphics_list
+    result_code=[]
+    for chart in to_graphic:
+        if Config().message != '' and not __all_graphs[chart].message.__contains__(Config().message):
+            continue
+        content = __all_graphs[chart].graphic(id,known_format)
+        if content!=None:
+            logging.info(chart)
+            chart_id = __all_graphs[chart].type+"_"+str(id)
+            content = generate_div_html(chart_id,content)
+            result_code.append((content,chart_id))
+            add_data_base(__all_graphs[chart], known_format)
+            id+=1
+    Config().db_count_id = id
+    return result_code
 
 def evaluate_rules(kf,count_to_show=3):
     ''' Recorre los graficos habilitados y evalua las reglas del RBS para ver cuales 
     son los mejores graficos segun el KF
-    return un diccionario con el chart y los puntos que adquirieron '''
+    retorna una lista con los cahrts mejores '''
     dict_result={}
     if  Config().message=='':
-        message,p=check_message(kf)
+        message=check_message(kf)
     else:
         message = Config().message
     for chart in Config().available_graphs:
@@ -46,28 +88,8 @@ def evaluate_rules(kf,count_to_show=3):
     result.sort(key=(lambda x:x[1]),reverse=True)
     if len(result)>count_to_show:
         result=result[:count_to_show]
+    result=[x for x,j in result]
     return result
-
-def select_graph_to_do(known_format,graphics_list: list,call_type=1):
-    """ Dado un formato conocido 'known_format' busca que tipos de graficos lo pueden plotear de los graficos dados
-    graphs: graphics_list <- lista de graficos a graficar
-    call_type==0 se trabaja con los graficos habilitados,
-    call_type==1 se trabaja con los graficos que se asumen mas importantes"""
-    id = Config().db_count_id
-    to_graphic = [items for items, value in graphics_list] if call_type == 1 else graphics_list
-    result_code=[]
-    for chart in to_graphic:
-        if Config().message != '' and not __all_graphs[chart].message.__contains__(Config().message):
-            continue
-        content = __all_graphs[chart].graphic(id,known_format)
-        if content!=None:
-            chart_id = __all_graphs[chart].type+"_"+str(id)
-            content = "<div id =\""+chart_id+"\" class = \"tabcontent\" >\n"+content+"\n</div>\n"
-            result_code.append((content,chart_id))
-            add_data_base(__all_graphs[chart], known_format)
-            id+=1
-    Config().db_count_id = id
-    return result_code
 
 def check_message(kf):
     ''' Chequea que mensaje es el que se quiere mostrar a corde a las reglas'''
@@ -81,13 +103,13 @@ def check_message(kf):
     result.append(('distribution',
                   find_count_message_graphic('distribution', kf) + message_distribution(kf)))
     result.sort(key=(lambda x: x[1]), reverse=True)
-    return result[0]
+    return result[0][0]
 
 def graphic_generate(graphics_list: list):
     ''' Metodo para generar los graficos con datos aleatorios '''
     result_code = []
     id = Config().db_count_id
-    print("="*20)
+    print("-"*30)
     for chart in graphics_list:
         if Config().message != '' and not __all_graphs[chart].message.__contains__(Config().message):
             continue
@@ -95,11 +117,12 @@ def graphic_generate(graphics_list: list):
         if content != None:
             chart_id = __all_graphs[chart].type+"_"+str(id)
             print(chart)
+            logging.info(chart)
             content = "<div id =\""+chart_id + \
                 "\" class = \"tabcontent\" >\n"+content+"\n</div>\n"
             result_code.append((content, chart_id))
             add_data_base(__all_graphs[chart], my_format)
-            print("="*20)
+            print("-"*30)
             id += 1
     Config().db_count_id = id
     return result_code

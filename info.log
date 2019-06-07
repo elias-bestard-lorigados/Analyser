@@ -1,0 +1,118 @@
+INFO- ========INICIO=======
+INFO- GRAPHICS AVAILABLES
+INFO- ------------------------------
+INFO- BarChart
+INFO- BulletChart
+INFO- BubbleChart
+INFO- VectorChart
+INFO- SplineInvertedChart
+INFO- HeatmapChart
+INFO- TilemapChart
+INFO- PieGraph
+INFO- ColumnGraph
+INFO- StackColumnPercent
+INFO- ScatterChart
+INFO- AreaChart
+INFO- SplineChart
+INFO- PackedbubbleChart
+INFO- StackColumn
+INFO- AreaRangeChart
+INFO- Networkgraph
+INFO- PolarAreaChart
+INFO- BoxplotChart
+INFO- SankeyChart
+INFO- LineGraph
+INFO- ------------------------------
+INFO- PARSERS AVAILABLES
+INFO- ------------------------------
+INFO- StrTupleList
+INFO- Csv
+INFO- NumbersList
+INFO- DynamicSeparatorLabeled
+INFO- JsonHighchartsSeries
+INFO- LabeledTriosList
+INFO- LabeledPairList
+INFO- NumPairsList
+INFO- FourTupleList
+INFO- DictXy
+INFO- DynamicSeparator
+INFO- TriosList
+INFO- LabeledFourTupleList
+INFO- JsonNumList
+INFO- StrStrNumList
+INFO- ------------------------------
+INFO- PROCESAR COMPLETO
+INFO- ---- PARSERS --> KF ----
+INFO- ------------------------------
+INFO- [(['UNKNOW'], 0)]
+INFO- ------------------------------
+INFO- FRAGMENTAR DOC
+INFO- ---- PARSERS --> KF ----
+INFO- ------------------------------
+INFO- PARSER: NumbersList --> : 
+INFO- NumSeries
+INFO- BoxplotSeries
+INFO- ------------------------------
+INFO- ---- PARSERS --> KF ----
+INFO- ------------------------------
+INFO- PARSER: NumbersList --> : 
+INFO- NumSeries
+INFO- BoxplotSeries
+INFO- ------------------------------
+INFO- ---- PARSERS --> KF ----
+INFO- ------------------------------
+INFO- PARSER: NumPairsList --> : 
+INFO- PairsSeries
+INFO- ------------------------------
+INFO- ---- PARSERS --> KF ----
+INFO- ------------------------------
+INFO- PARSER: NumPairsList --> : 
+INFO- PairsSeries
+INFO- ------------------------------
+INFO- ------------------------------
+INFO- KF GENERADOS COMPACTADOS: 
+INFO- ------------------------------
+INFO- list
+INFO- NumSeries
+INFO- BoxplotSeries
+INFO- PairsSeries
+INFO- ---- KF --> GRAPHICS ----
+INFO- ------------------------------
+INFO- KF: NumSeries --> : 
+INFO- BarChart
+INFO- SplineInvertedChart
+INFO- ColumnGraph
+INFO- StackColumnPercent
+INFO- ScatterChart
+INFO- AreaChart
+INFO- SplineChart
+INFO- PackedbubbleChart
+INFO- StackColumn
+INFO- PolarAreaChart
+INFO- LineGraph
+INFO- ------------------------------
+INFO- KF: BoxplotSeries --> : 
+INFO- BoxplotChart
+INFO- ------------------------------
+INFO- KF: PairsSeries --> : 
+INFO- BarChart
+INFO- BulletChart
+INFO- BubbleChart
+INFO- SplineInvertedChart
+INFO- HeatmapChart
+INFO- TilemapChart
+INFO- ColumnGraph
+INFO- StackColumnPercent
+INFO- ScatterChart
+INFO- AreaChart
+INFO- SplineChart
+INFO- PackedbubbleChart
+INFO- StackColumn
+INFO- AreaRangeChart
+INFO- PolarAreaChart
+INFO- LineGraph
+INFO- ------------------------------
+INFO- --- Archivo Finalizado ---
+INFO- ------------------------------
+INFO- ======== FIN =======
+INFO- ..............................

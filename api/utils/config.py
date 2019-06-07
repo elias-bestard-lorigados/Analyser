@@ -1,6 +1,8 @@
+import logging
 import os
 import sys
 import json
+
 def singleton(cls):
     instance = None
     def getinstance(*args, **kwargs):
@@ -72,14 +74,16 @@ class Config:
         if os.path.isdir(os.path.abspath(path)) or os.path.isfile(os.path.abspath(path)):
             self.input_path = os.path.abspath(path)
         else:
-            print("WARNING-- EL PATH "+ path +" NO ES UN PATH VALIDO")
+            logging.warning("EL PATH "+ path +" NO ES UN PATH VALIDO")
+            # print("WARNING-- EL PATH "+ path +" NO ES UN PATH VALIDO")
 
     def set_out_path(self, path):
         ''' Actualiza self.output_path a la nueva direccion si esta existe '''
         if os.path.isdir(os.path.abspath(path)):
             self.output_path = os.path.abspath(path)
         else:
-            print("WARNING-- EL PATH " + path + " NO ES UN PATH VALIDO")
+            logging.warning("EL PATH "+ path +" NO ES UN PATH VALIDO")
+            # print("WARNING-- EL PATH " + path + " NO ES UN PATH VALIDO")
 
     def set_output_name(self, name):
         """ Actualiza self.output_name para el nombre que adquiriran los archivos de salida
@@ -94,7 +98,8 @@ class Config:
             self.parsers_path = os.path.abspath(path)
             self.__set_parsers()
         else:
-            print("WARNING-- EL PATH "+ path +" NO ES UN PATH VALIDO")
+            logging.warning("EL PATH "+ path +" NO ES UN PATH VALIDO")
+            # print("WARNING-- EL PATH "+ path +" NO ES UN PATH VALIDO")
     
     def set_graphs_path(self,path):
         ''' actualiza self.graphs_path si existe path 
@@ -103,7 +108,8 @@ class Config:
             self.graphs_path = os.path.abspath(path)
             self.__set_graphs()
         else:
-            print("WARNING-- EL PATH " + path + " NO ES UN PATH VALIDO")
+            logging.warning("EL PATH "+ path +" NO ES UN PATH VALIDO")
+            # print("WARNING-- EL PATH " + path + " NO ES UN PATH VALIDO")
 
     def __set_parsers(self):
         ''' Actualiza self.parsers a una lista con todos los parsers implementados bajo la interfaz definida
@@ -122,11 +128,16 @@ class Config:
                     if dir(temp).__contains__("parse") and dir(temp).__contains__("help"):
                         self.parsers.append(item[:-3])
                     else:
-                        print("WARNING-- EL ARCHIVO "+item +
+                        
+                        logging.warning("EL ARCHIVO "+item +
                           " NO IMPLEMENTA LA INTERFACE DE PARSER")
+                        # print("WARNING-- EL ARCHIVO "+item +
+                        #   " NO IMPLEMENTA LA INTERFACE DE PARSER")
                 except:
-                    print("WARNING-- EL ARCHIVO "+item +
+                    logging.warning("EL ARCHIVO "+item +
                           " NO IMPLEMENTA LA INTERFACE DE PARSER")
+                    # print("WARNING-- EL ARCHIVO "+item +
+                        #   " NO IMPLEMENTA LA INTERFACE DE PARSER")
 
     def __set_graphs(self):
         ''' Actualiza self.graphs a una lista con todos los graficos implementados bajo la interfaz definida
@@ -141,16 +152,19 @@ class Config:
                 import_module = compile("import "+item[:-3], 'e', mode='exec')
                 exec(import_module)
                 try:
-                    
                     temp = eval(str(item[:-3]+"."+class_name+"()"))
                     if dir(temp).__contains__("graphic") and dir(temp).__contains__("type") and dir(temp).__contains__("evaluate_rules"):
                         self.graphs.append(item[:-3])
                     else:
-                        print("WARNING-- EL ARCHIVO "+item +
-                              " NO IMPLEMENTA LA INTERFACE DE GRAFICO")
-                except:
-                    print("WARNING-- EL ARCHIVO "+item +
+                        logging.warning("EL ARCHIVO "+item +
                           " NO IMPLEMENTA LA INTERFACE DE GRAFICO")
+                        # print("WARNING-- EL ARCHIVO "+item +
+                            #   " NO IMPLEMENTA LA INTERFACE DE GRAFICO")
+                except:
+                    logging.warning("EL ARCHIVO "+item +
+                          " NO IMPLEMENTA LA INTERFACE DE GRAFICO")
+                    # print("WARNING-- EL ARCHIVO "+item +
+                        #   " NO IMPLEMENTA LA INTERFACE DE GRAFICO")
 
     def set_available_parsers(self,in_parsers='all'):
         """ actualiza self.available_parsers a una lista de parsers
@@ -165,7 +179,8 @@ class Config:
                 if self.parsers.__contains__(parser):
                     self.available_parsers.append(self.get_parser_class_name(parser))
                 else:
-                    print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
+                    logging.warning("EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
+                    # print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
         else:
             self.available_parsers = [self.get_parser_class_name(
                 parser) for parser in self.parsers]
@@ -183,7 +198,8 @@ class Config:
                 if self.graphs.__contains__(graph):
                     self.available_graphs.append(self.get_parser_class_name(graph))
                 else:
-                    print("WARNING-- EL GRAFICO "+graph + " NO ESTA DEFINIDO EN EL PATH")
+                    logging.warning("EL GRAFICO "+graph + " NO ESTA DEFINIDO EN EL PATH")
+                    # print("WARNING-- EL GRAFICO "+graph + " NO ESTA DEFINIDO EN EL PATH")
         else:
             self.available_graphs = [self.get_parser_class_name(
                 graph) for graph in self.graphs]
@@ -200,7 +216,8 @@ class Config:
                 if self.parsers.__contains__(parser):
                     self.prarsers_help.append(parser)
                 else:
-                    print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
+                    logging.warning("EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
+                    # print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
         else:
             self.prarsers_help = self.parsers
         if len(in_parsers_help)!=0 and self.prarsers_help==[]:
@@ -223,7 +240,8 @@ class Config:
         if os.path.isdir(os.path.abspath(path)):
             self.data_generated_path = os.path.abspath(path)
         else:
-            print("WARNING-- EL PATH " + path + " NO ES UN PATH VALIDO")
+            logging.warning("EL PATH " + path + " NO ES UN PATH VALIDO")
+            # print("WARNING-- EL PATH " + path + " NO ES UN PATH VALIDO")
 
     def set_data_generated_list(self,in_dg):
         """ Actualiza self.data_generated con los parsers que generaran juegos de datos """
@@ -236,7 +254,8 @@ class Config:
                 if self.parsers.__contains__(parser):
                     self.data_generated.append(parser)
                 else:
-                    print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
+                    logging.warning("EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
+                    # print("WARNING-- EL PARSER "+parser + " NO ESTA DEFINIDO EN EL PATH")
         else:
             self.data_generated = self.parsers
         if len(in_dg) != 0 and self.data_generated == []:
@@ -270,10 +289,13 @@ class Config:
                 if dir(temp).__contains__("generate"):
                     self.graphics_g.append(class_name)
                 else:
-                    print("WARNING-- EL GRAFICO "+graphic +
+                    logging.warning("EL GRAFICO "+graphic +
                             " NO TIENE IMPLEMENTADO EL METODO 'GENERATE'")
+                    # print("WARNING-- EL GRAFICO "+graphic +
+                            # " NO TIENE IMPLEMENTADO EL METODO 'GENERATE'")
             else:
-                print("WARNING-- EL GRAFICO "+graphic + " NO ESTA DEFINIDO EN EL PATH")
+                logging.warning("EL GRAFICO "+graphic + " NO ESTA DEFINIDO EN EL PATH")
+                # print("WARNING-- EL GRAFICO "+graphic + " NO ESTA DEFINIDO EN EL PATH")
         if len(in_gg) != 0 and self.graphics_g == []:
             self.graphics_g = ['none']
     def set_db_path(self, path):

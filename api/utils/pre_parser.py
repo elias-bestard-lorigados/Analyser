@@ -1,5 +1,6 @@
 from api.utils.config import Config
 import string
+import logging
 
 def analyse_line_by_line(text,all_parsers):
     ''' Analiza un texto linea por linea
@@ -12,9 +13,6 @@ def analyse_line_by_line(text,all_parsers):
         if line_processed != [(["UNKNOW"], 0)]:
             list_kf.append(line_processed)
     tm = compress_list1(list_kf)
-    print("~~~~ FORMATOS EXRAIDOS~~~~~~~")
-    print(tm)
-    # km = compress_list1(list_kf)
     return tm
 
 
@@ -30,10 +28,15 @@ def process_text(text: str, all_parsers:dict):
     retorna una lista de todos los KF que se puedan crear a partir de 'text'
     En caso que no parsee con ninguno retorna UNKNOWN """
     list_kf=[]
+    logging.info("---- PARSERS --> KF ----")
+    logging.info("-"*30)
     for parser in Config().available_parsers:
         temp = all_parsers[parser].parse(text)
         if temp:
+            logging.info("PARSER: "+parser+" --> : ")
+            [logging.info(str(type(kf_g).__name__)) for kf_g,j in temp]
             list_kf.extend(temp)
+            logging.info("-"*30)
     return [(["UNKNOW"],0)] if list_kf==[] else list_kf
 
 def is_comment(line):
@@ -53,39 +56,6 @@ def clean_text(text: str):
             new_text+=line+"\n"
     return new_text[:-1]
 
-def compress_list(info_list: list):
-    ''' info_list<- list de List de KF
-    revisa si en lineas adyacentes hay dos Kf iguales para unirlos
-     '''
-    if info_list==[]:
-        return []
-    kf_temp = info_list[0]
-    kf_result=[]
-    for i in range(1,len(info_list)):
-        poss_to_delete=[]
-        if (info_list[i] == ["COMMENT"] or info_list[i] == ["UNKNOW"]):
-            continue
-        for j in range(0,len(kf_temp)):
-            poss=my_contain_by_type(kf_temp[j],info_list[i])#vir si hay mas de un tipo en la proxima linea
-            if  poss==-1:
-                kf_result.append(kf_temp[j])
-                poss_to_delete.append(kf_temp[j])
-            else:
-                kf_temp[j][0].extend(info_list[i][poss][0])
-        for item in poss_to_delete:
-            kf_temp.remove(item)
-    kf_result.extend(kf_temp)
-    return kf_result
-
-def my_contain_by_type(a,b):
-    ''' retorna poss(X) si b<- list de KF contiene a un X con type(X)==type(a)
-    else return -1 '''
-    for i in range(0,len(b)):
-        if type(b[i][0])==type(a[0]):
-            return i
-    return -1
-
-
 def my_contain_by_type1(type_to_compare, elements):
     ''' retorna lista de elementos de igual tipo que type_to_compare
     de los elementos de elements'''
@@ -94,7 +64,6 @@ def my_contain_by_type1(type_to_compare, elements):
         if type_to_compare == type(item[0]):
             result.append(item)
     return result
-
 
 def compress_list1(info_list: list):
     ''' info_list<- list de List de KF

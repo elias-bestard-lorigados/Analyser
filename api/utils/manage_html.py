@@ -1,34 +1,5 @@
+# import logging
 from api.utils.config import Config
-from api.an_identify import identify
-from api.an_graphs import graph
-
-def analyse_data(data):
-    ''' Identificar todos los posibles tipos de Known_Format que se extraen de "data"
-    y generar codigo html para cada grafico que recibe cada tipo de formato
-    crea el file.html final  '''
-    formats = identify(data)
-    charts_code,results_tabs =to_graphic(formats)
-    if charts_code == '':
-        print("Lo sentimos no se pudo generar ningun grafico")
-        return
-    file=ini_html()  # creo el archivo html
-    end_html(file,charts_code,results_tabs)  # concluo el html y cierro el archivo
-
-def to_graphic(kf):
-    ''' generar codigo html para graficar los formatos "KF" de la entrada
-    return LIST[STRING] (codigo js de los graficos)
-    retorna el codigo generado y la lista de tabs en los que se van a mostrar en el html'''
-    results_tabcontent_charts = ""
-    results_tabs = []
-    #form ->KF ,sim->similarity
-    for form, sim in kf:  # recorro todos los formatos para graficar de cada formto todos los graficos posibles
-        if form == ['UNKNOW']:
-            continue
-        code = graph(form)
-        for text, chart_id in code:
-            results_tabcontent_charts += text
-            results_tabs.append(generate_tab(chart_id))
-    return results_tabcontent_charts,results_tabs
 
 def ini_html(file_name=None):
     """ Inicializar un HTML enl a carpeta de salida donde se escribira el resultado de analizar los datos """
@@ -73,3 +44,8 @@ def end_html(file, charts_code, tabs_list):
 def generate_tab(chart_id):
     chart = chart_id[:chart_id.index("_")]
     return "<button class = \"tablinks\" onclick = \"OpenChart(event,'"+chart_id+"')\" >"+chart+" </button >\n"
+
+def generate_div_html(div_id, content ):
+    ''' genera una etiqueta div en HTML '''
+    content = "<div id =\""+div_id+"\" class = \"tabcontent\" >\n"+content+"\n</div>\n"
+    return content

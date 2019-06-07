@@ -3,9 +3,11 @@ Analyser:
     ✔ Annadir a la CLI seleccionar que tipos de graficos que quiere mostrar segun la info qe muestra cada grafico @done(19-05-07 04:45)
     ☐ Que pasen comno parametro una bd o un excel!!!!
     ✔ Utilizar Feedback en el siustema en base a reglas @done(19-05-07 03:39)
+    ✔ Annadir logs @done(19-06-07 01:36)
+    ☐ Mover las librerias de JS necesarias para la carpeta out cuando se termina el proceso
     @Parsers:
         ☐ @Now Annadir loa parsers de cada grafico donde reciben en formato json!!!!
-        ☐ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}];
+        ✔ @Now hacer parser para [{"data": [[0, 13.19], [3, 9.37], [4, 12.19]], "type": "area", "name": "serie_1"}]; @done(19-06-05 23:09)
         ☐ Json Parser
         ✔ Preeprocess y limpiar mas el fila, quitar tildes, quitar caracteres raros @done(19-05-17 20:20)
         ✔ CSV Parser @done(19-05-08 21:47)

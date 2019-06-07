@@ -6,12 +6,17 @@ class KnownF:
         self.count = len(s_values)  #cantidad de series
         self.categories = []    #nombre de las categorías
         self.keys = []
+        self.proms = []
     def extend(self,kf_to_extend):
         ''' Extiende el KF self, con el KF kf_to_extend
         agregando a los elements los de kf_to_extend
         si alguna serie tiene el mimso nombre se le cambia el nombre a esta para no sobreescribir
         actualiza el minimo, maximo, cantidad de series '''
         num=len(kf_to_extend.elements)+len(self.elements)
+        mins= kf_to_extend.elements.pop("Mins_Series")
+        maxs= kf_to_extend.elements.pop("Maxs_Series")
+        kf_to_extend.elements.pop("Meds_Series")
+        proms=kf_to_extend.proms
         for key in kf_to_extend.elements:
             new_key=key+"_"+str(num) if  self.elements.keys().__contains__(key) else key
             self.elements[new_key]=kf_to_extend.elements[key]
@@ -19,3 +24,9 @@ class KnownF:
         self.count=len(self.elements)
         self.min_value=min(self.min_value,kf_to_extend.min_value)
         self.max_value = max(self.max_value, kf_to_extend.max_value)
+        self.update_min_max_meddian(mins,maxs,proms)
+        
+    
+    def update_min_max_meddian(self,mins,maxs,proms):
+        """ Para update las series min max y promedio """
+        pass
