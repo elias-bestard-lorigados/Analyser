@@ -197,9 +197,6 @@ def __set_config_by_args(args):
 def __graphics_generator():
     ''' Genera ejemplos con valores aleatorios de los graficos elejidos  '''
     path = Config().output_path
-    data_files = [item
-                for item in os.listdir(path) if item.__contains__("output_generated_")]
-    file_name = "output_generated_" +str(len(data_files)+1)
     graphics_code= graphic_generate(Config().graphics_g)
     code_result=""
     tabs_result=[]
@@ -210,7 +207,7 @@ def __graphics_generator():
         logging.info("No se Pudo generar Ningun Grafico")
         print("Lo sentimos no se pudo generar ningun grafico")
         return
-    file = ini_html(file_name)
+    file = ini_html()
     end_html(file,code_result,tabs_result)
 
 def __generate_config():

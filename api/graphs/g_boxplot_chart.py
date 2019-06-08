@@ -23,17 +23,17 @@ class BoxplotChart(MyHighchart):
         if self.kf_permited.__contains__(type(kf)):
             count += 2
         return count
-    # def generate(self, id):
-    #     '''Genera un gráfico con valores aleatorios '''
-    #     self.g_id = id
-    #     elements = []
-    #     series_nums = int(random.uniform(2, 7))
-    #     point_nums = int(random.uniform(7, 15))
-    #     for i in range(series_nums):
-    #       temp = []
-    #       for item in range(point_nums):
-    #         temp.append([item, round(random.uniform(0, 15), 2)])
-    #       elements.append(temp)
-    #     my_format = formats.PairsSeries(elements)
-    #     code = self.graphic(id, my_format)
-    #     return code, my_format
+
+    def generate(self, id):
+        '''Genera un gráfico con valores aleatorios '''
+        self.g_id = id
+        elements = []
+        series_nums = int(random.uniform(2, 7))
+        point_nums = int(random.uniform(7, 15))
+        for i in range(series_nums):
+          temp = [round(random.uniform(0, 15), 2) for item in range(point_nums)]
+          elements.append(temp)
+        my_format = formats.BoxplotSeries()
+        my_format.calculate_boxplot_from_list(elements)
+        code = self.graphic(id, my_format)
+        return code, my_format

@@ -1,5 +1,4 @@
 #! /home/elias/anaconda3/bin/python
-# from api.utils.analyse import analyse_data
 from api.an_identify import identify
 from api.an_graphs import to_graphic
 from api.utils.manage_html import ini_html,end_html

@@ -1,12 +1,14 @@
 from api import an_known_format as formats
-from api.parsers.grammars.g_numbers_list import g_numbers_list
 import os
 from random import uniform
 import json
+import re
 
-class JsonNumList:
-    """ espera un diccionario con llaves series_name y valor dict con las categorias y lso valores:
-        {'serie_name1':{'y':VALUE,'sex':VALUE,'data':[#,#,#,...,#]}...}
+class JsonCategories:
+    """ espera un diccionario con llaves series_name 
+    y valor dict con las categorias y lso valores numericos:
+    {'serie_name1':{'label_1':#,'label_2':#,'label_3':#},
+    'serie_name2':{'label_1':#,'label_2':#,'label_3':#},...}
     """
 
     def parse(self, data):
@@ -18,13 +20,13 @@ class JsonNumList:
             return None
 
     def procces(self,data):
+        regex= re.compile('\d+(\.\d+)?')
         series=[]
         series_name=[]
-        categories=[]
         deserialization = json.loads(data)
         if len(deserialization)==0:
             return None
-        base=[item for item in deserialization[list(deserialization.keys())[0]]]
+        categories=[item for item in deserialization[list(deserialization.keys())[0]]]
         #recorro todos los elementos del dictionario de series
         for serie in deserialization:
             #agrego el nombre de la serie
@@ -32,18 +34,22 @@ class JsonNumList:
             #seccionrar que contiene un dict con las cateorias y los valores
             if not type(deserialization[serie])==dict:
                 return None
+            temp=[]
             #recorro categorias
             for categorie in deserialization[serie]:
                 # Si tiene categoria distinta a las definidas FIN
-                if not base.__contains__(categorie):
+                if not categories.__contains__(categorie):
                     return None
                 #verificar si son los valores de la serie
-                if type(deserialization[serie][categorie])==list and g_numbers_list.parse(str(deserialization[serie][categorie])):
-                    series.append(deserialization[serie][categorie])
+                match= regex.match(str(deserialization[serie][categorie]))
+                if  match and match.end()==len(str(deserialization[serie][categorie])):
+                    temp.append(deserialization[serie][categorie])
                 else:
-                    categories.append((categorie,deserialization[serie][categorie]))
+                    return None
+            series.append(temp)
         formts=[]
         num_series=formats.NumSeries(series,series_name)
+        num_series.categories=categories
         if num_series.count!=0:
             formts.append((num_series,1)) 
         chart_boxplot=formats.BoxplotSeries()
@@ -53,10 +59,10 @@ class JsonNumList:
         return formts
 
     def help(self):
-        return ''' parsea las lineas como una serie, de listas de diccionarios con keys x,y
+        return ''' parsea las lineas como una serie, de listas de diccionarios con categorias y su valor numerico
                 EJ: 
-                {'serie_name1':{'y':VALUE,'sex':VALUE,'data':[#,#,#,...,#]},
-                'serie_name2':{'y':VALUE,'sex':VALUE,'data':[#,#,#,...,#]}}'''
+                {'serie_name1':{'label_1':#,'label_2':#,'label_3':#},
+                'serie_name2':{'label_1':#,'label_2':#,'label_3':#},...}'''
 
     def data_generator(self, path, amount=50, on_top=50, below=100):
         ''' Genera juego de datos con el formato que reconoce el parser para analizarlo
@@ -64,19 +70,18 @@ class JsonNumList:
         on_top=50  below=100 numeros x on_top<=x<=below
         '''
         data_files = [item
-                      for item in os.listdir(path) if item.__contains__("d_json_num_list")]
-        file = open(path+"/d_json_num_list_" +
+                      for item in os.listdir(path) if item.__contains__("d_json_categories_")]
+        file = open(path+"/d_json_categories_" +
                     str(len(data_files)+1)+".txt", "w")
-        labl_count = 0
-        len_data=int(uniform(1,amount))
+        labl_count = int(uniform(1,amount))
         data = '{'
         for item in range(0, amount):
-            num_of_elements = int(uniform(1, amount))
             middle_data = """"Serie_Name_"""+str(item)+"""" """
             middle_data += ':{'
-            middle_data += '''"data":'''+str([round(uniform(on_top,below),2) for i in range(0,len_data)])
-            middle_data +="},"
-            labl_count += 1
+            for label in range(labl_count):
+                middle_data += '''"lbl_'''+str(label)+'''":'''+str(round(uniform(on_top,below),2))+''','''
+            middle_data =middle_data[:-1]+"},"
             data += str(middle_data)+"\n"
         file.write(data[:-2]+"}")
         file.close()
+
