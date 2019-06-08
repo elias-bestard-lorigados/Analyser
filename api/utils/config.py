@@ -21,6 +21,8 @@ class Config:
 
         # Path donde se escribiran los archivos de salida
         self.output_path = os.path.abspath("./out/")
+        if  not os.path.exists(self.output_path):
+            os.mkdir(self.output_path)
         # Nombre base de los archivos de salida
         self.output_name = "out_file"
         # Contador para guiarme de la cantidad de archivos de salida actuales

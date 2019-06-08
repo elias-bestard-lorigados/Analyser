@@ -10,9 +10,8 @@ class SankeyChart(MyHighchart):
         self.type="sankey"
         self.kf_permited=[formats.StrStrWeightSeries]
         self.message = []
-        self.options["plotOptions"]["sankey"] = {
-            'tooltip': {"pointFormat": "{series.name}: <b>{point.from}, {point.to} :{point.weight} </b>"}
-        }
+        self.options["tooltip"] = {"pointFormat": "{series.name}: <b>{point.from}, {point.to} :{point.weight} </b>"}
+
     def generate(self,id):
         self.g_id = id
         elements=[]

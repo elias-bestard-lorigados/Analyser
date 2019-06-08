@@ -30,7 +30,7 @@ class LabeledTriosSeries(KnownF):
                     maxs.append(series[i][j])
                     self.proms.append((series[i][j],1))
                 else:
-                    y=[series[i][j][1],series[i][j][2],series[i][j][3]]
+                    y=[series[i][j][1],series[i][j][2]]
                     mins[j]= series[i][j] if y<mins[j][1:] else mins[j]
                     maxs[j]= series[i][j] if y>maxs[j][1:] else maxs[j]
                     new_proms_x='med_'+str(j)

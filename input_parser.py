@@ -5,6 +5,7 @@ from api.utils.config import Config
 import configparser
 import argparse
 import logging
+import shutil
 import os
 
 
@@ -96,6 +97,8 @@ def parse():
             print("GENERATING GRAPHICS")
             __graphics_generator()
         return []
+    if not os.path.exists(os.path.abspath(Config().output_path+'/js_libraries')):
+        shutil.copytree('./api/utils/js_libraries',Config().output_path+'/js_libraries')
     path_to_proccess=config.input_path
     data= __read_dir(path_to_proccess)
     return data
