@@ -64,6 +64,7 @@ def evaluate_rules(kf,count_to_show=3):
     ''' Recorre los graficos habilitados y evalua las reglas del RBS para ver cuales 
     son los mejores graficos segun el KF
     retorna una lista con los cahrts mejores '''
+    mins,maxs,meds=__pop_mins_maxs_meds(kf)
     dict_result={}
     if  Config().message=='':
         message=check_message(kf)
@@ -85,6 +86,7 @@ def evaluate_rules(kf,count_to_show=3):
     if len(result)>count_to_show:
         result=result[:count_to_show]
     result=[x for x,j in result]
+    __push_mins_maxs_meds(kf,mins,maxs,meds)
     return result
 
 def check_message(kf):
@@ -114,11 +116,23 @@ def graphic_generate(graphics_list: list):
             chart_id = __all_graphs[chart].type+"_"+str(id)
             print(chart)
             logging.info(chart)
-            content = "<div id =\""+chart_id + \
-                "\" class = \"tabcontent\" >\n"+content+"\n</div>\n"
-            result_code.append((content, chart_id))
+            result_code.append((generate_div_html(chart_id,content),chart_id))
             add_data_base(__all_graphs[chart], my_format)
             print("-"*30)
             id += 1
     Config().db_count_id = id
     return result_code
+
+def __pop_mins_maxs_meds(kf):
+    mins,maxs,meds=[],[],[]
+    if  kf.elements.keys().__contains__("Mins_Series"):
+        mins=kf.elements.pop("Mins_Series")
+        maxs=kf.elements.pop("Maxs_Series")
+        meds=kf.elements.pop("Meds_Series")
+    return mins,maxs,meds
+def __push_mins_maxs_meds(kf,mins,maxs,meds):
+    if mins!=[]:
+        kf.elements["Mins_Series"]=mins
+        kf.elements["Maxs_Series"]=maxs
+        kf.elements["Meds_Series"]=meds
+    return kf

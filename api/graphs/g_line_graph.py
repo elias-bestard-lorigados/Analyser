@@ -34,7 +34,7 @@ class LineGraph(MyHighchart):
             if check_continuous_numbres(kf):
                 count += 1
             #Verificando que contenga varias series
-            if type(kf) != formats.LabeledPairSeries or type(kf) != formats.NumSeries and check_many_series(kf):
+            if check_many_series(kf):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
             if check_same_x_intervals(kf):

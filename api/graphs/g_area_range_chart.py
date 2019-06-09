@@ -45,7 +45,6 @@ class AreaRangeChart(MyHighchart):
             if check_few_series(kf,4):
                 count += 1
             #verificando que las series tengan valores de Z o Y mayores que Y o X respect
-            type_kf = 1 if type(kf) == formats.PairsSeries else 0
-            if check_y_over_x(kf, type_kf):
-                count += 1
+            if check_y_over_x(kf):
+                count += 2
         return count

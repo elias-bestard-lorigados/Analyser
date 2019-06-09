@@ -6,7 +6,7 @@ def add_data_base(graphic,kf):
     db_file = open(Config().db_path, 'r')
     info = db_file.read()
     deserialization = json.loads(info)
-    myDictObj = {"useful": True, "id": graphic.g_id, "type": graphic.type,"kf":type(kf).__name__,"message":graphic.message,
+    myDictObj = {"useful": False, "id": graphic.g_id, "type": graphic.type,"kf":type(kf).__name__,"message":graphic.message,
                  "properties": {"min_value": kf.min_value, "max_value": kf.max_value, "count": kf.count}}
     deserialization.append(myDictObj)
     db_file.close()

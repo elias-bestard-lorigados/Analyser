@@ -1,3 +1,4 @@
+from api import an_known_format as formats
 
 def check_few_categories(kf, boundary=5):
     ''' Chequea si el KF tiene pocas categorias por serie
@@ -28,26 +29,32 @@ def check_advance_over_time(kf):
     Definimos avance sobre el timepo si las Xs avanzan
     [[X1,Y1].....[Xn,Yn]] donde X1<X2<X3...<Xn para todas las series 
     asumiendo que las series tengan pares de numeros o trios'''
-    series_values=list(kf.elements.values())
-    for series in series_values:
+    #las siguientes series se asume que el valor de las x progresa en tiempo
+    if (type(kf)== formats.NumSeries or type(kf)== formats.LabeledFourTupleSeries or
+        type(kf)== formats.LabeledPairSeries or type(kf)== formats.LabeledTriosSeries or
+        type(kf)== formats.DictXy):
+        return True
+    if type(kf)== formats.StrPairSeries or type(kf)== formats.StrStrWeightSeries:
+        return False
+    for series in kf.elements:
         actual=-9999
-        for point in series:
+        for point in kf.elements[series]:
             #si los vallres de las series no son pares o trios o 4tetos de numeros
-            if len(point)>4:
-                return False
-            if type(point[0]) == str:
-                continue
+            # if len(point)>4:
+            #     return False
             if point[0]<actual:
                 return False
             actual = point[0]
     return True
 
-#REVISAR
 def check_continuous_numbres(kf):
     ''' Chequea que las series tengan numeros continuos '''
     for key in kf.elements:
         for point in kf.elements[key]:
-            if type(point)==list and type(point[0]) != str and type(point[0])==float:
+            if type(point)==list:
+                if type(point[0]) != str and (type(point[0])==float or type(point[1])==float):
+                    return True
+            elif type(point)==dict and type(point['y'])==float:
                 return True
     return False
 
@@ -55,13 +62,17 @@ def check_same_x_intervals(kf):
     ''' Chequea que las series tengan los mismos intervalos de avance   
     Para toda serie sean los mismos valores de Xs
     asumiendo que las series tengan pares de numeros o trios'''
+    if (type(kf)== formats.NumSeries or type(kf)== formats.LabeledFourTupleSeries or
+        type(kf)== formats.LabeledPairSeries or type(kf)== formats.LabeledTriosSeries or
+        type(kf)== formats.DictXy):
+        return True
+    if (type(kf)== formats.StrPairSeries or type(kf)== formats.StrStrWeightSeries):
+        return False
     list_of_x=[]
     series_values=list(kf.elements.values())
     for point in series_values[0]:
-        if type(point) == int or type(point) == float:
-           return True
-        if len(point) > 4:
-            return False
+        # if len(point) > 4:
+        #     return False
         list_of_x.append(point[0])
 
     for serie in series_values:
@@ -69,8 +80,8 @@ def check_same_x_intervals(kf):
         if len(serie) != len(list_of_x):
             return False
         for index_p in range(0,len(serie)):
-            if len(serie[index_p]) > 4:
-                return False
+            # if len(serie[index_p]) > 4:
+            #     return False
             if serie[index_p][0] !=list_of_x[index_p]:
                 return False
     return True
@@ -91,22 +102,53 @@ def check_same_size_btwn_series(kf):
             return False
     return True
 
-def check_similar_part_of_hole(kf,boundary=5):
-    ''' Chequea si una serie tiene sus valores muy similares
-    considerando similares si estos pican casi en partes iguales a total
-     '''
-    return False
-
-def check_y_over_x(kf,type=1):
+def check_y_over_x(kf):
     ''' Chequea que los valores de las Y sean mayores que los de X
-    type 1 es si recive lista de pares
-    type 0 es si recive lista de trios X Y Z
-    o que los de Z sean mayores que los de Y
-     '''
-    return False
+    o que los de Z sean mayores que los de Y'''
+    if (type(kf)== formats.NumSeries or type(kf)== formats.LabeledFourTupleSeries or
+        type(kf)== formats.LabeledPairSeries or type(kf)== formats.StrPairSeries or
+        type(kf)== formats.StrStrWeightSeries or type(kf)==formats.DictXy):
+        return True
+    type_kf=0
+    if (type(kf)==formats.LabeledFourTupleSeries or type(kf)==formats.FourTupleSeries or
+        type(kf)==formats.LabeledTriosSeries or type(kf)==formats.TriosSeries):
+        type_kf=1
+    for serie in kf.elements:
+        for item in kf.elements[serie]:
+            if item[type_kf]> item[type_kf+1]:
+                return False
+    return True
 
-def check_part_of_hole(kf, type=1):
-    ''' Chequea que los valores sean parte de un todo'''
+def check_part_of_hole(kf):
+    ''' Chequea que los valores sean parte de un todo
+    partiendo que las series tiene el mismo tamanno
+    que todas las categorias tengan el mismo tamanno
+    que la suma de la primera columna de lo mismo que las demas'''
+    if not check_same_size_btwn_series(kf):
+        return False
+    if (type(kf)== formats.LabeledFourTupleSeries or type(kf)== formats.LabeledTriosSeries or
+        type(kf)== formats.StrPairSeries or type(kf)== formats.StrStrWeightSeries or 
+        type(kf)== formats.TriosSeries or type(kf)== formats.FourTupleSeries):
+        return False
+    sums=[0 for item in kf.elements[list(kf.elements.keys())[0]]]
+    for serie in kf.elements:
+        for i in range(len(kf.elements[serie])):
+            if type(kf)== formats.DictXy:
+                sums[i]+=kf.elements[serie]['y']
+            elif type(kf)== formats.NumSeries:
+                sums[i]+=kf.elements[serie][i]
+            else: sums[i]+=kf.elements[serie][i][1]
+    for i in range(1,len(sums)):
+        if  sums[i-1]!=sums[i]:
+            return False
+    return True
+
+def check_long_categories_name(kf,boundary=7):
+    ''' Chequear si tiene los nombres de las categorias largos,
+    mas largos que boundary '''
+    for categorie in kf.categories:
+        if len(str(categorie))> boundary:
+            return True
     return False
 
 def message_comparison(kf):
@@ -114,53 +156,52 @@ def message_comparison(kf):
     result=0
     if check_same_size_btwn_series(kf):
         result+=1
-    if check_same_x_intervals(kf):
+    # if check_same_x_intervals(kf):
+    #     result+=1
+    if check_advance_over_time(kf):
         result+=1
     return result
-
 
 def message_distribution(kf):
     ''' Chequear y calcular cuan se parece el kf a un mensaje de distribution '''
     result = 0
-    if not check_continuous_numbres(kf):
+    if check_continuous_numbres(kf):
         result += 1
-    if not check_many_points_per_serie(kf, 15):
+    if check_many_points_per_serie(kf, 15):
         result += 1
-    if not check_few_series(kf,3):
+    if check_few_series(kf,3):
         result += 1
     if not check_same_size_btwn_series(kf):
         result += 1
-    if not check_same_x_intervals(kf):
-        result += 1
+    # if not check_same_x_intervals(kf):
+    #     result += 1
     return result
 
 def message_relation(kf):
     ''' Chequear y calcular cuan se parece el kf a un mensaje de relation '''
     result = 0
-    # if not check_continuous_numbres(kf):
-    #     result += 1
-    # if not check_many_points_per_serie(kf, 15):
-    #     result += 1
-    # if not check_few_series(kf, 3):
-    #     result += 1
-    # if not check_same_size_btwn_series(kf):
-    #     result += 1
+    if check_continuous_numbres(kf):
+        result += 1
     # if not check_same_x_intervals(kf):
     #     result += 1
+    if check_many_points_per_serie(kf, 15):
+        result += 1
+    if check_few_categories(kf,3):
+        result += 1
+    if not check_same_size_btwn_series(kf):
+        result += 1
     return result
 
 def message_composition(kf):
     ''' Chequear y calcular cuan se parece el kf a un mensaje de composition '''
     result = 0
-    if not check_part_of_hole(kf):
+    if check_part_of_hole(kf):
         result += 1
-    if not check_few_categories(kf, 7):
+    if check_few_categories(kf, 7):
         result += 1
-    # if not check_few_series(kf, 3):
-    #     result += 1
-    # if not check_same_size_btwn_series(kf):
-    #     result += 1
-    # if not check_same_x_intervals(kf):
+    if check_same_size_btwn_series(kf):
+        result += 1
+    # if check_same_x_intervals(kf):
     #     result += 1
     return result
 
@@ -168,13 +209,10 @@ def message_composition(kf):
 # class a:
 #     def __init__(self):
 #         self.elements={
-#     'a': [[76.14, 95.68], [52.57, 81.28], [58.79, 89.13]],
-#     'b': [[83.69, 68.17], [90.39, 66.33], [78.3, 74.8], [88.94, 53.24]],
-#     'c': [[58.46, 91.18], [61.51, 82.19], [52.09, 82.24], [76.0, 84.23], [59.26, 69.81]],
-#     'd': [[80.57, 61.78], [56.27, 95.62], [88.73, 79.72]]
-# }
+#     'a': [[1,2],[3,4]],
+#     'b': [[3,4],[1,2]]}
 # s=a()
-# print(check_few_categories(s))
+# print(check_part_of_hole(s,1))
 # print(check_few_series(s))
 # print(check_advance_over_time(s))
 # print(check_continuous_numbres(s))

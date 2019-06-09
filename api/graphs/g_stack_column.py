@@ -1,6 +1,7 @@
 from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
 
+from api.utils.rules import check_part_of_hole
 from api.utils.rules import check_advance_over_time
 from api.utils.rules import check_few_categories
 from api.utils.rules import check_few_series
@@ -32,16 +33,13 @@ class StackColumn(MyHighchart):
                 count += 2  # check_advance_over_time y check_same_x_intervals
             elif check_advance_over_time(kf):
                 count += 1
-            #Verificando pocas categorias
-            if check_few_categories(kf, 7):
-                count += 1
             #Verificando que contenga pocas series
             if check_few_series(kf):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
-            if type(kf) != formats.LabeledTriosSeries or type(kf) != formats.PairsSeries and check_same_x_intervals(kf):
+            if check_same_x_intervals(kf):
                     count += 1
-            #Verificando que las series tengan igual tamanno
-            if check_same_size_btwn_series(kf):
+            #que sea parte de un todo
+            if check_part_of_hole(kf):
                 count += 1
         return count

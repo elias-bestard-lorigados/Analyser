@@ -2,6 +2,7 @@ from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
 
 from api.utils.rules import check_advance_over_time
+from api.utils.rules import check_part_of_hole
 from api.utils.rules import check_many_categories
 from api.utils.rules import check_many_series
 from api.utils.rules import check_same_size_btwn_series
@@ -35,9 +36,11 @@ class AreaChart(MyHighchart):
             if check_many_series(kf,3):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
-            if type(kf) != formats.LabeledPairSeries and type(kf) != formats.NumSeries and check_same_x_intervals(kf):
+            if check_same_x_intervals(kf):
                     count += 1
             #Verificando que las series tengan igual tamanno
             if check_same_size_btwn_series(kf):
+                count += 1
+            if check_part_of_hole(kf):
                 count += 1
         return count

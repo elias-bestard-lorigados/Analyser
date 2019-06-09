@@ -37,9 +37,9 @@ class ScatterChart(MyHighchart):
             if not check_same_size_btwn_series(kf):
                 count += 1
             #Verificando que contenga puntos dispersos sin orden
-            if type(kf) == formats.LabeledPairSeries or type(kf) == formats.NumSeries or check_same_x_intervals(kf):
-                    count += 1
+            if not check_same_x_intervals(kf):
+                    count += 2
             #Verificando que contenga puntos continuos
-            if not check_continuous_numbres(kf):
+            if check_continuous_numbres(kf):
                 count += 1
         return count

@@ -50,8 +50,8 @@ class BulletChart(MyHighchart):
             if check_few_series(kf):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
-            if type(kf) != formats.LabeledTriosSeries or type(kf) != formats.PairsSeries and check_same_x_intervals(kf):
-                    count += 1
+            if check_same_x_intervals(kf):
+                count += 1
             #Verificando que las series tengan igual tamanno
             if check_same_size_btwn_series(kf):
                 count += 1

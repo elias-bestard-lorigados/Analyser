@@ -38,11 +38,8 @@ class SplineInvertedChart(MyHighchart):
         count = 0
         if self.kf_permited.__contains__(type(kf)):
             count += 1
-            #Verificando que sea una comparacion sobre tiempo, X progrsan
             if type(kf) == formats.LabeledPairSeries or type(kf) == formats.NumSeries:
-                count += 2  # check_advance_over_time y check_same_x_intervals
-            elif check_advance_over_time(kf):
-                count += 1
+                count += 1 # check_same_x_intervals
             #Verificando Muchas categorias
             if check_many_categories(kf, 3):
                 count += 1
@@ -50,7 +47,7 @@ class SplineInvertedChart(MyHighchart):
             if check_few_series(kf,3):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
-            if type(kf) != formats.LabeledPairSeries and type(kf) != formats.NumSeries and check_same_x_intervals(kf):
+            if check_same_x_intervals(kf):
                     count += 1
             #Verificando que las series tengan igual tamanno
             if check_same_size_btwn_series(kf):

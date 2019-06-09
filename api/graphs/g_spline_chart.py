@@ -37,7 +37,7 @@ class SplineChart(MyHighchart):
             if check_many_series(kf):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
-            if type(kf) != formats.LabeledPairSeries and type(kf) != formats.NumSeries and check_same_x_intervals(kf):
+            if check_same_x_intervals(kf):
                     count += 1
             #Verificando que las series tengan igual tamanno
             if check_same_size_btwn_series(kf):

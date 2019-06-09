@@ -2,6 +2,7 @@ from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
 import random
 
+from api.utils.rules import check_continuous_numbres
 from api.utils.rules import check_many_points_per_serie
 from api.utils.rules import check_same_size_btwn_series
 from api.utils.rules import check_same_x_intervals
@@ -40,9 +41,12 @@ class BubbleChart(MyHighchart):
             if not check_many_points_per_serie(kf, 15):
                 count += 1
             #Verificando que contenga diferentes puntos las series
-            if type(kf) != formats.LabeledTriosSeries and not check_same_size_btwn_series(kf):
+            if not check_same_size_btwn_series(kf):
                 count += 1
             #Verificando que contenga puntos dispersos sin orden
             if not check_same_x_intervals(kf):
+                count += 2
+            #Verificando que contenga puntos continuos
+            if check_continuous_numbres(kf):
                 count += 1
         return count

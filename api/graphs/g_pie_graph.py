@@ -2,10 +2,10 @@ from api import an_known_format as formats
 from charts_hierarchy.my_highchart import MyHighchart
 import random
 
+from api.utils.rules import check_part_of_hole
 from api.utils.rules import check_few_categories
 from api.utils.rules import check_few_series
 from api.utils.rules import check_many_categories
-from api.utils.rules import check_similar_part_of_hole
 
 class PieGraph(MyHighchart):
     """ Crear un grafico de Pie """
@@ -29,19 +29,27 @@ class PieGraph(MyHighchart):
         self.options['tooltip']= {'pointFormat': '{series.name}: <b>{point.y:.1f}</b>'}
         self.options['title']= {'text': self.type+' chart'}
 
-    def graphic(self, g_id, format_known):
+    def graphic(self, g_id, known_format):
         """ Graficar los elementos """
-        if not self.kf_permited.__contains__(type(format_known)) or format_known.count > 1:
+        if not self.kf_permited.__contains__(type(known_format)) or known_format.count > 1:
             return None
         self.g_id = g_id
-        return self._make_js_code(format_known)
+        meds=known_format.elements.pop('Meds_Series')
+        mins=known_format.elements.pop('Mins_Series')
+        maxs=known_format.elements.pop('Maxs_Series')
+        code= self._make_js_code(known_format)
+        known_format.elements['Meds_Series']=meds
+        known_format.elements['Mins_Series']=mins
+        known_format.elements['Maxs_Series']=maxs
+        return code
+
     def generate(self,id):
         self.g_id = id
         elements=[]
         slices_nums=int(random.uniform(2,9))
         total=100
         while slices_nums!=0:
-            temp=random.uniform(1,total)
+            temp=round(random.uniform(1,total),2)
             elements.append(['label_'+str(slices_nums),temp])
             total-=temp
             slices_nums-=1
@@ -60,8 +68,7 @@ class PieGraph(MyHighchart):
                 count += 1
             #Verificando que contenga solo 1 serie
             if check_few_series(kf, 2):
-                count += 1
-            #Verificando si contiene partes del total similares
-            if not check_similar_part_of_hole(kf):
+                count += 2
+            if check_part_of_hole(kf):
                 count += 1
         return count

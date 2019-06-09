@@ -36,12 +36,25 @@ class MyHighchart:
         ''' Genera el codigo de JS para highcharts y lo retorna '''
         self.options["chart"]["renderTo"] = "chart_container_" + str(self.g_id)
         self.options["xAxis"]["categories"] = format_known.categories
-        for item in format_known.elements:
-            data = {'data': format_known.elements[item],
-                     'type': self.type, 'name': item}
-            if format_known.keys!=[]:
-                data['keys']=format_known.keys
-            self.options['series'].append(data)
+        if  format_known.count>15 and format_known.elements.keys().__contains__("Mins_Series"):
+            data = []
+            data.append({'data': format_known.elements["Mins_Series"],
+                     'type': self.type, 'name': 'Mins_Series'})
+            data.append(({'data': format_known.elements["Maxs_Series"],
+                     'type': self.type, 'name': "Maxs_Series"}))
+            data.append(({'data': format_known.elements["Meds_Series"],
+                     'type': self.type, 'name': "Maxs_Series"}))
+            for items in data:
+                if format_known.keys!=[]:
+                    items['keys']=format_known.keys
+                self.options['series'].append(items)
+        else:
+            for item in format_known.elements:
+                data = {'data': format_known.elements[item],
+                         'type': self.type, 'name': item}
+                if format_known.keys!=[]:
+                    data['keys']=format_known.keys
+                self.options['series'].append(data)
         js_code = """
             <div id="chart_container_"""+str(self.g_id)+"""">Loading....</div>
             <script>
