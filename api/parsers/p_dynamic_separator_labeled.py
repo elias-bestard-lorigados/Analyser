@@ -32,10 +32,13 @@ class DynamicSeparatorLabeled:
             line=line.split(separator)
             labels.append(line[0])
             temp_value=[float(line[i]) for i in range(1,len(line)) ]
-            values.append(temp_value)
+            if temp_value!=[]:
+                values.append(temp_value)
             #Si tiene cantidad par de numeros los agrupo en pares y agrego una nueva serie!!!!
             if len(temp_value) % 2 == 0:
                 pairs_values.append([[temp_value[i],temp_value[i+1]] for i in range(0,len(temp_value),2)])
+        if values==[]:
+            return None
         formats_list.append((formats.NumSeries(values, labels),1))
         if not len(pairs_values)==0:# si se annadieron pares de elementos
             formats_list.append((formats.PairsSeries(pairs_values, labels),1))
@@ -79,8 +82,8 @@ class DynamicSeparatorLabeled:
             for j in range(0,len(lines[i])):
                 match=regex.match(lines[i][j])
                 if j==0:
-                    if match and match.end()==len(lines[i][j]):
+                    if match!=None and match.end()==len(lines[i][j]):
                         return False
-                elif (not match) or (not match.end()==len(lines[i][j])):
+                elif  match==None or (not match.end()==len(lines[i][j])):
                     return False
         return True

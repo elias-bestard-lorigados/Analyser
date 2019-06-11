@@ -21,6 +21,8 @@ def identify(data):
     data = clean_text(data)
     logging.info("PROCESAR COMPLETO")
     list_kf = analyse_text(data,__all_parsers)
+    logging.info("-"*30)
+    logging.info("KF GENERADOS")
     if list_kf != [] and list_kf != [(['UNKNOW'], 0)]:
         logging.info("-"*30)
         [logging.info(type(item).__name__) for item,k in list_kf]

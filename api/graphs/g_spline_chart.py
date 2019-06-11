@@ -28,13 +28,13 @@ class SplineChart(MyHighchart):
             elif check_advance_over_time(kf):
                 count += 1
             #Verificando Muchas categorias
-            if check_many_categories(kf, 3):
+            if check_many_categories(kf, 5):
                 count += 1
             #Verificando que tenga numeros continuos
             if check_continuous_numbres(kf):
                 count += 1
             #Verificando que contenga varias series
-            if check_many_series(kf):
+            if check_many_series(kf,3):
                 count += 1
             #verificando que las series tengan misma diferencia de intervalos
             if check_same_x_intervals(kf):

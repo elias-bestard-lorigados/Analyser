@@ -39,6 +39,8 @@ class Csv:
                     csvreader[i][j] = 0
                 values_temp.append(float(csvreader[i][j]))
             values.append(values_temp)
+        if values ==[] or self.has_many_zero(values):
+            return None
         #si la primera fila tiene lbl la considero series names
         series_name=[str(item) for item in csvreader[0][self.__has_categories_name:]] if self.__has_series_name == 1 else []
         #si la primera columna tiene strings es categorias/series_name
@@ -72,6 +74,13 @@ class Csv:
             formats_list.append((chart_boxplot, 1))
 
         return formats_list
+    def has_many_zero(self,values):
+        count_zero,total=0,0
+        for series in values:
+            for item in series:
+                total+=1
+                count_zero +=1 if self.__is_num(str(item)) else 0
+        return True if count_zero/total >1/4 else False
 
     def check_csv(self, text: str, separator=','):
         ''' Chequea que text sean labels y numeros separados por comas

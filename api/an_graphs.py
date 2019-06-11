@@ -67,9 +67,10 @@ def evaluate_rules(kf,count_to_show=3):
     mins,maxs,meds=__pop_mins_maxs_meds(kf)
     dict_result={}
     if  Config().message=='':
-        message=check_message(kf)
+        message,p=check_message(kf)
     else:
         message = Config().message
+        p=2
     for chart in Config().available_graphs:
         if Config().message != '' and not __all_graphs[chart].message.__contains__(Config().message):
             continue
@@ -77,12 +78,18 @@ def evaluate_rules(kf,count_to_show=3):
         feedback=find_count_kf_graphic(__all_graphs[chart],kf)
         points+=feedback
         if __all_graphs[chart].message.__contains__(message):
-            points += 1
-            # points += p
+            # points += 1
+            points += p
         if  points>0:
             dict_result[chart]=points
     result=list(dict_result.items())
     result.sort(key=(lambda x:x[1]),reverse=True)
+    logging.info("----- Feedback Graficos -----")
+    logging.info("-"*30)
+    for items in result:
+        logging.info(items)
+        logging.info("-"*30)
+    print(result)
     if len(result)>count_to_show:
         result=result[:count_to_show]
     result=[x for x,j in result]
@@ -101,7 +108,13 @@ def check_message(kf):
     result.append(('distribution',
                   find_count_message_graphic('distribution', kf) + message_distribution(kf)))
     result.sort(key=(lambda x: x[1]), reverse=True)
-    return result[0][0]
+    logging.info("----- Feedback Mensajes -----")
+    logging.info("-"*30)
+    for item in result:
+        logging.info(item)
+    logging.info("-"*30)
+    print(result)
+    return result[0]
 
 def graphic_generate(graphics_list: list):
     ''' Metodo para generar los graficos con datos aleatorios '''

@@ -15,6 +15,8 @@ def ini_html():
     file.write("<script src=\"./js_libraries/Highcharts_JS/modules/networkgraph.js \"></script>\n")
     file.write("<script src=\"./js_libraries/Highcharts_JS/modules/bullet.js \"></script>\n")
     file.write("<script src=\"./js_libraries/Highcharts_JS/modules/tilemap.js \"></script>\n")
+    file.write("<script src=\"./js_libraries/Highcharts_JS/modules/exporting.js \"></script>\n")
+    file.write("<script src=\"./js_libraries/Highcharts_JS/modules/offline-exporting.js \"></script>\n")
     file.write("<script src=\"./js_libraries/vertical_tabs.js\"></script>\n")
     file.write("<link rel = \"stylesheet\" href = \"./js_libraries/style.css\">\n")
     file.write("</head>\n")

@@ -47,7 +47,7 @@ def is_comment(line):
 def clean_text(text: str):
     ''' remover lineas en blanco de un str y los comentarios'''
     text=text.split('\n')
-    a, b = 'áéíóúüñ/;()!@#$%^&*?><~`','aeiouun                 '
+    a, b = 'áéíóúüñ/;()!@#$%^&*?><~ `','aeiouun                  '
     new_text=''
     for line in text:
         if line!='' and not is_comment(line):
